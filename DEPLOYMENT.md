@@ -6,38 +6,51 @@ This guide explains how to configure your deployment pipeline to wait for tests 
 
 1. **Push code** to GitHub
 2. **Tests run automatically** via GitHub Actions
-3. **Vercel waits** for tests to pass
+3. **Only if tests pass** → GitHub Actions deploys to Vercel
 4. **Deployment happens** only if tests succeed ✅
+
+Everything is controlled by GitHub - no automatic Vercel deployments!
 
 ---
 
 ## ⚙️ Setup Instructions
 
-### Step 1: Configure GitHub Branch Protection
+### Step 1: Configure GitHub Branch Protection ✅ DONE
 
 This ensures tests **must** pass before merging to main.
 
-1. Go to your repo: `https://github.com/IlyasI/realnamestudio/settings/branches`
-2. Click **Add branch protection rule**
-3. Configure:
-   - **Branch name pattern**: `main`
-   - ✅ Check **Require status checks to pass before merging**
-   - ✅ Check **Require branches to be up to date before merging**
-   - Under **Status checks that are required**, search and select:
-     - `test` (this is your Playwright workflow)
-   - ✅ Check **Include administrators**
-4. Click **Create** or **Save changes**
+Already configured to require the `test` status check to pass.
 
-### Step 2: Configure Vercel Deployment Checks
+### Step 2: Set Up Vercel GitHub Secrets
 
-1. Go to your project settings: `https://vercel.com/ilyas-projects-a386ad49/realnamestudio/settings`
-2. Find the **Deployment Checks** section in the left sidebar
-3. Click **Add Checks**
-4. Select the GitHub Action that must pass:
-   - ✅ Select **test** (your Playwright workflow job name)
-5. Save changes
+GitHub Actions needs credentials to deploy to Vercel. Set these up once:
 
-Now your production deployments will wait for the `test` job to pass before promoting to production.
+1. **Create a Vercel Token:**
+   - Go to: https://vercel.com/account/tokens
+   - Click **Create Token**
+   - Name it: `github-actions-deploy`
+   - Copy the token (you'll only see it once!)
+
+2. **Add GitHub Secrets:**
+   - Go to: https://github.com/IlyasI/realnamestudio/settings/secrets/actions
+   - Click **New repository secret** and add these three:
+
+   ```
+   Name: VERCEL_TOKEN
+   Value: <paste the token you just created>
+   ```
+
+   ```
+   Name: VERCEL_ORG_ID
+   Value: team_Ts6OLGJOL3ztRuFFmQd7edmt
+   ```
+
+   ```
+   Name: VERCEL_PROJECT_ID
+   Value: prj_VfftJqbcTNjLK3PlhPKMAXiYKjCK
+   ```
+
+3. **Done!** Once these secrets are added, the workflow will automatically deploy after tests pass.
 
 ---
 

@@ -1,14 +1,7 @@
 {
   "github": {
-    "enabled": true,
-    "autoAlias": true,
-    "silent": false,
-    "autoJobCancelation": true
+    "enabled": false,
+    "silent": false
   },
-  "buildCommand": "npm test && npm run build",
-  "git": {
-    "deploymentEnabled": {
-      "main": true
-    }
-  }
+  "buildCommand": "npm run build"
 }
