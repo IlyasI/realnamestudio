@@ -29,7 +29,7 @@
     }
 
     .game-container {
-      max-width: 800px;
+      max-width: 900px;
       width: 100%;
       background: #6B4C9A;
       border: 6px solid #000;
@@ -40,71 +40,81 @@
     .game-header {
       background: #FF006E;
       border-bottom: 6px solid #000;
-      padding: 20px;
+      padding: 15px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
     }
 
     .game-title {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 36px;
+      font-size: 32px;
       letter-spacing: 3px;
       color: #F5F1E8;
     }
 
-    .money {
-      font-size: 24px;
+    .stats-row {
+      display: flex;
+      gap: 20px;
+      font-size: 14px;
       font-weight: 700;
+    }
+
+    .stat-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .tabs {
+      display: flex;
+      background: rgba(0, 0, 0, 0.3);
+      border-bottom: 4px solid #000;
+    }
+
+    .tab {
+      flex: 1;
+      padding: 15px 10px;
+      text-align: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px;
+      letter-spacing: 2px;
+      cursor: pointer;
+      background: transparent;
+      border: none;
+      color: rgba(255, 255, 255, 0.6);
+      transition: all 0.2s ease;
+      border-right: 2px solid rgba(0, 0, 0, 0.3);
+    }
+
+    .tab:last-child {
+      border-right: none;
+    }
+
+    .tab.active {
+      background: #00D9FF;
+      color: #1A1A1A;
+    }
+
+    .tab:hover:not(.active) {
+      background: rgba(255, 255, 255, 0.1);
       color: #F5F1E8;
     }
 
     .game-body {
-      padding: 30px;
+      padding: 25px;
+      max-height: 600px;
+      overflow-y: auto;
     }
 
-    .character-section {
-      background: #F5F1E8;
-      border: 4px solid #000;
-      padding: 20px;
-      margin-bottom: 20px;
-      color: #1A1A1A;
+    .tab-content {
+      display: none;
     }
 
-    .character-sprite {
-      font-size: 48px;
-      text-align: center;
-      margin-bottom: 15px;
-    }
-
-    .energy-bar {
-      margin-top: 10px;
-    }
-
-    .energy-label {
-      font-weight: 600;
-      margin-bottom: 5px;
-      font-size: 14px;
-    }
-
-    .bar {
-      height: 25px;
-      background: #1A1A1A;
-      border: 3px solid #000;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .bar-fill {
-      height: 100%;
-      background: #00D9FF;
-      transition: width 0.3s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 12px;
-      color: #1A1A1A;
+    .tab-content.active {
+      display: block;
     }
 
     .section {
@@ -116,77 +126,89 @@
 
     .section-title {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 28px;
+      font-size: 24px;
       letter-spacing: 2px;
       margin-bottom: 15px;
       color: #00D9FF;
     }
 
-    .skill-item {
-      margin-bottom: 15px;
-    }
-
-    .skill-name {
-      font-weight: 600;
-      margin-bottom: 5px;
-      display: flex;
-      justify-content: space-between;
-      font-size: 14px;
-    }
-
-    .skill-bar {
-      height: 20px;
+    .bar {
+      height: 22px;
       background: rgba(0, 0, 0, 0.4);
       border: 2px solid rgba(255, 255, 255, 0.3);
       position: relative;
       overflow: hidden;
+      margin-bottom: 10px;
     }
 
-    .skill-bar-fill {
+    .bar-fill {
       height: 100%;
-      background: linear-gradient(90deg, #FF006E, #FF6B35);
       transition: width 0.3s ease;
-    }
-
-    .skill-text {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 11px;
       font-weight: 700;
+      font-size: 11px;
       color: #F5F1E8;
       text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
     }
 
-    .button-grid {
+    .bar-fill.health {
+      background: #FF006E;
+    }
+
+    .bar-fill.energy {
+      background: #00D9FF;
+    }
+
+    .bar-fill.xp {
+      background: linear-gradient(90deg, #FF6B35, #FFD700);
+    }
+
+    .skill-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 15px;
     }
 
+    .skill-item {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 12px;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .skill-name {
+      font-weight: 700;
+      font-size: 13px;
+      margin-bottom: 5px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .button-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
     .btn {
       font-family: 'Space Grotesk', monospace;
-      font-size: 16px;
+      font-size: 14px;
       font-weight: 600;
-      padding: 15px;
+      padding: 12px;
       background: #00D9FF;
-      border: 4px solid #000;
+      border: 3px solid #000;
       color: #1A1A1A;
       cursor: pointer;
       transition: all 0.2s ease;
-      box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.3);
+      box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.3);
     }
 
     .btn:hover:not(:disabled) {
       background: #FF006E;
       color: #F5F1E8;
       transform: translateY(-2px);
-      box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.3);
+      box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.3);
     }
 
     .btn:active:not(:disabled) {
@@ -201,52 +223,111 @@
       opacity: 0.5;
     }
 
-    .btn-job {
-      background: #FF6B35;
-      margin-bottom: 10px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .btn-job:hover:not(:disabled) {
+    .btn-combat {
       background: #FF006E;
+      color: white;
     }
 
-    .shop-item {
+    .btn-travel {
+      background: #FF6B35;
+    }
+
+    .item-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .item {
       background: rgba(0, 0, 0, 0.3);
-      border: 3px solid rgba(255, 255, 255, 0.3);
-      padding: 15px;
-      margin-bottom: 10px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      padding: 12px;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
-    .shop-item-info {
+    .item-info {
       flex: 1;
     }
 
-    .shop-item-name {
+    .item-name {
       font-weight: 700;
-      margin-bottom: 5px;
       color: #00D9FF;
+      font-size: 14px;
     }
 
-    .shop-item-desc {
-      font-size: 12px;
+    .item-desc {
+      font-size: 11px;
       color: rgba(255, 255, 255, 0.7);
+      margin-top: 3px;
     }
 
-    .shop-item-price {
+    .item-price {
       font-weight: 700;
-      color: #FF6B35;
+      color: #FFD700;
       margin-right: 10px;
     }
 
-    .btn-buy {
-      padding: 10px 20px;
-      font-size: 14px;
+    .quest-item {
+      background: rgba(0, 0, 0, 0.3);
+      border: 3px solid rgba(255, 215, 0, 0.4);
+      padding: 15px;
+      margin-bottom: 12px;
+    }
+
+    .quest-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px;
+      color: #FFD700;
+      margin-bottom: 8px;
+    }
+
+    .quest-desc {
+      font-size: 12px;
+      line-height: 1.5;
+      margin-bottom: 8px;
+    }
+
+    .quest-reward {
+      font-size: 11px;
+      color: #00D9FF;
+      font-weight: 700;
+    }
+
+    .quest-completed {
+      border-color: rgba(0, 217, 255, 0.4);
+      opacity: 0.6;
+    }
+
+    .enemy-battle {
+      background: rgba(255, 0, 110, 0.2);
+      border: 3px solid #FF006E;
+      padding: 20px;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    .enemy-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      color: #FF006E;
+      margin-bottom: 10px;
+    }
+
+    .enemy-sprite {
+      font-size: 64px;
+      margin: 15px 0;
+    }
+
+    .combat-log {
+      background: rgba(0, 0, 0, 0.5);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      padding: 12px;
+      max-height: 150px;
+      overflow-y: auto;
+      font-size: 11px;
+      line-height: 1.6;
+      margin-top: 15px;
     }
 
     .message {
@@ -256,12 +337,14 @@
       transform: translateX(-50%);
       background: #FF006E;
       color: #F5F1E8;
-      padding: 15px 30px;
+      padding: 12px 25px;
       border: 4px solid #000;
       box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.5);
       font-weight: 600;
+      font-size: 13px;
       z-index: 1000;
       animation: slideDown 0.3s ease;
+      max-width: 80%;
     }
 
     @keyframes slideDown {
@@ -277,7 +360,7 @@
 
     .footer-links {
       text-align: center;
-      padding: 20px;
+      padding: 15px;
       border-top: 4px solid rgba(255, 255, 255, 0.2);
     }
 
@@ -285,6 +368,7 @@
       color: #00D9FF;
       text-decoration: none;
       font-weight: 600;
+      font-size: 13px;
       margin: 0 10px;
     }
 
@@ -292,28 +376,46 @@
       color: #FF006E;
     }
 
-    .owned-tag {
+    .owned-tag, .equipped-tag {
       display: inline-block;
+      padding: 2px 6px;
+      font-size: 10px;
+      font-weight: 700;
+      border-radius: 2px;
+      margin-left: 8px;
+    }
+
+    .owned-tag {
       background: #00D9FF;
       color: #1A1A1A;
-      padding: 2px 8px;
-      font-size: 11px;
-      font-weight: 700;
-      border-radius: 3px;
-      margin-left: 10px;
+    }
+
+    .equipped-tag {
+      background: #FFD700;
+      color: #1A1A1A;
     }
 
     @media (max-width: 768px) {
       .game-title {
-        font-size: 28px;
+        font-size: 24px;
       }
 
-      .money {
-        font-size: 20px;
+      .stats-row {
+        font-size: 12px;
+        gap: 12px;
       }
 
       .button-grid {
         grid-template-columns: 1fr;
+      }
+
+      .skill-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .tab {
+        font-size: 14px;
+        padding: 12px 8px;
       }
     }
   </style>
@@ -322,50 +424,99 @@
   <div class="game-container">
     <div class="game-header">
       <div class="game-title">BROOKLYN RPG</div>
-      <div class="money">$<span id="money">0</span></div>
+      <div class="stats-row">
+        <div class="stat-item">
+          <span>💰</span>
+          <span id="money">0</span>
+        </div>
+        <div class="stat-item">
+          <span>📍</span>
+          <span id="location">williamsburg</span>
+        </div>
+        <div class="stat-item">
+          <span>⚔️</span>
+          <span id="combatLevel">1</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tabs">
+      <button class="tab active" onclick="game.switchTab('character')">Character</button>
+      <button class="tab" onclick="game.switchTab('combat')">Combat</button>
+      <button class="tab" onclick="game.switchTab('travel')">Travel</button>
+      <button class="tab" onclick="game.switchTab('quests')">Quests</button>
+      <button class="tab" onclick="game.switchTab('shop')">Shop</button>
     </div>
 
     <div class="game-body">
-      <!-- Character Section -->
-      <div class="character-section">
-        <div class="character-sprite">🕴️</div>
-        <div class="energy-bar">
-          <div class="energy-label">energy</div>
-          <div class="bar">
-            <div class="bar-fill" id="energyBar">
-              <span id="energyText">100/100</span>
+      <!-- Character Tab -->
+      <div id="tab-character" class="tab-content active">
+        <div class="section">
+          <div class="section-title">STATS</div>
+          <div>
+            <div style="margin-bottom: 5px; font-size: 12px; font-weight: 600;">Health</div>
+            <div class="bar">
+              <div class="bar-fill health" id="healthBar">
+                <span id="healthText">10/10</span>
+              </div>
             </div>
+            <div style="margin-bottom: 5px; font-size: 12px; font-weight: 600;">Energy</div>
+            <div class="bar">
+              <div class="bar-fill energy" id="energyBar">
+                <span id="energyText">100/100</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-title">SKILLS</div>
+          <div class="skill-grid" id="skillsContainer"></div>
+        </div>
+
+        <div class="section">
+          <div class="section-title">EQUIPMENT</div>
+          <div id="equipmentContainer"></div>
+        </div>
+
+        <div class="section">
+          <div class="section-title">ACTIVITIES</div>
+          <div class="button-grid">
+            <button class="btn" onclick="game.doActivity('coding')">write code</button>
+            <button class="btn" onclick="game.doActivity('design')">push pixels</button>
+            <button class="btn" onclick="game.doActivity('coffee')">brew coffee</button>
+            <button class="btn" onclick="game.doActivity('vibes')">network</button>
           </div>
         </div>
       </div>
 
-      <!-- Skills Section -->
-      <div class="section">
-        <div class="section-title">SKILLS</div>
-        <div id="skillsContainer"></div>
+      <!-- Combat Tab -->
+      <div id="tab-combat" class="tab-content">
+        <div id="combatContainer"></div>
       </div>
 
-      <!-- Activities Section -->
-      <div class="section">
-        <div class="section-title">ACTIVITIES</div>
-        <div class="button-grid">
-          <button class="btn" onclick="game.doActivity('coding')">write code</button>
-          <button class="btn" onclick="game.doActivity('design')">push pixels</button>
-          <button class="btn" onclick="game.doActivity('coffee')">brew coffee</button>
-          <button class="btn" onclick="game.doActivity('vibes')">network</button>
+      <!-- Travel Tab -->
+      <div id="tab-travel" class="tab-content">
+        <div class="section">
+          <div class="section-title">BROOKLYN LOCATIONS</div>
+          <div id="locationsContainer"></div>
         </div>
       </div>
 
-      <!-- Jobs Section -->
-      <div class="section">
-        <div class="section-title">JOBS</div>
-        <div id="jobsContainer"></div>
+      <!-- Quests Tab -->
+      <div id="tab-quests" class="tab-content">
+        <div class="section">
+          <div class="section-title">ACTIVE QUESTS</div>
+          <div id="questsContainer"></div>
+        </div>
       </div>
 
-      <!-- Shop Section -->
-      <div class="section">
-        <div class="section-title">SHOP</div>
-        <div id="shopContainer"></div>
+      <!-- Shop Tab -->
+      <div id="tab-shop" class="tab-content">
+        <div class="section">
+          <div class="section-title">EQUIPMENT SHOP</div>
+          <div class="item-list" id="shopContainer"></div>
+        </div>
       </div>
     </div>
 
@@ -375,20 +526,284 @@
     </div>
   </div>
 
+  <script src="/_game-data.js"></script>
   <script>
     const game = {
       player: {
         money: 0,
+        health: 10,
+        maxHealth: 10,
         energy: 100,
         maxEnergy: 100,
+        location: 'williamsburg',
         skills: {
           coding: { xp: 0, level: 1 },
           design: { xp: 0, level: 1 },
           coffee: { xp: 0, level: 1 },
-          vibes: { xp: 0, level: 1 }
+          vibes: { xp: 0, level: 1 },
+          attack: { xp: 0, level: 1 },
+          defense: { xp: 0, level: 1 }
         },
-        items: []
+        equipment: {
+          weapon: null,
+          armor: null
+        },
+        inventory: [],
+        completedQuests: [],
+        inCombat: false,
+        currentEnemy: null
       },
+
+      currentTab: 'character',
+
+      // Game Data
+      locations: {
+        williamsburg: {
+          name: 'Williamsburg',
+          desc: 'hipster central. coffee shops everywhere.',
+          enemies: ['trust_fund_kid', 'hipster']
+        },
+        dumbo: {
+          name: 'DUMBO',
+          desc: 'down under manhattan bridge overpass. tech bros and tourists.',
+          enemies: ['tourist', 'tech_bro']
+        },
+        bushwick: {
+          name: 'Bushwick',
+          desc: 'street art and warehouses. gritty vibes.',
+          enemies: ['graffiti_artist', 'warehouse_goblin']
+        },
+        park_slope: {
+          name: 'Park Slope',
+          desc: 'families and organic markets. surprisingly dangerous.',
+          enemies: ['yoga_mom', 'organic_cultist']
+        }
+      },
+
+      enemies: {
+        trust_fund_kid: {
+          name: 'Trust Fund Kid',
+          sprite: '🧑‍💼',
+          health: 5,
+          maxHealth: 5,
+          attack: 2,
+          defense: 1,
+          xp: 10,
+          loot: { money: 20 },
+          messages: {
+            appear: 'a trust fund kid blocks your path. they want to talk about their startup.',
+            attack: ['they bore you with pitch decks.', 'trust fund kid talks about disruption.'],
+            defeat: 'trust fund kid runs away crying.'
+          }
+        },
+        hipster: {
+          name: 'Williamsburg Hipster',
+          sprite: '🧔',
+          health: 8,
+          maxHealth: 8,
+          attack: 3,
+          defense: 2,
+          xp: 15,
+          loot: { money: 30 },
+          messages: {
+            appear: 'a hipster approaches. they knew about this game before it was cool.',
+            attack: ['hipster judges your choices.', 'they talk about obscure bands.'],
+            defeat: 'hipster retreats to a speakeasy.'
+          }
+        },
+        tourist: {
+          name: 'Lost Tourist',
+          sprite: '📸',
+          health: 6,
+          maxHealth: 6,
+          attack: 2,
+          defense: 1,
+          xp: 12,
+          loot: { money: 25 },
+          messages: {
+            appear: 'a tourist stops you for directions. they have a massive camera.',
+            attack: ['tourist takes your photo without asking.', 'they block the sidewalk.'],
+            defeat: 'tourist wanders off confused.'
+          }
+        },
+        tech_bro: {
+          name: 'Tech Bro',
+          sprite: '💻',
+          health: 10,
+          maxHealth: 10,
+          attack: 4,
+          defense: 3,
+          xp: 20,
+          loot: { money: 50 },
+          messages: {
+            appear: 'a tech bro wants to discuss web3. oh no.',
+            attack: ['tech bro mansplains blockchain.', 'they reference hacker news.'],
+            defeat: 'tech bro leaves to check slack.'
+          }
+        },
+        graffiti_artist: {
+          name: 'Graffiti Artist',
+          sprite: '🎨',
+          health: 7,
+          maxHealth: 7,
+          attack: 3,
+          defense: 2,
+          xp: 15,
+          loot: { money: 20 },
+          messages: {
+            appear: 'a graffiti artist challenges your artistic vision.',
+            attack: ['they spray paint in your direction.', 'artist questions your aesthetic.'],
+            defeat: 'artist runs from the cops.'
+          }
+        },
+        warehouse_goblin: {
+          name: 'Warehouse Goblin',
+          sprite: '👹',
+          health: 12,
+          maxHealth: 12,
+          attack: 5,
+          defense: 3,
+          xp: 30,
+          loot: { money: 40 },
+          messages: {
+            appear: 'a warehouse goblin guards the rave entrance.',
+            attack: ['goblin throws techno beats at you.', 'the bass drops. literally.'],
+            defeat: 'goblin retreats into the warehouse.'
+          }
+        },
+        yoga_mom: {
+          name: 'Yoga Mom',
+          sprite: '🧘‍♀️',
+          health: 9,
+          maxHealth: 9,
+          attack: 4,
+          defense: 4,
+          xp: 20,
+          loot: { money: 35 },
+          messages: {
+            appear: 'a yoga mom wants to talk about her cleanse.',
+            attack: ['she judges your chakras.', 'yoga mom namaste-slaps you.'],
+            defeat: 'yoga mom leaves for hot yoga.'
+          }
+        },
+        organic_cultist: {
+          name: 'Organic Cultist',
+          sprite: '🌿',
+          health: 15,
+          maxHealth: 15,
+          attack: 6,
+          defense: 5,
+          xp: 40,
+          loot: { money: 60 },
+          messages: {
+            appear: 'an organic cultist blocks the whole foods entrance.',
+            attack: ['they preach about gluten.', 'cultist throws kale smoothies.'],
+            defeat: 'cultist flees to farmers market.'
+          }
+        }
+      },
+
+      equipment: {
+        // Weapons
+        skateboard: {
+          id: 'skateboard',
+          name: 'Vintage Skateboard',
+          type: 'weapon',
+          attack: 2,
+          defense: 0,
+          price: 100,
+          desc: '+2 attack'
+        },
+        fixed_gear: {
+          id: 'fixed_gear',
+          name: 'Fixed Gear Bike',
+          type: 'weapon',
+          attack: 4,
+          defense: 1,
+          price: 300,
+          desc: '+4 attack, +1 defense'
+        },
+        macbook: {
+          id: 'macbook',
+          name: 'MacBook Pro (weapon)',
+          type: 'weapon',
+          attack: 6,
+          defense: 2,
+          price: 600,
+          desc: '+6 attack, +2 defense'
+        },
+        // Armor
+        tote_bag: {
+          id: 'tote_bag',
+          name: 'Tote Bag',
+          type: 'armor',
+          attack: 0,
+          defense: 2,
+          price: 80,
+          desc: '+2 defense'
+        },
+        denim_jacket: {
+          id: 'denim_jacket',
+          name: 'Vintage Denim Jacket',
+          type: 'armor',
+          attack: 0,
+          defense: 4,
+          price: 250,
+          desc: '+4 defense'
+        },
+        leather_jacket: {
+          id: 'leather_jacket',
+          name: 'Leather Jacket',
+          type: 'armor',
+          attack: 1,
+          defense: 6,
+          price: 500,
+          desc: '+1 attack, +6 defense'
+        }
+      },
+
+      quests: [
+        {
+          id: 'first_coffee',
+          title: 'First Pour',
+          desc: 'Brew your first coffee and restore some energy.',
+          requires: { activity: 'coffee', count: 1 },
+          reward: { money: 10, xp: 20 },
+          progress: 0
+        },
+        {
+          id: 'defeat_hipster',
+          title: 'Hipster Hunter',
+          desc: 'Defeat 3 hipsters in Williamsburg.',
+          requires: { enemy: 'hipster', count: 3 },
+          reward: { money: 100, xp: 50 },
+          progress: 0
+        },
+        {
+          id: 'explore_dumbo',
+          title: 'DUMBO Explorer',
+          desc: 'Travel to DUMBO for the first time.',
+          requires: { location: 'dumbo' },
+          reward: { money: 50, xp: 30 },
+          progress: 0
+        },
+        {
+          id: 'buy_weapon',
+          title: 'Armed and Ready',
+          desc: 'Purchase your first weapon.',
+          requires: { equipmentType: 'weapon', count: 1 },
+          reward: { money: 75, xp: 40 },
+          progress: 0
+        },
+        {
+          id: 'defeat_goblin',
+          title: 'Goblin Slayer',
+          desc: 'Defeat the legendary Warehouse Goblin in Bushwick.',
+          requires: { enemy: 'warehouse_goblin', count: 1 },
+          reward: { money: 200, xp: 100 },
+          progress: 0
+        }
+      ],
 
       activities: {
         coding: {
@@ -442,64 +857,6 @@
         }
       },
 
-      jobs: [
-        {
-          id: 'freelance',
-          name: 'freelance web dev',
-          pay: 50,
-          energyCost: 15,
-          requires: { skill: 'coding', level: 3 },
-          message: 'you ship a website. the client loves it. mostly.'
-        },
-        {
-          id: 'design_gig',
-          name: 'logo design gig',
-          pay: 50,
-          energyCost: 15,
-          requires: { skill: 'design', level: 3 },
-          message: 'you design a logo. they want 47 revisions.'
-        },
-        {
-          id: 'barista',
-          name: 'barista shift',
-          pay: 30,
-          energyCost: 10,
-          requires: { skill: 'coffee', level: 2 },
-          message: 'you work a shift. the tips are decent.'
-        }
-      ],
-
-      items: [
-        {
-          id: 'macbook',
-          name: 'macbook pro',
-          price: 500,
-          desc: '+2 coding xp per click',
-          boost: { skill: 'coding', amount: 2 }
-        },
-        {
-          id: 'espresso_machine',
-          name: 'espresso machine',
-          price: 300,
-          desc: '+2 coffee xp per click',
-          boost: { skill: 'coffee', amount: 2 }
-        },
-        {
-          id: 'figma_pro',
-          name: 'figma pro',
-          price: 400,
-          desc: '+2 design xp per click',
-          boost: { skill: 'design', amount: 2 }
-        },
-        {
-          id: 'fixed_gear',
-          name: 'vintage fixed gear',
-          price: 200,
-          desc: 'activities cost -2 energy',
-          boost: { type: 'energy_discount', amount: 2 }
-        }
-      ],
-
       init() {
         this.loadGame();
         this.render();
@@ -508,35 +865,52 @@
         setInterval(() => this.saveGame(), 10000);
       },
 
+      switchTab(tabName) {
+        // Update tab buttons
+        document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+        event.target.classList.add('active');
+
+        // Update tab content
+        document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+        document.getElementById(`tab-${tabName}`).classList.add('active');
+
+        this.currentTab = tabName;
+        this.render();
+      },
+
       getXPForLevel(level) {
         return Math.floor(50 * Math.pow(1.5, level - 1));
       },
 
-      getSkillBoost(skill) {
-        let boost = 1;
-        this.player.items.forEach(itemId => {
-          const item = this.items.find(i => i.id === itemId);
-          if (item && item.boost.skill === skill) {
-            boost += item.boost.amount;
-          }
-        });
-        return boost;
+      getCombatLevel() {
+        return Math.floor((this.player.skills.attack.level + this.player.skills.defense.level) / 2);
       },
 
-      getEnergyDiscount() {
-        let discount = 0;
-        this.player.items.forEach(itemId => {
-          const item = this.items.find(i => i.id === itemId);
-          if (item && item.boost.type === 'energy_discount') {
-            discount += item.boost.amount;
-          }
-        });
-        return discount;
+      getTotalAttack() {
+        let attack = this.player.skills.attack.level;
+        if (this.player.equipment.weapon) {
+          attack += this.equipment[this.player.equipment.weapon].attack;
+        }
+        if (this.player.equipment.armor) {
+          attack += this.equipment[this.player.equipment.armor].attack || 0;
+        }
+        return attack;
+      },
+
+      getTotalDefense() {
+        let defense = this.player.skills.defense.level;
+        if (this.player.equipment.weapon) {
+          defense += this.equipment[this.player.equipment.weapon].defense || 0;
+        }
+        if (this.player.equipment.armor) {
+          defense += this.equipment[this.player.equipment.armor].defense;
+        }
+        return defense;
       },
 
       doActivity(activityKey) {
         const activity = this.activities[activityKey];
-        const energyCost = Math.max(0, activity.energyCost - this.getEnergyDiscount());
+        const energyCost = activity.energyCost;
 
         if (activity.energyCost > 0 && this.player.energy < energyCost) {
           this.showMessage('not enough energy. brew some coffee.');
@@ -546,13 +920,16 @@
         // Handle energy
         if (activity.energyRestore) {
           this.player.energy = Math.min(this.player.maxEnergy, this.player.energy + activity.energyRestore);
+
+          // Update quest progress
+          this.updateQuestProgress('activity', 'coffee');
         } else {
           this.player.energy -= energyCost;
         }
 
         // Gain XP
         const skill = this.player.skills[activity.skill];
-        const xpGain = this.getSkillBoost(activity.skill);
+        const xpGain = 1;
         skill.xp += xpGain;
 
         // Check for level up
@@ -562,7 +939,6 @@
           skill.level += 1;
           this.showMessage(`${activity.skill} level up! now level ${skill.level}`);
         } else {
-          // Show activity message
           const message = activity.messages[Math.floor(Math.random() * activity.messages.length)];
           this.showMessage(`${message} +${xpGain} xp`);
         }
@@ -571,33 +947,116 @@
         this.saveGame();
       },
 
-      doJob(jobId) {
-        const job = this.jobs.find(j => j.id === jobId);
-        const energyCost = job.energyCost;
+      travelTo(locationKey) {
+        this.player.location = locationKey;
+        this.showMessage(`arrived at ${this.locations[locationKey].name}`);
 
-        if (this.player.energy < energyCost) {
-          this.showMessage('not enough energy for this job.');
-          return;
-        }
+        // Update quest progress
+        this.updateQuestProgress('location', locationKey);
 
-        const skillLevel = this.player.skills[job.requires.skill].level;
-        if (skillLevel < job.requires.level) {
-          this.showMessage(`need ${job.requires.skill} level ${job.requires.level}`);
-          return;
-        }
-
-        this.player.energy -= energyCost;
-        this.player.money += job.pay;
-
-        this.showMessage(`${job.message} +$${job.pay}`);
         this.render();
         this.saveGame();
       },
 
-      buyItem(itemId) {
-        const item = this.items.find(i => i.id === itemId);
+      startCombat(enemyKey) {
+        const enemyTemplate = this.enemies[enemyKey];
+        this.player.currentEnemy = {
+          ...enemyTemplate,
+          health: enemyTemplate.maxHealth
+        };
+        this.player.inCombat = true;
+        this.combatLog = [enemyTemplate.messages.appear];
+        this.showMessage(enemyTemplate.messages.appear);
+        this.render();
+      },
 
-        if (this.player.items.includes(itemId)) {
+      attack() {
+        if (!this.player.inCombat || !this.player.currentEnemy) return;
+
+        const enemy = this.player.currentEnemy;
+
+        // Player attacks
+        const playerDamage = Math.max(1, this.getTotalAttack() - Math.floor(enemy.defense / 2));
+        enemy.health -= playerDamage;
+        this.combatLog.push(`you hit for ${playerDamage} damage.`);
+
+        if (enemy.health <= 0) {
+          // Victory!
+          this.combatLog.push(enemy.messages.defeat);
+          this.showMessage(`defeated ${enemy.name}! +${enemy.xp} xp +$${enemy.loot.money}`);
+
+          this.player.money += enemy.loot.money;
+          this.player.skills.attack.xp += Math.floor(enemy.xp / 2);
+          this.player.skills.defense.xp += Math.floor(enemy.xp / 2);
+
+          // Check for level ups
+          ['attack', 'defense'].forEach(skillKey => {
+            const skill = this.player.skills[skillKey];
+            const xpNeeded = this.getXPForLevel(skill.level);
+            if (skill.xp >= xpNeeded) {
+              skill.xp -= xpNeeded;
+              skill.level += 1;
+              this.showMessage(`${skillKey} level up! now level ${skill.level}`);
+            }
+          });
+
+          // Update quest progress
+          const enemyId = Object.keys(this.enemies).find(key => this.enemies[key].name === enemy.name);
+          this.updateQuestProgress('enemy', enemyId);
+
+          this.player.inCombat = false;
+          this.player.currentEnemy = null;
+          this.render();
+          this.saveGame();
+          return;
+        }
+
+        // Enemy attacks
+        const enemyDamage = Math.max(1, enemy.attack - Math.floor(this.getTotalDefense() / 2));
+        this.player.health -= enemyDamage;
+        const attackMsg = enemy.messages.attack[Math.floor(Math.random() * enemy.messages.attack.length)];
+        this.combatLog.push(`${attackMsg} -${enemyDamage} hp`);
+
+        if (this.player.health <= 0) {
+          this.player.health = this.player.maxHealth;
+          this.player.inCombat = false;
+          this.player.currentEnemy = null;
+          this.combatLog.push('you were defeated. respawning...');
+          this.showMessage('defeated! respawning at full health.');
+        }
+
+        this.render();
+        this.saveGame();
+      },
+
+      flee() {
+        if (!this.player.inCombat) return;
+        this.player.inCombat = false;
+        this.player.currentEnemy = null;
+        this.showMessage('you ran away safely.');
+        this.render();
+      },
+
+      rest() {
+        if (this.player.health === this.player.maxHealth) {
+          this.showMessage('already at full health.');
+          return;
+        }
+        if (this.player.energy < 20) {
+          this.showMessage('not enough energy to rest.');
+          return;
+        }
+        this.player.energy -= 20;
+        this.player.health = this.player.maxHealth;
+        this.showMessage('rested and restored health.');
+        this.render();
+        this.saveGame();
+      },
+
+      buyEquipment(itemId) {
+        const item = this.equipment[itemId];
+
+        if (this.player.inventory.includes(itemId)) {
           this.showMessage('you already own this.');
           return;
         }
@@ -608,15 +1067,83 @@
         }
 
         this.player.money -= item.price;
-        this.player.items.push(itemId);
+        this.player.inventory.push(itemId);
+        this.showMessage(`bought ${item.name}!`);
 
-        this.showMessage(`you bought ${item.name}!`);
+        // Update quest progress
+        this.updateQuestProgress('equipmentType', item.type);
+
+        this.render();
+        this.saveGame();
+      },
+
+      equipItem(itemId) {
+        const item = this.equipment[itemId];
+
+        if (!this.player.inventory.includes(itemId)) {
+          this.showMessage('you don\'t own this item.');
+          return;
+        }
+
+        this.player.equipment[item.type] = itemId;
+        this.showMessage(`equipped ${item.name}`);
+        this.render();
+        this.saveGame();
+      },
+
+      unequipItem(slot) {
+        if (!this.player.equipment[slot]) return;
+        this.player.equipment[slot] = null;
+        this.showMessage(`unequipped ${slot}`);
+        this.render();
+        this.saveGame();
+      },
+
+      updateQuestProgress(type, value) {
+        this.quests.forEach(quest => {
+          if (this.player.completedQuests.includes(quest.id)) return;
+
+          if (type === 'activity' && quest.requires.activity === value) {
+            quest.progress = (quest.progress || 0) + 1;
+            if (quest.progress >= quest.requires.count) {
+              this.completeQuest(quest.id);
+            }
+          }
+
+          if (type === 'enemy' && quest.requires.enemy === value) {
+            quest.progress = (quest.progress || 0) + 1;
+            if (quest.progress >= quest.requires.count) {
+              this.completeQuest(quest.id);
+            }
+          }
+
+          if (type === 'location' && quest.requires.location === value) {
+            this.completeQuest(quest.id);
+          }
+
+          if (type === 'equipmentType' && quest.requires.equipmentType === value) {
+            quest.progress = (quest.progress || 0) + 1;
+            if (quest.progress >= quest.requires.count) {
+              this.completeQuest(quest.id);
+            }
+          }
+        });
+      },
+
+      completeQuest(questId) {
+        const quest = this.quests.find(q => q.id === questId);
+        if (!quest || this.player.completedQuests.includes(questId)) return;
+
+        this.player.completedQuests.push(questId);
+        this.player.money += quest.reward.money;
+        this.player.skills.vibes.xp += quest.reward.xp;
+
+        this.showMessage(`quest complete: ${quest.title}! +$${quest.reward.money} +${quest.reward.xp} xp`);
         this.render();
         this.saveGame();
       },
 
       showMessage(text) {
-        // Remove existing message
         const existing = document.querySelector('.message');
         if (existing) existing.remove();
 
@@ -625,19 +1152,41 @@
         msg.textContent = text;
         document.body.appendChild(msg);
 
-        setTimeout(() => msg.remove(), 3000);
+        setTimeout(() => msg.remove(), 3500);
       },
 
       render() {
-        // Update money
-        document.getElementById('money').textContent = this.player.money;
+        // Update header stats
+        document.getElementById('money').textContent = '$' + this.player.money;
+        document.getElementById('location').textContent = this.locations[this.player.location].name.toLowerCase();
+        document.getElementById('combatLevel').textContent = this.getCombatLevel();
 
-        // Update energy bar
+        // Render based on current tab
+        if (this.currentTab === 'character') {
+          this.renderCharacterTab();
+        } else if (this.currentTab === 'combat') {
+          this.renderCombatTab();
+        } else if (this.currentTab === 'travel') {
+          this.renderTravelTab();
+        } else if (this.currentTab === 'quests') {
+          this.renderQuestsTab();
+        } else if (this.currentTab === 'shop') {
+          this.renderShopTab();
+        }
+      },
+
+      renderCharacterTab() {
+        // Health bar
+        const healthPercent = (this.player.health / this.player.maxHealth) * 100;
+        document.getElementById('healthBar').style.width = healthPercent + '%';
+        document.getElementById('healthText').textContent = `${this.player.health}/${this.player.maxHealth}`;
+
+        // Energy bar
         const energyPercent = (this.player.energy / this.player.maxEnergy) * 100;
         document.getElementById('energyBar').style.width = energyPercent + '%';
         document.getElementById('energyText').textContent = `${this.player.energy}/${this.player.maxEnergy}`;
 
-        // Render skills
+        // Skills
         const skillsContainer = document.getElementById('skillsContainer');
         skillsContainer.innerHTML = '';
 
@@ -653,57 +1202,170 @@
               <span>${skillKey}</span>
               <span>Lv.${skill.level}</span>
             </div>
-            <div class="skill-bar">
-              <div class="skill-bar-fill" style="width: ${xpPercent}%"></div>
-              <div class="skill-text">${skill.xp}/${xpNeeded} XP</div>
+            <div class="bar">
+              <div class="bar-fill xp" style="width: ${xpPercent}%">
+                ${skill.xp}/${xpNeeded}
+              </div>
             </div>
           `;
           skillsContainer.appendChild(skillDiv);
         });
 
-        // Render jobs
-        const jobsContainer = document.getElementById('jobsContainer');
-        jobsContainer.innerHTML = '';
-
-        this.jobs.forEach(job => {
-          const skillLevel = this.player.skills[job.requires.skill].level;
-          const canDo = skillLevel >= job.requires.level && this.player.energy >= job.energyCost;
-
-          const jobBtn = document.createElement('button');
-          jobBtn.className = 'btn btn-job';
-          jobBtn.disabled = !canDo;
-          jobBtn.onclick = () => this.doJob(job.id);
-          jobBtn.innerHTML = `
-            <span>${job.name}</span>
-            <span>$${job.pay} (${job.energyCost} energy)</span>
-          `;
-          jobsContainer.appendChild(jobBtn);
-        });
-
-        // Render shop
-        const shopContainer = document.getElementById('shopContainer');
-        shopContainer.innerHTML = '';
-
-        this.items.forEach(item => {
-          const owned = this.player.items.includes(item.id);
-
-          const shopDiv = document.createElement('div');
-          shopDiv.className = 'shop-item';
-          shopDiv.innerHTML = `
-            <div class="shop-item-info">
-              <div class="shop-item-name">
-                ${item.name}
-                ${owned ? '<span class="owned-tag">OWNED</span>' : ''}
-              </div>
-              <div class="shop-item-desc">${item.desc}</div>
+        // Equipment
+        const equipmentContainer = document.getElementById('equipmentContainer');
+        equipmentContainer.innerHTML = `
+          <div style="margin-bottom: 10px;">
+            <strong>Weapon:</strong> ${this.player.equipment.weapon ? this.equipment[this.player.equipment.weapon].name : 'none'}
+            ${this.player.equipment.weapon ? `<button class="btn" style="padding: 5px 10px; font-size: 11px;" onclick="game.unequipItem('weapon')">unequip</button>` : ''}
+          </div>
+          <div style="margin-bottom: 10px;">
+            <strong>Armor:</strong> ${this.player.equipment.armor ? this.equipment[this.player.equipment.armor].name : 'none'}
+            ${this.player.equipment.armor ? `<button class="btn" style="padding: 5px 10px; font-size: 11px;" onclick="game.unequipItem('armor')">unequip</button>` : ''}
+          </div>
+          <div style="margin-top: 15px; padding-top: 15px; border-top: 2px solid rgba(255,255,255,0.2);">
+            <div style="font-size: 12px; margin-bottom: 5px;"><strong>Total Attack:</strong> ${this.getTotalAttack()}</div>
+            <div style="font-size: 12px;"><strong>Total Defense:</strong> ${this.getTotalDefense()}</div>
+          </div>
+          ${this.player.inventory.length > 0 ? `
+            <div style="margin-top: 15px; padding-top: 15px; border-top: 2px solid rgba(255,255,255,0.2);">
+              <strong style="display: block; margin-bottom: 10px;">Inventory:</strong>
+              ${this.player.inventory.map(itemId => {
+                const item = this.equipment[itemId];
+                const isEquipped = this.player.equipment[item.type] === itemId;
+                return `
+                  <div style="margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; font-size: 12px;">
+                    <span>${item.name} ${isEquipped ? '<span class="equipped-tag">EQUIPPED</span>' : ''}</span>
+                    ${!isEquipped ? `<button class="btn" style="padding: 4px 8px; font-size: 10px;" onclick="game.equipItem('${itemId}')">equip</button>` : ''}
+                  </div>
+                `;
+              }).join('')}
             </div>
-            <span class="shop-item-price">$${item.price}</span>
-            <button class="btn btn-buy" ${owned ? 'disabled' : ''} onclick="game.buyItem('${item.id}')">
-              ${owned ? 'owned' : 'buy'}
-            </button>
+          ` : ''}
+        `;
+      },
+
+      renderCombatTab() {
+        const container = document.getElementById('combatContainer');
+
+        if (this.player.inCombat && this.player.currentEnemy) {
+          const enemy = this.player.currentEnemy;
+          const enemyHealthPercent = (enemy.health / enemy.maxHealth) * 100;
+
+          container.innerHTML = `
+            <div class="enemy-battle">
+              <div class="enemy-name">${enemy.name}</div>
+              <div class="enemy-sprite">${enemy.sprite}</div>
+              <div style="margin: 15px 0;">
+                <div style="margin-bottom: 5px; font-size: 12px; font-weight: 600;">Enemy Health</div>
+                <div class="bar">
+                  <div class="bar-fill health" style="width: ${enemyHealthPercent}%">
+                    ${enemy.health}/${enemy.maxHealth}
+                  </div>
+                </div>
+              </div>
+              <div class="button-grid">
+                <button class="btn btn-combat" onclick="game.attack()">⚔️ Attack</button>
+                <button class="btn" onclick="game.flee()">🏃 Flee</button>
+              </div>
+            </div>
+            <div class="combat-log">
+              ${this.combatLog.map(log => `<div>${log}</div>`).join('')}
+            </div>
           `;
-          shopContainer.appendChild(shopDiv);
-        });
+        } else {
+          const locationEnemies = this.locations[this.player.location].enemies;
+
+          container.innerHTML = `
+            <div class="section">
+              <div class="section-title">LOCAL ENEMIES - ${this.locations[this.player.location].name.toUpperCase()}</div>
+              <div class="item-list">
+                ${locationEnemies.map(enemyKey => {
+                  const enemy = this.enemies[enemyKey];
+                  return `
+                    <div class="item">
+                      <div class="item-info">
+                        <div class="item-name">${enemy.sprite} ${enemy.name}</div>
+                        <div class="item-desc">HP: ${enemy.maxHealth} | Attack: ${enemy.attack} | Defense: ${enemy.defense}</div>
+                      </div>
+                      <button class="btn btn-combat" onclick="game.startCombat('${enemyKey}')">Fight</button>
+                    </div>
+                  `;
+                }).join('')}
+              </div>
+            </div>
+            <div class="section">
+              <div class="section-title">REST</div>
+              <div style="margin-bottom: 15px; font-size: 13px; line-height: 1.6;">
+                Restore health to maximum. Costs 20 energy.
+              </div>
+              <button class="btn" onclick="game.rest()">💤 Rest (20 energy)</button>
+            </div>
+          `;
+        }
+      },
+
+      renderTravelTab() {
+        const container = document.getElementById('locationsContainer');
+        container.innerHTML = Object.keys(this.locations).map(locationKey => {
+          const location = this.locations[locationKey];
+          const isCurrent = this.player.location === locationKey;
+
+          return `
+            <div class="item" style="${isCurrent ? 'border-color: #00D9FF; background: rgba(0, 217, 255, 0.1);' : ''}">
+              <div class="item-info">
+                <div class="item-name">${location.name} ${isCurrent ? '<span class="equipped-tag">CURRENT</span>' : ''}</div>
+                <div class="item-desc">${location.desc}</div>
+              </div>
+              <button class="btn btn-travel" ${isCurrent ? 'disabled' : ''} onclick="game.travelTo('${locationKey}')">
+                ${isCurrent ? 'here' : 'travel'}
+              </button>
+            </div>
+          `;
+        }).join('');
+      },
+
+      renderQuestsTab() {
+        const container = document.getElementById('questsContainer');
+        container.innerHTML = this.quests.map(quest => {
+          const isCompleted = this.player.completedQuests.includes(quest.id);
+          const progress = quest.progress || 0;
+          const maxProgress = quest.requires.count || 1;
+
+          return `
+            <div class="quest-item ${isCompleted ? 'quest-completed' : ''}">
+              <div class="quest-title">${quest.title} ${isCompleted ? '✓' : ''}</div>
+              <div class="quest-desc">${quest.desc}</div>
+              ${!isCompleted && quest.requires.count ? `<div style="font-size: 11px; margin: 5px 0; color: rgba(255,255,255,0.7);">Progress: ${progress}/${maxProgress}</div>` : ''}
+              <div class="quest-reward">Reward: $${quest.reward.money} + ${quest.reward.xp} XP</div>
+            </div>
+          `;
+        }).join('');
+      },
+
+      renderShopTab() {
+        const container = document.getElementById('shopContainer');
+        container.innerHTML = Object.keys(this.equipment).map(itemId => {
+          const item = this.equipment[itemId];
+          const owned = this.player.inventory.includes(itemId);
+          const isEquipped = this.player.equipment[item.type] === itemId;
+
+          return `
+            <div class="item">
+              <div class="item-info">
+                <div class="item-name">
+                  ${item.name}
+                  ${owned ? '<span class="owned-tag">OWNED</span>' : ''}
+                  ${isEquipped ? '<span class="equipped-tag">EQUIPPED</span>' : ''}
+                </div>
+                <div class="item-desc">${item.desc}</div>
+              </div>
+              <span class="item-price">$${item.price}</span>
+              <button class="btn" ${owned ? 'disabled' : ''} onclick="game.buyEquipment('${itemId}')">
+                ${owned ? 'owned' : 'buy'}
+              </button>
+            </div>
+          `;
+        }).join('');
       },
 
       saveGame() {
@@ -713,7 +1375,23 @@
       loadGame() {
         const saved = localStorage.getItem('brooklynRPG');
         if (saved) {
-          this.player = JSON.parse(saved);
+          const loaded = JSON.parse(saved);
+          this.player = { ...this.player, ...loaded };
+
+          // Ensure new properties exist
+          if (!this.player.skills.attack) {
+            this.player.skills.attack = { xp: 0, level: 1 };
+            this.player.skills.defense = { xp: 0, level: 1 };
+          }
+          if (!this.player.equipment) {
+            this.player.equipment = { weapon: null, armor: null };
+          }
+          if (!this.player.inventory) {
+            this.player.inventory = [];
+          }
+          if (!this.player.completedQuests) {
+            this.player.completedQuests = [];
+          }
         }
       },
 
