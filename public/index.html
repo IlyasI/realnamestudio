@@ -289,7 +289,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 40px 20px;
+      padding: 20px;
       box-sizing: border-box;
       overflow: hidden;
       position: relative;
@@ -319,13 +319,20 @@
 
     .sites-section .section-title {
       color: #00D9FF;
-      font-size: 64px;
-      margin-bottom: 30px;
+      font-size: 56px;
+      margin-bottom: 20px;
+      margin-top: 0;
       flex-shrink: 0;
       animation: glitch 3s infinite;
       text-shadow:
         0 0 10px rgba(0, 217, 255, 0.3),
         0 0 20px rgba(0, 217, 255, 0.2);
+    }
+
+    .sites-section .section-title::after {
+      bottom: -10px;
+      background: #FF006E;
+      animation: slideWidth 2s ease-in-out infinite;
     }
 
     @keyframes glitch {
@@ -348,11 +355,6 @@
       }
     }
 
-    .sites-section .section-title::after {
-      background: #FF006E;
-      animation: slideWidth 2s ease-in-out infinite;
-    }
-
     @keyframes slideWidth {
       0%, 100% { width: 100px; }
       50% { width: 150px; }
@@ -360,9 +362,9 @@
 
     .sites-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 40px;
-      max-width: 1400px;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
       margin: 0 auto;
       flex-shrink: 1;
       align-self: center;
@@ -377,7 +379,7 @@
     .site-marker {
       background: #F5F1E8;
       border: 5px solid white;
-      padding: 50px 35px;
+      padding: 35px 25px;
       text-align: center;
       transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
       position: relative;
@@ -429,8 +431,8 @@
     }
 
     .site-icon {
-      font-size: 60px;
-      margin-bottom: 15px;
+      font-size: 50px;
+      margin-bottom: 10px;
       position: relative;
       z-index: 1;
       transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
@@ -444,8 +446,8 @@
 
     .site-marker h3 {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 40px;
-      letter-spacing: 3px;
+      font-size: 36px;
+      letter-spacing: 2px;
       color: #1A1A1A;
       position: relative;
       z-index: 1;
@@ -657,12 +659,12 @@
 
       .sites-section {
         height: 100vh;
-        padding: 30px 20px;
+        padding: 20px 15px;
       }
 
       .sites-section .section-title {
-        font-size: 48px;
-        margin-bottom: 25px;
+        font-size: 42px;
+        margin-bottom: 15px;
       }
 
       .sites-section::before {
@@ -712,19 +714,19 @@
 
       .sites-grid {
         grid-template-columns: 1fr;
-        gap: 30px;
+        gap: 20px;
       }
 
       .site-marker {
-        padding: 50px 30px;
+        padding: 35px 25px;
       }
 
       .site-marker h3 {
-        font-size: 36px;
+        font-size: 32px;
       }
 
       .site-icon {
-        font-size: 60px;
+        font-size: 45px;
       }
 
       .site-modal-content {
@@ -784,12 +786,12 @@
 
       .sites-section {
         height: 100vh;
-        padding: 25px 15px;
+        padding: 15px;
       }
 
       .sites-section .section-title {
-        font-size: 40px;
-        margin-bottom: 20px;
+        font-size: 36px;
+        margin-bottom: 15px;
       }
 
       .sites-section::before {
@@ -855,16 +857,16 @@
       }
 
       .site-marker {
-        padding: 40px 25px;
+        padding: 30px 20px;
       }
 
       .site-marker h3 {
-        font-size: 32px;
-        letter-spacing: 3px;
+        font-size: 28px;
+        letter-spacing: 2px;
       }
 
       .site-icon {
-        font-size: 55px;
+        font-size: 40px;
       }
 
       .site-modal-content {
@@ -943,7 +945,7 @@
       }
 
       .sites-section {
-        padding: 30px 20px;
+        padding: 20px 15px;
       }
     }
 
