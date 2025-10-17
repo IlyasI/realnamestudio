@@ -1348,33 +1348,39 @@
       }
     });
 
-    // Fetch dynamic quote from API
+    // Fetch dynamic quote from API - focus on artists, not tech people
     async function loadDynamicQuote() {
+      // Artistic fallback quotes in case APIs fail
+      const artisticFallbacks = [
+        { text: "every child is an artist. the problem is how to remain an artist once we grow up", author: "pablo picasso" },
+        { text: "art is not what you see, but what you make others see", author: "edgar degas" },
+        { text: "creativity takes courage", author: "henri matisse" },
+        { text: "have no fear of perfection, you'll never reach it", author: "salvador dalí" },
+        { text: "art washes away from the soul the dust of everyday life", author: "pablo picasso" }
+      ];
+
       try {
-        // Try ZenQuotes API for more interesting quotes
-        const response = await fetch('https://zenquotes.io/api/random');
+        // Try quotable.io with art/philosophy tags - avoid tech people
+        const response = await fetch('https://api.quotable.io/quotes/random?tags=art|philosophy|wisdom|creativity&maxLength=120');
         const data = await response.json();
 
         if (data && data[0]) {
-          document.getElementById('quoteText').textContent = data[0].q;
-          document.getElementById('quoteAuthor').textContent = '— ' + data[0].a;
-        }
-      } catch (error) {
-        // Fallback to quotable.io if ZenQuotes fails
-        try {
-          const response = await fetch('https://api.quotable.io/quotes/random?tags=wisdom|philosophy|art&maxLength=120');
-          const data = await response.json();
-
-          if (data && data[0]) {
+          // Filter out tech people
+          const author = data[0].author.toLowerCase();
+          if (!author.includes('jobs') && !author.includes('gates') && !author.includes('zuckerberg') && !author.includes('musk')) {
             document.getElementById('quoteText').textContent = data[0].content;
             document.getElementById('quoteAuthor').textContent = '— ' + data[0].author;
+            return;
           }
-        } catch {
-          // Final fallback
-          document.getElementById('quoteText').textContent = "the only way to do great work is to love what you do";
-          document.getElementById('quoteAuthor').textContent = '— steve jobs';
         }
+      } catch (error) {
+        // If API fails, use fallback
       }
+
+      // Use random artistic fallback
+      const fallback = artisticFallbacks[Math.floor(Math.random() * artisticFallbacks.length)];
+      document.getElementById('quoteText').textContent = fallback.text;
+      document.getElementById('quoteAuthor').textContent = '— ' + fallback.author;
     }
 
     // Load quote on page load
