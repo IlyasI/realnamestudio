@@ -46,8 +46,8 @@
       position: absolute;
       border: 5px solid #1A1A1A;
       opacity: 0.15;
-      animation: float 20s infinite ease-in-out;
       mix-blend-mode: multiply;
+      transition: transform 0.1s ease-out, opacity 0.3s ease;
     }
 
     .hero-shape:nth-child(1) {
@@ -56,8 +56,6 @@
       background: #6B4C9A;
       top: 5%;
       left: -5%;
-      transform: rotate(25deg);
-      animation-delay: 0s;
     }
 
     .hero-shape:nth-child(2) {
@@ -67,7 +65,6 @@
       bottom: 15%;
       right: 5%;
       border-radius: 50%;
-      animation-delay: 2s;
     }
 
     .hero-shape:nth-child(3) {
@@ -76,8 +73,6 @@
       background: #00D9FF;
       top: 40%;
       right: -5%;
-      transform: rotate(-35deg);
-      animation-delay: 4s;
       clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
     }
 
@@ -87,8 +82,6 @@
       background: #FF6B35;
       top: 15%;
       left: 50%;
-      transform: rotate(45deg);
-      animation-delay: 1s;
     }
 
     .hero-shape:nth-child(5) {
@@ -98,12 +91,6 @@
       bottom: 25%;
       left: 20%;
       border-radius: 50%;
-      animation-delay: 3s;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0) rotate(var(--rotate, 0deg)); }
-      50% { transform: translateY(-50px) rotate(calc(var(--rotate, 0deg) + 15deg)); }
     }
 
     .hero-content {
