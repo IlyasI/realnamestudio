@@ -28,12 +28,16 @@ This ensures tests **must** pass before merging to main.
    - ✅ Check **Include administrators**
 4. Click **Create** or **Save changes**
 
-### Step 2: Configure Vercel Integration
+### Step 2: Configure Vercel Deployment Checks
 
-1. Go to: `https://vercel.com/IlyasI/realnamestudio/settings/git`
-2. Under **Git Integration**:
-   - ✅ Enable **Wait for checks to complete before building**
-3. Save changes
+1. Go to your project settings: `https://vercel.com/ilyas-projects-a386ad49/realnamestudio/settings`
+2. Find the **Deployment Checks** section in the left sidebar
+3. Click **Add Checks**
+4. Select the GitHub Action that must pass:
+   - ✅ Select **test** (your Playwright workflow job name)
+5. Save changes
+
+Now your production deployments will wait for the `test` job to pass before promoting to production.
 
 ---
 
