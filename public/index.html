@@ -295,16 +295,18 @@
     /* Sites Section */
     .sites-section {
       background: #1A1A1A;
-      min-height: 100vh;
+      height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       padding: 80px 20px;
+      box-sizing: border-box;
     }
 
     .sites-section .section-title {
       color: #00D9FF;
-      margin-bottom: 60px;
+      margin-bottom: 40px;
+      flex-shrink: 0;
     }
 
     .sites-section .section-title::after {
@@ -317,6 +319,9 @@
       gap: 40px;
       max-width: 1400px;
       margin: 0 auto;
+      flex-shrink: 1;
+      align-self: center;
+      width: 100%;
     }
 
     .site-item {
@@ -575,6 +580,7 @@
       }
 
       .sites-section {
+        height: 100vh;
         padding: 60px 20px;
       }
 
@@ -688,6 +694,7 @@
       }
 
       .sites-section {
+        height: 100vh;
         padding: 50px 15px;
       }
 
