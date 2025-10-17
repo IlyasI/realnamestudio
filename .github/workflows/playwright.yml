@@ -1,10 +1,12 @@
-name: Playwright Tests
+name: Tests
 
 on:
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+  # Run before Vercel deploys
+  deployment_status:
 
 jobs:
   test:

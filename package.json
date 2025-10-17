@@ -9,7 +9,8 @@
     "dev": "nodemon server.js",
     "test": "playwright test",
     "test:ui": "playwright test --ui",
-    "test:debug": "playwright test --debug"
+    "test:debug": "playwright test --debug",
+    "build": "echo 'No build step needed - static site'"
   },
   "keywords": [
     "dev-studio",
