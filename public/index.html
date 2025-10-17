@@ -390,19 +390,39 @@
     /* Touch device support - show some hover state always */
     @media (hover: none) and (pointer: coarse) {
       .site-marker {
-        box-shadow: 0 0 30px rgba(0, 217, 255, 0.3);
-        animation: mobileGlow 2s ease-in-out infinite;
+        box-shadow:
+          0 0 40px rgba(0, 217, 255, 0.4),
+          10px 10px 0 rgba(255, 255, 255, 0.15);
+        animation: mobileGlow 3s ease-in-out infinite;
+        border-color: rgba(0, 217, 255, 0.6);
       }
 
       .site-marker::after {
-        opacity: 0.5;
+        opacity: 0.7;
         transform: translateX(0);
+        color: white;
+        animation: tapPulse 2s ease-in-out infinite;
       }
     }
 
     @keyframes mobileGlow {
-      0%, 100% { box-shadow: 0 0 30px rgba(0, 217, 255, 0.3); }
-      50% { box-shadow: 0 0 40px rgba(255, 0, 110, 0.4); }
+      0%, 100% {
+        box-shadow:
+          0 0 40px rgba(0, 217, 255, 0.4),
+          10px 10px 0 rgba(255, 255, 255, 0.15);
+        border-color: rgba(0, 217, 255, 0.6);
+      }
+      50% {
+        box-shadow:
+          0 0 50px rgba(255, 0, 110, 0.5),
+          10px 10px 0 rgba(255, 255, 255, 0.2);
+        border-color: rgba(255, 0, 110, 0.7);
+      }
+    }
+
+    @keyframes tapPulse {
+      0%, 100% { opacity: 0.7; }
+      50% { opacity: 1; }
     }
 
     .site-marker::before {
@@ -700,11 +720,17 @@
       }
 
       .sites-section::before {
-        font-size: 100px;
+        font-size: 80px;
+        opacity: 0.05;
       }
 
       .sites-section::after {
-        font-size: 80px;
+        font-size: 60px;
+        opacity: 0.08;
+      }
+
+      .sites-section {
+        background: linear-gradient(135deg, #1A1A1A 0%, #2D1B3D 30%, #1A1A1A 70%, #2D1B3D 100%);
       }
 
       .logo-card h1 {
@@ -796,7 +822,7 @@
       }
 
       .hero-shape {
-        opacity: 0.08;
+        display: none;
       }
 
       footer {
@@ -804,12 +830,15 @@
       }
 
       .footer-links {
-        gap: 25px;
+        gap: 20px;
+        flex-direction: row;
+        flex-wrap: wrap;
       }
 
       .footer-links a {
         padding: 8px 12px;
         display: inline-block;
+        font-size: 14px;
       }
     }
 
@@ -892,20 +921,21 @@
       }
 
       .sites-grid {
-        max-width: 400px;
+        max-width: 320px;
       }
 
       .site-marker {
-        padding: 35px 25px;
+        padding: 25px 20px;
       }
 
       .site-marker h3 {
-        font-size: 32px;
-        letter-spacing: 2px;
+        font-size: 28px;
+        letter-spacing: 1px;
       }
 
       .site-icon {
-        font-size: 50px;
+        font-size: 45px;
+        margin-bottom: 8px;
       }
 
       .site-modal-content {
@@ -944,18 +974,24 @@
         bottom: 25px;
       }
 
+      footer {
+        padding: 25px 15px;
+      }
+
       footer p {
-        font-size: 18px;
+        font-size: 16px;
       }
 
       .footer-links {
-        flex-direction: column;
+        flex-direction: row;
         gap: 15px;
+        flex-wrap: wrap;
+        margin-top: 15px;
       }
 
       .footer-links a {
-        font-size: 16px;
-        padding: 10px 15px;
+        font-size: 13px;
+        padding: 6px 10px;
       }
     }
 
