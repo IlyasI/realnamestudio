@@ -907,49 +907,52 @@
       });
     });
 
-    // Add parallax effect to hero shapes
+    // Parallax effect with mouse and scroll
+    const shapes = document.querySelectorAll('.hero-shape');
+    let mouseX = 0.5;
+    let mouseY = 0.5;
+
+    // Mouse parallax
     document.addEventListener('mousemove', (e) => {
-      const shapes = document.querySelectorAll('.hero-shape');
-      const mouseX = e.clientX / window.innerWidth;
-      const mouseY = e.clientY / window.innerHeight;
+      mouseX = e.clientX / window.innerWidth;
+      mouseY = e.clientY / window.innerHeight;
+      updateShapePositions();
+    });
 
+    // Scroll parallax - shapes jumble toward top as you scroll
+    let scrollY = 0;
+    window.addEventListener('scroll', () => {
+      scrollY = window.scrollY;
+      updateShapePositions();
+    });
+
+    function updateShapePositions() {
       shapes.forEach((shape, index) => {
-        const speed = (index + 1) * 30;
-        const x = (mouseX - 0.5) * speed;
-        const y = (mouseY - 0.5) * speed;
-        shape.style.transform = `translate(${x}px, ${y}px)`;
+        const mouseSpeed = (index + 1) * 30;
+        const scrollSpeed = (index + 1) * 0.3;
+
+        // Mouse offset
+        const mouseOffsetX = (mouseX - 0.5) * mouseSpeed;
+        const mouseOffsetY = (mouseY - 0.5) * mouseSpeed;
+
+        // Scroll offset - moves shapes up and rotates them as you scroll
+        const scrollOffsetY = -scrollY * scrollSpeed;
+        const scrollRotation = scrollY * 0.1 * (index % 2 === 0 ? 1 : -1);
+
+        // Combine transformations
+        const totalX = mouseOffsetX;
+        const totalY = mouseOffsetY + scrollOffsetY;
+
+        shape.style.transform = `translate(${totalX}px, ${totalY}px) rotate(${scrollRotation}deg)`;
+
+        // Fade out shapes as they scroll up
+        const opacity = Math.max(0.02, 0.15 - (scrollY / 2000));
+        shape.style.opacity = opacity;
       });
-    });
+    }
 
-    // Click to create ripple effect
-    const hero = document.querySelector('.hero');
-    hero.addEventListener('click', (e) => {
-      const ripple = document.createElement('div');
-      ripple.style.position = 'absolute';
-      ripple.style.width = '100px';
-      ripple.style.height = '100px';
-      ripple.style.borderRadius = '50%';
-      ripple.style.border = '4px solid #FF006E';
-      ripple.style.left = e.clientX - 50 + 'px';
-      ripple.style.top = e.clientY - 50 + 'px';
-      ripple.style.pointerEvents = 'none';
-      ripple.style.animation = 'ripple 1s ease-out forwards';
-      hero.appendChild(ripple);
-
-      setTimeout(() => ripple.remove(), 1000);
-    });
-
-    // Add ripple animation
-    const style = document.createElement('style');
-    style.textContent = `
-      @keyframes ripple {
-        to {
-          transform: scale(3);
-          opacity: 0;
-        }
-      }
-    `;
-    document.head.appendChild(style);
+    // Initial position
+    updateShapePositions();
 
     // Animate cards on scroll
     const observerOptions = {
