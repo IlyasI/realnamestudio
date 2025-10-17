@@ -295,11 +295,16 @@
     /* Sites Section */
     .sites-section {
       background: #1A1A1A;
-      min-height: 80vh;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 20px;
     }
 
     .sites-section .section-title {
       color: #00D9FF;
+      margin-bottom: 60px;
     }
 
     .sites-section .section-title::after {
@@ -569,6 +574,10 @@
         padding: 80px 20px;
       }
 
+      .sites-section {
+        padding: 60px 20px;
+      }
+
       .logo-card h1 {
         font-size: 64px;
         letter-spacing: 6px;
@@ -676,6 +685,10 @@
     @media (max-width: 480px) {
       .section {
         padding: 60px 15px;
+      }
+
+      .sites-section {
+        padding: 50px 15px;
       }
 
       .logo-card {
