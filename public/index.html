@@ -639,39 +639,51 @@
     footer {
       background: #1A1A1A;
       color: white;
-      padding: 50px 20px;
+      padding: 30px 20px;
       text-align: center;
       scroll-snap-align: start;
       position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
 
     footer .copyright {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 20px;
+      font-size: 16px;
       letter-spacing: 2px;
-      margin-bottom: 25px;
+      margin: 0;
+      flex: 0 0 auto;
     }
 
     footer .daily-quote {
       position: absolute;
       left: 30px;
-      bottom: 30px;
       font-family: 'Space Grotesk', sans-serif;
       font-size: 11px;
       font-style: italic;
       color: rgba(255, 255, 255, 0.35);
       max-width: 300px;
       text-align: left;
-      line-height: 1.5;
+      line-height: 1.4;
       border-left: 2px solid rgba(255, 0, 110, 0.3);
       padding-left: 12px;
     }
 
     footer .quote-author {
       font-size: 10px;
-      margin-top: 6px;
+      margin-top: 4px;
       color: rgba(255, 255, 255, 0.25);
       font-style: normal;
+    }
+
+    footer .brooklyn {
+      position: absolute;
+      right: 30px;
+      font-size: 11px;
+      opacity: 0.3;
+      font-family: 'Space Grotesk', sans-serif;
+      letter-spacing: 0.5px;
     }
 
     /* Floating Action Button */
@@ -875,19 +887,24 @@
       }
 
       footer {
-        padding: 35px 20px;
-      }
-
-      .footer-links {
+        padding: 25px 20px;
+        flex-direction: column;
         gap: 20px;
-        flex-direction: row;
-        flex-wrap: wrap;
       }
 
-      .footer-links a {
-        padding: 8px 12px;
-        display: inline-block;
+      footer .daily-quote {
+        position: static;
+        max-width: 100%;
+        margin-bottom: 15px;
+      }
+
+      footer .copyright {
         font-size: 14px;
+      }
+
+      footer .brooklyn {
+        position: static;
+        margin-top: 10px;
       }
     }
 
@@ -1182,12 +1199,12 @@
 
   <!-- Footer -->
   <footer>
-    <p class="copyright">REALNAME STUDIO © 2025</p>
     <div class="daily-quote" id="dailyQuote">
-      <p id="quoteText"></p>
-      <p class="quote-author" id="quoteAuthor"></p>
+      <span id="quoteText"></span>
+      <div class="quote-author" id="quoteAuthor"></div>
     </div>
-    <p style="position: absolute; bottom: 20px; right: 30px; font-size: 12px; opacity: 0.3; font-family: 'Space Grotesk', sans-serif; letter-spacing: 0.5px;">made with ♥ in brooklyn</p>
+    <p class="copyright">REALNAME STUDIO © 2025</p>
+    <p class="brooklyn">made with ♥ in brooklyn</p>
   </footer>
 
   <script>
