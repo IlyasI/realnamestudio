@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>brooklyn rpg - realname studio</title>
 
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
@@ -31,14 +30,13 @@
     .game-container {
       max-width: 900px;
       width: 100%;
-      background: #6B4C9A;
+      background: #2D1B3D;
       border: 6px solid #000;
       box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.5);
-      padding: 0;
     }
 
     .game-header {
-      background: #FF006E;
+      background: linear-gradient(135deg, #6B4C9A, #8B5DAF);
       border-bottom: 6px solid #000;
       padding: 15px 20px;
       display: flex;
@@ -52,7 +50,8 @@
       font-family: 'Bebas Neue', sans-serif;
       font-size: 32px;
       letter-spacing: 3px;
-      color: #F5F1E8;
+      color: #FFD700;
+      text-shadow: 2px 2px 0 rgba(0,0,0,0.5);
     }
 
     .stats-row {
@@ -70,7 +69,7 @@
 
     .tabs {
       display: flex;
-      background: rgba(0, 0, 0, 0.3);
+      background: rgba(0, 0, 0, 0.4);
       border-bottom: 4px solid #000;
     }
 
@@ -84,9 +83,9 @@
       cursor: pointer;
       background: transparent;
       border: none;
-      color: rgba(255, 255, 255, 0.6);
+      color: rgba(255, 215, 0, 0.6);
       transition: all 0.2s ease;
-      border-right: 2px solid rgba(0, 0, 0, 0.3);
+      border-right: 2px solid rgba(0, 0, 0, 0.5);
     }
 
     .tab:last-child {
@@ -94,19 +93,20 @@
     }
 
     .tab.active {
-      background: #00D9FF;
+      background: #FFD700;
       color: #1A1A1A;
     }
 
     .tab:hover:not(.active) {
-      background: rgba(255, 255, 255, 0.1);
-      color: #F5F1E8;
+      background: rgba(255, 215, 0, 0.1);
+      color: #FFD700;
     }
 
     .game-body {
       padding: 25px;
       max-height: 600px;
       overflow-y: auto;
+      background: rgba(107, 76, 154, 0.2);
     }
 
     .tab-content {
@@ -118,8 +118,8 @@
     }
 
     .section {
-      background: rgba(255, 255, 255, 0.1);
-      border: 4px solid rgba(255, 255, 255, 0.2);
+      background: rgba(0, 0, 0, 0.3);
+      border: 4px solid rgba(255, 215, 0, 0.3);
       padding: 20px;
       margin-bottom: 20px;
     }
@@ -129,13 +129,13 @@
       font-size: 24px;
       letter-spacing: 2px;
       margin-bottom: 15px;
-      color: #00D9FF;
+      color: #FFD700;
     }
 
     .bar {
       height: 22px;
-      background: rgba(0, 0, 0, 0.4);
-      border: 2px solid rgba(255, 255, 255, 0.3);
+      background: rgba(0, 0, 0, 0.6);
+      border: 2px solid rgba(255, 215, 0, 0.4);
       position: relative;
       overflow: hidden;
       margin-bottom: 10px;
@@ -154,15 +154,15 @@
     }
 
     .bar-fill.health {
-      background: #FF006E;
+      background: linear-gradient(90deg, #DC143C, #FF6347);
     }
 
     .bar-fill.energy {
-      background: #00D9FF;
+      background: linear-gradient(90deg, #00CED1, #00D9FF);
     }
 
     .bar-fill.xp {
-      background: linear-gradient(90deg, #FF6B35, #FFD700);
+      background: linear-gradient(90deg, #DAA520, #FFD700);
     }
 
     .skill-grid {
@@ -172,9 +172,9 @@
     }
 
     .skill-item {
-      background: rgba(0, 0, 0, 0.3);
+      background: rgba(0, 0, 0, 0.4);
       padding: 12px;
-      border: 2px solid rgba(255, 255, 255, 0.2);
+      border: 2px solid rgba(255, 215, 0, 0.3);
     }
 
     .skill-name {
@@ -183,6 +183,7 @@
       margin-bottom: 5px;
       display: flex;
       justify-content: space-between;
+      color: #FFD700;
     }
 
     .button-grid {
@@ -196,24 +197,24 @@
       font-size: 14px;
       font-weight: 600;
       padding: 12px;
-      background: #00D9FF;
+      background: linear-gradient(135deg, #8B4513, #A0522D);
       border: 3px solid #000;
-      color: #1A1A1A;
+      color: #F5F1E8;
       cursor: pointer;
       transition: all 0.2s ease;
-      box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.3);
+      box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.5);
     }
 
     .btn:hover:not(:disabled) {
-      background: #FF006E;
-      color: #F5F1E8;
+      background: linear-gradient(135deg, #FFD700, #FFA500);
+      color: #1A1A1A;
       transform: translateY(-2px);
-      box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.3);
+      box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.5);
     }
 
     .btn:active:not(:disabled) {
       transform: translateY(0);
-      box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
+      box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
     }
 
     .btn:disabled {
@@ -224,12 +225,11 @@
     }
 
     .btn-combat {
-      background: #FF006E;
-      color: white;
+      background: linear-gradient(135deg, #DC143C, #8B0000);
     }
 
-    .btn-travel {
-      background: #FF6B35;
+    .btn-combat:hover:not(:disabled) {
+      background: linear-gradient(135deg, #FF6347, #DC143C);
     }
 
     .item-list {
@@ -238,8 +238,8 @@
     }
 
     .item {
-      background: rgba(0, 0, 0, 0.3);
-      border: 2px solid rgba(255, 255, 255, 0.3);
+      background: rgba(0, 0, 0, 0.4);
+      border: 2px solid rgba(255, 215, 0, 0.3);
       padding: 12px;
       display: flex;
       justify-content: space-between;
@@ -252,13 +252,13 @@
 
     .item-name {
       font-weight: 700;
-      color: #00D9FF;
+      color: #FFD700;
       font-size: 14px;
     }
 
     .item-desc {
       font-size: 11px;
-      color: rgba(255, 255, 255, 0.7);
+      color: rgba(245, 241, 232, 0.7);
       margin-top: 3px;
     }
 
@@ -268,40 +268,9 @@
       margin-right: 10px;
     }
 
-    .quest-item {
-      background: rgba(0, 0, 0, 0.3);
-      border: 3px solid rgba(255, 215, 0, 0.4);
-      padding: 15px;
-      margin-bottom: 12px;
-    }
-
-    .quest-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 18px;
-      color: #FFD700;
-      margin-bottom: 8px;
-    }
-
-    .quest-desc {
-      font-size: 12px;
-      line-height: 1.5;
-      margin-bottom: 8px;
-    }
-
-    .quest-reward {
-      font-size: 11px;
-      color: #00D9FF;
-      font-weight: 700;
-    }
-
-    .quest-completed {
-      border-color: rgba(0, 217, 255, 0.4);
-      opacity: 0.6;
-    }
-
     .enemy-battle {
-      background: rgba(255, 0, 110, 0.2);
-      border: 3px solid #FF006E;
+      background: rgba(220, 20, 60, 0.2);
+      border: 3px solid #DC143C;
       padding: 20px;
       text-align: center;
       margin-bottom: 15px;
@@ -310,24 +279,57 @@
     .enemy-name {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 28px;
-      color: #FF006E;
+      color: #DC143C;
       margin-bottom: 10px;
+      text-shadow: 2px 2px 0 rgba(0,0,0,0.5);
     }
 
     .enemy-sprite {
       font-size: 64px;
       margin: 15px 0;
+      filter: drop-shadow(0 0 10px rgba(220, 20, 60, 0.5));
     }
 
     .combat-log {
-      background: rgba(0, 0, 0, 0.5);
-      border: 2px solid rgba(255, 255, 255, 0.2);
+      background: rgba(0, 0, 0, 0.6);
+      border: 2px solid rgba(255, 215, 0, 0.3);
       padding: 12px;
       max-height: 150px;
       overflow-y: auto;
       font-size: 11px;
       line-height: 1.6;
       margin-top: 15px;
+      color: rgba(245, 241, 232, 0.9);
+    }
+
+    .map-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+      margin: 20px 0;
+    }
+
+    .map-cell {
+      aspect-ratio: 1;
+      background: rgba(0, 0, 0, 0.4);
+      border: 2px solid rgba(255, 215, 0, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .map-cell:hover {
+      background: rgba(255, 215, 0, 0.2);
+      transform: scale(1.05);
+    }
+
+    .map-cell.current {
+      background: rgba(255, 215, 0, 0.3);
+      border-color: #FFD700;
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
     }
 
     .message {
@@ -335,7 +337,7 @@
       top: 20px;
       left: 50%;
       transform: translateX(-50%);
-      background: #FF006E;
+      background: linear-gradient(135deg, #8B4513, #A0522D);
       color: #F5F1E8;
       padding: 12px 25px;
       border: 4px solid #000;
@@ -361,11 +363,12 @@
     .footer-links {
       text-align: center;
       padding: 15px;
-      border-top: 4px solid rgba(255, 255, 255, 0.2);
+      border-top: 4px solid rgba(255, 215, 0, 0.3);
+      background: rgba(0, 0, 0, 0.3);
     }
 
     .footer-links a {
-      color: #00D9FF;
+      color: #FFD700;
       text-decoration: none;
       font-weight: 600;
       font-size: 13px;
@@ -373,7 +376,26 @@
     }
 
     .footer-links a:hover {
-      color: #FF006E;
+      color: #FFA500;
+    }
+
+    .quest-item {
+      background: rgba(0, 0, 0, 0.4);
+      border: 3px solid rgba(255, 215, 0, 0.5);
+      padding: 15px;
+      margin-bottom: 12px;
+    }
+
+    .quest-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px;
+      color: #FFD700;
+      margin-bottom: 8px;
+    }
+
+    .quest-completed {
+      opacity: 0.5;
+      border-color: rgba(0, 217, 255, 0.3);
     }
 
     .owned-tag, .equipped-tag {
@@ -383,14 +405,6 @@
       font-weight: 700;
       border-radius: 2px;
       margin-left: 8px;
-    }
-
-    .owned-tag {
-      background: #00D9FF;
-      color: #1A1A1A;
-    }
-
-    .equipped-tag {
       background: #FFD700;
       color: #1A1A1A;
     }
@@ -413,9 +427,8 @@
         grid-template-columns: 1fr;
       }
 
-      .tab {
-        font-size: 14px;
-        padding: 12px 8px;
+      .map-grid {
+        grid-template-columns: repeat(3, 1fr);
       }
     }
   </style>
@@ -423,48 +436,59 @@
 <body>
   <div class="game-container">
     <div class="game-header">
-      <div class="game-title">BROOKLYN RPG</div>
+      <div class="game-title">⚔️ BROOKLYN QUEST</div>
       <div class="stats-row">
         <div class="stat-item">
           <span>💰</span>
-          <span id="money">0</span>
+          <span id="gold">0</span>
         </div>
         <div class="stat-item">
           <span>📍</span>
-          <span id="location">williamsburg</span>
+          <span id="location">bridge gate</span>
         </div>
         <div class="stat-item">
           <span>⚔️</span>
-          <span id="combatLevel">1</span>
+          <span>Lv.<span id="combatLevel">1</span></span>
         </div>
       </div>
     </div>
 
     <div class="tabs">
-      <button class="tab active" onclick="game.switchTab('character')">Character</button>
+      <button class="tab active" onclick="game.switchTab('explore')">Explore</button>
+      <button class="tab" onclick="game.switchTab('character')">Character</button>
       <button class="tab" onclick="game.switchTab('combat')">Combat</button>
-      <button class="tab" onclick="game.switchTab('travel')">Travel</button>
       <button class="tab" onclick="game.switchTab('quests')">Quests</button>
       <button class="tab" onclick="game.switchTab('shop')">Shop</button>
     </div>
 
     <div class="game-body">
+      <!-- Explore Tab -->
+      <div id="tab-explore" class="tab-content active">
+        <div class="section">
+          <div class="section-title">BROOKLYN MAP</div>
+          <div id="mapContainer"></div>
+          <div style="margin-top: 15px; padding: 15px; background: rgba(0,0,0,0.3); border: 2px solid rgba(255,215,0,0.3);">
+            <div style="font-weight: 700; margin-bottom: 8px;" id="locationName">Bridge Gate</div>
+            <div style="font-size: 12px; line-height: 1.5; margin-bottom: 12px;" id="locationDesc">The entrance to Brooklyn Bridge. Goblins lurk beneath the arches.</div>
+            <button class="btn" style="width: 100%;" onclick="game.explore()">🔍 Explore Area</button>
+          </div>
+        </div>
+      </div>
+
       <!-- Character Tab -->
-      <div id="tab-character" class="tab-content active">
+      <div id="tab-character" class="tab-content">
         <div class="section">
           <div class="section-title">STATS</div>
-          <div>
-            <div style="margin-bottom: 5px; font-size: 12px; font-weight: 600;">Health</div>
-            <div class="bar">
-              <div class="bar-fill health" id="healthBar">
-                <span id="healthText">10/10</span>
-              </div>
+          <div style="margin-bottom: 5px; font-size: 12px; font-weight: 600;">Health</div>
+          <div class="bar">
+            <div class="bar-fill health" id="healthBar">
+              <span id="healthText">10/10</span>
             </div>
-            <div style="margin-bottom: 5px; font-size: 12px; font-weight: 600;">Energy</div>
-            <div class="bar">
-              <div class="bar-fill energy" id="energyBar">
-                <span id="energyText">100/100</span>
-              </div>
+          </div>
+          <div style="margin-bottom: 5px; font-size: 12px; font-weight: 600;">Energy</div>
+          <div class="bar">
+            <div class="bar-fill energy" id="energyBar">
+              <span id="energyText">100/100</span>
             </div>
           </div>
         </div>
@@ -480,12 +504,12 @@
         </div>
 
         <div class="section">
-          <div class="section-title">ACTIVITIES</div>
+          <div class="section-title">TRAIN</div>
           <div class="button-grid">
-            <button class="btn" onclick="game.doActivity('coding')">write code</button>
-            <button class="btn" onclick="game.doActivity('design')">push pixels</button>
-            <button class="btn" onclick="game.doActivity('coffee')">brew coffee</button>
-            <button class="btn" onclick="game.doActivity('vibes')">network</button>
+            <button class="btn" onclick="game.train('strength')">💪 Train Strength</button>
+            <button class="btn" onclick="game.train('defense')">🛡️ Train Defense</button>
+            <button class="btn" onclick="game.train('magic')">✨ Study Magic</button>
+            <button class="btn" onclick="game.rest()">💤 Rest</button>
           </div>
         </div>
       </div>
@@ -493,14 +517,6 @@
       <!-- Combat Tab -->
       <div id="tab-combat" class="tab-content">
         <div id="combatContainer"></div>
-      </div>
-
-      <!-- Travel Tab -->
-      <div id="tab-travel" class="tab-content">
-        <div class="section">
-          <div class="section-title">BROOKLYN LOCATIONS</div>
-          <div id="locationsContainer"></div>
-        </div>
       </div>
 
       <!-- Quests Tab -->
@@ -514,7 +530,7 @@
       <!-- Shop Tab -->
       <div id="tab-shop" class="tab-content">
         <div class="section">
-          <div class="section-title">EQUIPMENT SHOP</div>
+          <div class="section-title">BLACKSMITH</div>
           <div class="item-list" id="shopContainer"></div>
         </div>
       </div>
@@ -522,451 +538,225 @@
 
     <div class="footer-links">
       <a href="/">← back to studio</a>
-      <a href="#" onclick="game.resetGame(); return false;">reset progress</a>
+      <a href="#" onclick="game.resetGame(); return false;">reset</a>
     </div>
   </div>
 
-  <script src="/_game-data.js"></script>
   <script>
     const game = {
       player: {
-        money: 0,
+        gold: 0,
         health: 10,
         maxHealth: 10,
         energy: 100,
         maxEnergy: 100,
-        location: 'williamsburg',
+        position: { x: 2, y: 2 }, // center of map
         skills: {
-          coding: { xp: 0, level: 1 },
-          design: { xp: 0, level: 1 },
-          coffee: { xp: 0, level: 1 },
-          vibes: { xp: 0, level: 1 },
-          attack: { xp: 0, level: 1 },
-          defense: { xp: 0, level: 1 }
+          strength: { xp: 0, level: 1 },
+          defense: { xp: 0, level: 1 },
+          magic: { xp: 0, level: 1 }
         },
         equipment: {
           weapon: null,
-          armor: null
+          armor: null,
+          shield: null
         },
         inventory: [],
         completedQuests: [],
+        defeatedEnemies: {},
         inCombat: false,
         currentEnemy: null
       },
 
-      currentTab: 'character',
+      currentTab: 'explore',
 
-      // Game Data
+      // 5x5 map grid
+      map: [
+        ['🏰', '🌲', '🌲', '🏔️', '🏔️'],
+        ['🌲', '⛪', '🏘️', '🌲', '🏔️'],
+        ['🌉', '🏘️', '🏛️', '🏘️', '🌲'],
+        ['🌊', '🏘️', '🌳', '🏘️', '🗼'],
+        ['🌊', '🌊', '🌲', '🌲', '🏭']
+      ],
+
       locations: {
-        williamsburg: {
-          name: 'Williamsburg',
-          desc: 'hipster central. coffee shops everywhere.',
-          enemies: ['trust_fund_kid', 'hipster']
-        },
-        dumbo: {
-          name: 'DUMBO',
-          desc: 'down under manhattan bridge overpass. tech bros and tourists.',
-          enemies: ['tourist', 'tech_bro']
-        },
-        bushwick: {
-          name: 'Bushwick',
-          desc: 'street art and warehouses. gritty vibes.',
-          enemies: ['graffiti_artist', 'warehouse_goblin']
-        },
-        park_slope: {
-          name: 'Park Slope',
-          desc: 'families and organic markets. surprisingly dangerous.',
-          enemies: ['yoga_mom', 'organic_cultist']
-        }
+        '0-0': { name: 'Castle Ruins', desc: 'Ancient ruins guard the northern edge. Dangerous creatures dwell within.', enemies: ['skeleton', 'dark_knight'] },
+        '0-1': { name: 'Dark Forest', desc: 'Dense woods where wolves hunt.', enemies: ['wolf', 'bandit'] },
+        '0-2': { name: 'Pine Grove', desc: 'Peaceful forest with minor threats.', enemies: ['rat', 'goblin'] },
+        '0-3': { name: 'Mountain Pass', desc: 'Rocky terrain. Dragons have been spotted.', enemies: ['goblin', 'troll'] },
+        '0-4': { name: 'Dragon Peak', desc: 'The highest peak. A dragon makes its lair here.', enemies: ['dragon'] },
+        '1-0': { name: 'Haunted Woods', desc: 'Strange noises echo through the trees.', enemies: ['ghost', 'skeleton'] },
+        '1-1': { name: 'Old Church', desc: 'Abandoned chapel. Undead roam the halls.', enemies: ['zombie', 'skeleton'] },
+        '1-2': { name: 'Village Square', desc: 'A small settlement. Relatively safe.', enemies: ['rat', 'thief'] },
+        '1-3': { name: 'Wildwood', desc: 'Untamed forest with wild beasts.', enemies: ['wolf', 'bear'] },
+        '1-4': { name: 'Mountain Base', desc: 'Foothills of the great mountain.', enemies: ['goblin', 'troll'] },
+        '2-0': { name: 'Bridge Gate', desc: 'The entrance to Brooklyn Bridge. Goblins lurk beneath the arches.', enemies: ['goblin', 'rat'] },
+        '2-1': { name: 'Market District', desc: 'Bustling market. Watch for thieves.', enemies: ['thief', 'bandit'] },
+        '2-2': { name: 'Town Center', desc: 'The heart of Brooklyn. Safe zone with shops and quests.', enemies: [] },
+        '2-3': { name: 'Eastern District', desc: 'Residential area with some danger.', enemies: ['thief', 'rat'] },
+        '2-4': { name: 'Tower District', desc: 'Ancient tower rises here.', enemies: ['wizard', 'gargoyle'] },
+        '3-0': { name: 'Harbor', desc: 'Ships dock at the waterfront. Pirates prowl.', enemies: ['pirate', 'rat'] },
+        '3-1': { name: 'Dockside', desc: 'Warehouses and shipyards.', enemies: ['pirate', 'thief'] },
+        '3-2': { name: 'Park Entrance', desc: 'Gateway to the great park.', enemies: ['wolf', 'snake'] },
+        '3-3': { name: 'Residential', desc: 'Quiet neighborhood.', enemies: ['rat', 'thief'] },
+        '3-4': { name: 'Guard Tower', desc: 'Watchtower on the eastern edge.', enemies: ['bandit', 'mercenary'] },
+        '4-0': { name: 'Deep Water', desc: 'Open sea. Sea monsters lurk below.', enemies: ['sea_serpent', 'kraken'] },
+        '4-1': { name: 'Bay', desc: 'Shallow waters near shore.', enemies: ['pirate', 'sea_snake'] },
+        '4-2': { name: 'Park West', desc: 'Western section of the great park.', enemies: ['wolf', 'bear'] },
+        '4-3': { name: 'Park East', desc: 'Eastern section of the park.', enemies: ['wolf', 'snake'] },
+        '4-4': { name: 'Industrial Zone', desc: 'Old factories and warehouses. Boss territory.', enemies: ['goblin_king', 'troll_chief'] }
       },
 
       enemies: {
-        trust_fund_kid: {
-          name: 'Trust Fund Kid',
-          sprite: '🧑‍💼',
-          health: 5,
-          maxHealth: 5,
-          attack: 2,
-          defense: 1,
-          xp: 10,
-          loot: { money: 20 },
-          messages: {
-            appear: 'a trust fund kid blocks your path. they want to talk about their startup.',
-            attack: ['they bore you with pitch decks.', 'trust fund kid talks about disruption.'],
-            defeat: 'trust fund kid runs away crying.'
-          }
-        },
-        hipster: {
-          name: 'Williamsburg Hipster',
-          sprite: '🧔',
-          health: 8,
-          maxHealth: 8,
-          attack: 3,
-          defense: 2,
-          xp: 15,
-          loot: { money: 30 },
-          messages: {
-            appear: 'a hipster approaches. they knew about this game before it was cool.',
-            attack: ['hipster judges your choices.', 'they talk about obscure bands.'],
-            defeat: 'hipster retreats to a speakeasy.'
-          }
-        },
-        tourist: {
-          name: 'Lost Tourist',
-          sprite: '📸',
-          health: 6,
-          maxHealth: 6,
-          attack: 2,
-          defense: 1,
-          xp: 12,
-          loot: { money: 25 },
-          messages: {
-            appear: 'a tourist stops you for directions. they have a massive camera.',
-            attack: ['tourist takes your photo without asking.', 'they block the sidewalk.'],
-            defeat: 'tourist wanders off confused.'
-          }
-        },
-        tech_bro: {
-          name: 'Tech Bro',
-          sprite: '💻',
-          health: 10,
-          maxHealth: 10,
-          attack: 4,
-          defense: 3,
-          xp: 20,
-          loot: { money: 50 },
-          messages: {
-            appear: 'a tech bro wants to discuss web3. oh no.',
-            attack: ['tech bro mansplains blockchain.', 'they reference hacker news.'],
-            defeat: 'tech bro leaves to check slack.'
-          }
-        },
-        graffiti_artist: {
-          name: 'Graffiti Artist',
-          sprite: '🎨',
-          health: 7,
-          maxHealth: 7,
-          attack: 3,
-          defense: 2,
-          xp: 15,
-          loot: { money: 20 },
-          messages: {
-            appear: 'a graffiti artist challenges your artistic vision.',
-            attack: ['they spray paint in your direction.', 'artist questions your aesthetic.'],
-            defeat: 'artist runs from the cops.'
-          }
-        },
-        warehouse_goblin: {
-          name: 'Warehouse Goblin',
-          sprite: '👹',
-          health: 12,
-          maxHealth: 12,
-          attack: 5,
-          defense: 3,
-          xp: 30,
-          loot: { money: 40 },
-          messages: {
-            appear: 'a warehouse goblin guards the rave entrance.',
-            attack: ['goblin throws techno beats at you.', 'the bass drops. literally.'],
-            defeat: 'goblin retreats into the warehouse.'
-          }
-        },
-        yoga_mom: {
-          name: 'Yoga Mom',
-          sprite: '🧘‍♀️',
-          health: 9,
-          maxHealth: 9,
-          attack: 4,
-          defense: 4,
-          xp: 20,
-          loot: { money: 35 },
-          messages: {
-            appear: 'a yoga mom wants to talk about her cleanse.',
-            attack: ['she judges your chakras.', 'yoga mom namaste-slaps you.'],
-            defeat: 'yoga mom leaves for hot yoga.'
-          }
-        },
-        organic_cultist: {
-          name: 'Organic Cultist',
-          sprite: '🌿',
-          health: 15,
-          maxHealth: 15,
-          attack: 6,
-          defense: 5,
-          xp: 40,
-          loot: { money: 60 },
-          messages: {
-            appear: 'an organic cultist blocks the whole foods entrance.',
-            attack: ['they preach about gluten.', 'cultist throws kale smoothies.'],
-            defeat: 'cultist flees to farmers market.'
-          }
-        }
+        rat: { name: 'Giant Rat', sprite: '🐀', health: 3, maxHealth: 3, attack: 1, defense: 0, xp: 5, gold: 3, messages: { appear: 'A giant rat squeaks aggressively!', attack: ['The rat bites!', 'Rat scratches with claws!'], defeat: 'The rat scurries away defeated.' } },
+        goblin: { name: 'Goblin', sprite: '👺', health: 8, maxHealth: 8, attack: 3, defense: 1, xp: 15, gold: 10, messages: { appear: 'A goblin appears with crude weapons!', attack: ['Goblin swings club!', 'Goblin throws rocks!'], defeat: 'The goblin flees in terror!' } },
+        wolf: { name: 'Wolf', sprite: '🐺', health: 12, maxHealth: 12, attack: 5, defense: 2, xp: 20, gold: 15, messages: { appear: 'A hungry wolf emerges from the shadows!', attack: ['Wolf lunges with fangs!', 'Wolf claws viciously!'], defeat: 'The wolf retreats howling.' } },
+        skeleton: { name: 'Skeleton Warrior', sprite: '💀', health: 15, maxHealth: 15, attack: 6, defense: 3, xp: 30, gold: 25, messages: { appear: 'Bones rattle as a skeleton rises!', attack: ['Skeleton swings rusty sword!', 'Bony fist strikes!'], defeat: 'The skeleton collapses into bones.' } },
+        bandit: { name: 'Bandit', sprite: '🗡️', health: 18, maxHealth: 18, attack: 7, defense: 4, xp: 35, gold: 40, messages: { appear: 'A bandit demands your gold!', attack: ['Bandit slashes with dagger!', 'Bandit strikes quickly!'], defeat: 'The bandit drops his weapon and runs!' } },
+        troll: { name: 'Troll', sprite: '👹', health: 25, maxHealth: 25, attack: 10, defense: 6, xp: 50, gold: 60, messages: { appear: 'A massive troll blocks your path!', attack: ['Troll smashes with huge fists!', 'Troll charges forward!'], defeat: 'The troll stumbles away bleeding.' } },
+        bear: { name: 'Brown Bear', sprite: '🐻', health: 30, maxHealth: 30, attack: 12, defense: 7, xp: 60, gold: 50, messages: { appear: 'An angry bear roars!', attack: ['Bear swipes with powerful claws!', 'Bear mauls!'], defeat: 'The bear retreats into the forest.' } },
+        dragon: { name: 'Ancient Dragon', sprite: '🐉', health: 100, maxHealth: 100, attack: 25, defense: 15, xp: 500, gold: 500, messages: { appear: 'A DRAGON descends from the sky!', attack: ['Dragon breathes fire!', 'Dragon strikes with massive claws!', 'Dragon tail whips!'], defeat: 'The dragon flies away, defeated!' } },
+        goblin_king: { name: 'Goblin King', sprite: '👑', health: 60, maxHealth: 60, attack: 18, defense: 10, xp: 200, gold: 300, messages: { appear: 'The Goblin King appears with his crown!', attack: ['King swings enchanted mace!', 'King commands goblin magic!'], defeat: 'The Goblin King flees, dropping his crown!' } }
       },
 
       equipment: {
-        // Weapons
-        skateboard: {
-          id: 'skateboard',
-          name: 'Vintage Skateboard',
-          type: 'weapon',
-          attack: 2,
-          defense: 0,
-          price: 100,
-          desc: '+2 attack'
-        },
-        fixed_gear: {
-          id: 'fixed_gear',
-          name: 'Fixed Gear Bike',
-          type: 'weapon',
-          attack: 4,
-          defense: 1,
-          price: 300,
-          desc: '+4 attack, +1 defense'
-        },
-        macbook: {
-          id: 'macbook',
-          name: 'MacBook Pro (weapon)',
-          type: 'weapon',
-          attack: 6,
-          defense: 2,
-          price: 600,
-          desc: '+6 attack, +2 defense'
-        },
-        // Armor
-        tote_bag: {
-          id: 'tote_bag',
-          name: 'Tote Bag',
-          type: 'armor',
-          attack: 0,
-          defense: 2,
-          price: 80,
-          desc: '+2 defense'
-        },
-        denim_jacket: {
-          id: 'denim_jacket',
-          name: 'Vintage Denim Jacket',
-          type: 'armor',
-          attack: 0,
-          defense: 4,
-          price: 250,
-          desc: '+4 defense'
-        },
-        leather_jacket: {
-          id: 'leather_jacket',
-          name: 'Leather Jacket',
-          type: 'armor',
-          attack: 1,
-          defense: 6,
-          price: 500,
-          desc: '+1 attack, +6 defense'
-        }
+        wooden_sword: { id: 'wooden_sword', name: 'Wooden Sword', type: 'weapon', attack: 2, defense: 0, price: 50, desc: '+2 attack' },
+        iron_sword: { id: 'iron_sword', name: 'Iron Sword', type: 'weapon', attack: 5, defense: 0, price: 200, desc: '+5 attack' },
+        steel_sword: { id: 'steel_sword', name: 'Steel Sword', type: 'weapon', attack: 10, defense: 0, price: 500, desc: '+10 attack' },
+        dragon_sword: { id: 'dragon_sword', name: 'Dragon Slayer', type: 'weapon', attack: 20, defense: 0, price: 2000, desc: '+20 attack' },
+
+        wooden_shield: { id: 'wooden_shield', name: 'Wooden Shield', type: 'shield', attack: 0, defense: 2, price: 40, desc: '+2 defense' },
+        iron_shield: { id: 'iron_shield', name: 'Iron Shield', type: 'shield', attack: 0, defense: 5, price: 180, desc: '+5 defense' },
+        steel_shield: { id: 'steel_shield', name: 'Steel Shield', type: 'shield', attack: 0, defense: 10, price: 450, desc: '+10 defense' },
+
+        leather_armor: { id: 'leather_armor', name: 'Leather Armor', type: 'armor', attack: 0, defense: 3, price: 100, desc: '+3 defense' },
+        chainmail: { id: 'chainmail', name: 'Chainmail', type: 'armor', attack: 0, defense: 7, price: 300, desc: '+7 defense' },
+        plate_armor: { id: 'plate_armor', name: 'Plate Armor', type: 'armor', attack: 0, defense: 15, price: 800, desc: '+15 defense' }
       },
 
       quests: [
-        {
-          id: 'first_coffee',
-          title: 'First Pour',
-          desc: 'Brew your first coffee and restore some energy.',
-          requires: { activity: 'coffee', count: 1 },
-          reward: { money: 10, xp: 20 },
-          progress: 0
-        },
-        {
-          id: 'defeat_hipster',
-          title: 'Hipster Hunter',
-          desc: 'Defeat 3 hipsters in Williamsburg.',
-          requires: { enemy: 'hipster', count: 3 },
-          reward: { money: 100, xp: 50 },
-          progress: 0
-        },
-        {
-          id: 'explore_dumbo',
-          title: 'DUMBO Explorer',
-          desc: 'Travel to DUMBO for the first time.',
-          requires: { location: 'dumbo' },
-          reward: { money: 50, xp: 30 },
-          progress: 0
-        },
-        {
-          id: 'buy_weapon',
-          title: 'Armed and Ready',
-          desc: 'Purchase your first weapon.',
-          requires: { equipmentType: 'weapon', count: 1 },
-          reward: { money: 75, xp: 40 },
-          progress: 0
-        },
-        {
-          id: 'defeat_goblin',
-          title: 'Goblin Slayer',
-          desc: 'Defeat the legendary Warehouse Goblin in Bushwick.',
-          requires: { enemy: 'warehouse_goblin', count: 1 },
-          reward: { money: 200, xp: 100 },
-          progress: 0
-        }
+        { id: 'first_blood', title: 'First Blood', desc: 'Defeat your first enemy.', requires: { enemiesDefeated: 1 }, reward: { gold: 50, xp: 25 }, progress: 0 },
+        { id: 'goblin_slayer', title: 'Goblin Slayer', desc: 'Defeat 5 goblins.', requires: { enemyType: 'goblin', count: 5 }, reward: { gold: 150, xp: 75 }, progress: 0 },
+        { id: 'first_weapon', title: 'Armed', desc: 'Purchase your first weapon.', requires: { equipmentType: 'weapon', count: 1 }, reward: { gold: 100, xp: 50 }, progress: 0 },
+        { id: 'explorer', title: 'Explorer', desc: 'Visit 10 different locations.', requires: { locationsVisited: 10 }, reward: { gold: 200, xp: 100 }, progress: 0 },
+        { id: 'dragon_slayer', title: 'Dragon Slayer', desc: 'Defeat the Ancient Dragon.', requires: { enemyType: 'dragon', count: 1 }, reward: { gold: 1000, xp: 500 }, progress: 0 }
       ],
-
-      activities: {
-        coding: {
-          name: 'write code',
-          skill: 'coding',
-          energyCost: 5,
-          messages: [
-            'you grind some code. your fingers hurt.',
-            'another bug fixed. another created.',
-            'stackoverflow saves the day again.',
-            'you refactor. it feels good.',
-            'the console logs are speaking to you.'
-          ]
-        },
-        design: {
-          name: 'push pixels',
-          skill: 'design',
-          energyCost: 5,
-          messages: [
-            'you push pixels around. they obey.',
-            'is that 1px off? yes. yes it is.',
-            'you discover a new shade of blue.',
-            'the kerning. always the kerning.',
-            'you make it pop. whatever that means.'
-          ]
-        },
-        coffee: {
-          name: 'brew coffee',
-          skill: 'coffee',
-          energyCost: 0,
-          energyRestore: 20,
-          messages: [
-            'you pull a perfect espresso. divine.',
-            'the beans whisper secrets to you.',
-            'third wave coffee is a lifestyle.',
-            'you foam milk like a pro.',
-            'this roast has notes of... vibes.'
-          ]
-        },
-        vibes: {
-          name: 'network',
-          skill: 'vibes',
-          energyCost: 5,
-          messages: [
-            'you attend a meetup in williamsburg.',
-            'everyone has the same tote bag.',
-            'you exchange business cards nobody will use.',
-            'someone mentions their startup. you nod.',
-            'you vibe. they vibe. everyone vibes.'
-          ]
-        }
-      },
 
       init() {
         this.loadGame();
         this.render();
-
-        // Auto-save every 10 seconds
         setInterval(() => this.saveGame(), 10000);
       },
 
       switchTab(tabName) {
-        // Update tab buttons
         document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
         event.target.classList.add('active');
-
-        // Update tab content
         document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
         document.getElementById(`tab-${tabName}`).classList.add('active');
-
         this.currentTab = tabName;
         this.render();
       },
 
       getXPForLevel(level) {
-        return Math.floor(50 * Math.pow(1.5, level - 1));
+        return Math.floor(100 * Math.pow(1.3, level - 1));
       },
 
       getCombatLevel() {
-        return Math.floor((this.player.skills.attack.level + this.player.skills.defense.level) / 2);
+        return Math.floor((this.player.skills.strength.level + this.player.skills.defense.level) / 2);
       },
 
       getTotalAttack() {
-        let attack = this.player.skills.attack.level;
-        if (this.player.equipment.weapon) {
-          attack += this.equipment[this.player.equipment.weapon].attack;
-        }
-        if (this.player.equipment.armor) {
-          attack += this.equipment[this.player.equipment.armor].attack || 0;
-        }
+        let attack = this.player.skills.strength.level;
+        if (this.player.equipment.weapon) attack += this.equipment[this.player.equipment.weapon].attack;
         return attack;
       },
 
       getTotalDefense() {
         let defense = this.player.skills.defense.level;
-        if (this.player.equipment.weapon) {
-          defense += this.equipment[this.player.equipment.weapon].defense || 0;
-        }
-        if (this.player.equipment.armor) {
-          defense += this.equipment[this.player.equipment.armor].defense;
-        }
+        if (this.player.equipment.armor) defense += this.equipment[this.player.equipment.armor].defense;
+        if (this.player.equipment.shield) defense += this.equipment[this.player.equipment.shield].defense;
         return defense;
       },
 
-      doActivity(activityKey) {
-        const activity = this.activities[activityKey];
-        const energyCost = activity.energyCost;
-
-        if (activity.energyCost > 0 && this.player.energy < energyCost) {
-          this.showMessage('not enough energy. brew some coffee.');
+      train(skill) {
+        if (this.player.energy < 10) {
+          this.showMessage('Not enough energy. Rest to recover.');
           return;
         }
 
-        // Handle energy
-        if (activity.energyRestore) {
-          this.player.energy = Math.min(this.player.maxEnergy, this.player.energy + activity.energyRestore);
+        this.player.energy -= 10;
+        const skillData = this.player.skills[skill];
+        const xpGain = 5;
+        skillData.xp += xpGain;
 
-          // Update quest progress
-          this.updateQuestProgress('activity', 'coffee');
+        const xpNeeded = this.getXPForLevel(skillData.level);
+        if (skillData.xp >= xpNeeded) {
+          skillData.xp -= xpNeeded;
+          skillData.level += 1;
+          this.showMessage(`${skill} leveled up to ${skillData.level}!`);
         } else {
-          this.player.energy -= energyCost;
-        }
-
-        // Gain XP
-        const skill = this.player.skills[activity.skill];
-        const xpGain = 1;
-        skill.xp += xpGain;
-
-        // Check for level up
-        const xpNeeded = this.getXPForLevel(skill.level);
-        if (skill.xp >= xpNeeded) {
-          skill.xp -= xpNeeded;
-          skill.level += 1;
-          this.showMessage(`${activity.skill} level up! now level ${skill.level}`);
-        } else {
-          const message = activity.messages[Math.floor(Math.random() * activity.messages.length)];
-          this.showMessage(`${message} +${xpGain} xp`);
+          this.showMessage(`Trained ${skill}. +${xpGain} xp`);
         }
 
         this.render();
         this.saveGame();
       },
 
-      travelTo(locationKey) {
-        this.player.location = locationKey;
-        this.showMessage(`arrived at ${this.locations[locationKey].name}`);
+      rest() {
+        if (this.player.health === this.player.maxHealth && this.player.energy === this.player.maxEnergy) {
+          this.showMessage('Already fully rested.');
+          return;
+        }
 
-        // Update quest progress
-        this.updateQuestProgress('location', locationKey);
-
+        this.player.health = this.player.maxHealth;
+        this.player.energy = this.player.maxEnergy;
+        this.showMessage('Rested. Health and energy restored.');
         this.render();
         this.saveGame();
+      },
+
+      moveTo(x, y) {
+        if (x < 0 || x > 4 || y < 0 || y > 4) return;
+
+        this.player.position = { x, y };
+        const locKey = `${y}-${x}`;
+        const location = this.locations[locKey];
+
+        this.showMessage(`Arrived at ${location.name}`);
+        this.trackQuestProgress('location');
+        this.render();
+        this.saveGame();
+      },
+
+      explore() {
+        const locKey = `${this.player.position.y}-${this.player.position.x}`;
+        const location = this.locations[locKey];
+
+        if (!location.enemies || location.enemies.length === 0) {
+          this.showMessage('This area is safe. No enemies found.');
+          return;
+        }
+
+        // Random encounter
+        if (Math.random() < 0.6) { // 60% chance
+          const enemyKey = location.enemies[Math.floor(Math.random() * location.enemies.length)];
+          this.startCombat(enemyKey);
+        } else {
+          this.showMessage('You searched but found nothing.');
+        }
       },
 
       startCombat(enemyKey) {
         const enemyTemplate = this.enemies[enemyKey];
         this.player.currentEnemy = {
+          key: enemyKey,
           ...enemyTemplate,
           health: enemyTemplate.maxHealth
         };
         this.player.inCombat = true;
         this.combatLog = [enemyTemplate.messages.appear];
         this.showMessage(enemyTemplate.messages.appear);
+        this.switchTab('combat');
         this.render();
       },
 
@@ -974,35 +764,32 @@
         if (!this.player.inCombat || !this.player.currentEnemy) return;
 
         const enemy = this.player.currentEnemy;
-
-        // Player attacks
         const playerDamage = Math.max(1, this.getTotalAttack() - Math.floor(enemy.defense / 2));
         enemy.health -= playerDamage;
-        this.combatLog.push(`you hit for ${playerDamage} damage.`);
+        this.combatLog.push(`You deal ${playerDamage} damage!`);
 
         if (enemy.health <= 0) {
-          // Victory!
           this.combatLog.push(enemy.messages.defeat);
-          this.showMessage(`defeated ${enemy.name}! +${enemy.xp} xp +$${enemy.loot.money}`);
+          this.showMessage(`Defeated ${enemy.name}! +${enemy.xp} xp +${enemy.gold} gold`);
 
-          this.player.money += enemy.loot.money;
-          this.player.skills.attack.xp += Math.floor(enemy.xp / 2);
+          this.player.gold += enemy.gold;
+          this.player.skills.strength.xp += Math.floor(enemy.xp / 2);
           this.player.skills.defense.xp += Math.floor(enemy.xp / 2);
 
+          // Track defeated enemies
+          this.player.defeatedEnemies[enemy.key] = (this.player.defeatedEnemies[enemy.key] || 0) + 1;
+          this.trackQuestProgress('combat', enemy.key);
+
           // Check for level ups
-          ['attack', 'defense'].forEach(skillKey => {
+          ['strength', 'defense'].forEach(skillKey => {
             const skill = this.player.skills[skillKey];
             const xpNeeded = this.getXPForLevel(skill.level);
             if (skill.xp >= xpNeeded) {
               skill.xp -= xpNeeded;
               skill.level += 1;
-              this.showMessage(`${skillKey} level up! now level ${skill.level}`);
+              this.showMessage(`${skillKey} leveled up to ${skill.level}!`);
             }
           });
-
-          // Update quest progress
-          const enemyId = Object.keys(this.enemies).find(key => this.enemies[key].name === enemy.name);
-          this.updateQuestProgress('enemy', enemyId);
 
           this.player.inCombat = false;
           this.player.currentEnemy = null;
@@ -1021,8 +808,9 @@
           this.player.health = this.player.maxHealth;
           this.player.inCombat = false;
           this.player.currentEnemy = null;
-          this.combatLog.push('you were defeated. respawning...');
-          this.showMessage('defeated! respawning at full health.');
+          this.combatLog.push('You were defeated... respawning at town center.');
+          this.showMessage('Defeated! Respawned at town.');
+          this.player.position = { x: 2, y: 2 };
         }
 
         this.render();
@@ -1033,60 +821,37 @@
         if (!this.player.inCombat) return;
         this.player.inCombat = false;
         this.player.currentEnemy = null;
-        this.showMessage('you ran away safely.');
+        this.showMessage('You fled to safety.');
         this.render();
-      },
-
-      rest() {
-        if (this.player.health === this.player.maxHealth) {
-          this.showMessage('already at full health.');
-          return;
-        }
-        if (this.player.energy < 20) {
-          this.showMessage('not enough energy to rest.');
-          return;
-        }
-        this.player.energy -= 20;
-        this.player.health = this.player.maxHealth;
-        this.showMessage('rested and restored health.');
-        this.render();
-        this.saveGame();
       },
 
       buyEquipment(itemId) {
         const item = this.equipment[itemId];
 
         if (this.player.inventory.includes(itemId)) {
-          this.showMessage('you already own this.');
+          this.showMessage('You already own this.');
           return;
         }
 
-        if (this.player.money < item.price) {
-          this.showMessage('not enough money.');
+        if (this.player.gold < item.price) {
+          this.showMessage('Not enough gold.');
           return;
         }
 
-        this.player.money -= item.price;
+        this.player.gold -= item.price;
         this.player.inventory.push(itemId);
-        this.showMessage(`bought ${item.name}!`);
-
-        // Update quest progress
-        this.updateQuestProgress('equipmentType', item.type);
-
+        this.showMessage(`Purchased ${item.name}!`);
+        this.trackQuestProgress('equipment', item.type);
         this.render();
         this.saveGame();
       },
 
       equipItem(itemId) {
         const item = this.equipment[itemId];
-
-        if (!this.player.inventory.includes(itemId)) {
-          this.showMessage('you don\'t own this item.');
-          return;
-        }
+        if (!this.player.inventory.includes(itemId)) return;
 
         this.player.equipment[item.type] = itemId;
-        this.showMessage(`equipped ${item.name}`);
+        this.showMessage(`Equipped ${item.name}`);
         this.render();
         this.saveGame();
       },
@@ -1094,38 +859,39 @@
       unequipItem(slot) {
         if (!this.player.equipment[slot]) return;
         this.player.equipment[slot] = null;
-        this.showMessage(`unequipped ${slot}`);
+        this.showMessage(`Unequipped ${slot}`);
         this.render();
         this.saveGame();
       },
 
-      updateQuestProgress(type, value) {
+      trackQuestProgress(type, value) {
         this.quests.forEach(quest => {
           if (this.player.completedQuests.includes(quest.id)) return;
 
-          if (type === 'activity' && quest.requires.activity === value) {
-            quest.progress = (quest.progress || 0) + 1;
-            if (quest.progress >= quest.requires.count) {
+          if (type === 'combat') {
+            if (quest.requires.enemiesDefeated) {
+              const totalDefeated = Object.values(this.player.defeatedEnemies).reduce((a, b) => a + b, 0);
+              if (totalDefeated >= quest.requires.enemiesDefeated) {
+                this.completeQuest(quest.id);
+              }
+            }
+            if (quest.requires.enemyType === value) {
+              quest.progress = (this.player.defeatedEnemies[value] || 0);
+              if (quest.progress >= quest.requires.count) {
+                this.completeQuest(quest.id);
+              }
+            }
+          }
+
+          if (type === 'equipment' && quest.requires.equipmentType === value) {
+            const count = this.player.inventory.filter(id => this.equipment[id].type === value).length;
+            if (count >= quest.requires.count) {
               this.completeQuest(quest.id);
             }
           }
 
-          if (type === 'enemy' && quest.requires.enemy === value) {
-            quest.progress = (quest.progress || 0) + 1;
-            if (quest.progress >= quest.requires.count) {
-              this.completeQuest(quest.id);
-            }
-          }
-
-          if (type === 'location' && quest.requires.location === value) {
-            this.completeQuest(quest.id);
-          }
-
-          if (type === 'equipmentType' && quest.requires.equipmentType === value) {
-            quest.progress = (quest.progress || 0) + 1;
-            if (quest.progress >= quest.requires.count) {
-              this.completeQuest(quest.id);
-            }
+          if (type === 'location' && quest.requires.locationsVisited) {
+            // Track unique locations visited (would need to add tracking)
           }
         });
       },
@@ -1135,10 +901,10 @@
         if (!quest || this.player.completedQuests.includes(questId)) return;
 
         this.player.completedQuests.push(questId);
-        this.player.money += quest.reward.money;
-        this.player.skills.vibes.xp += quest.reward.xp;
+        this.player.gold += quest.reward.gold;
+        this.player.skills.strength.xp += quest.reward.xp;
 
-        this.showMessage(`quest complete: ${quest.title}! +$${quest.reward.money} +${quest.reward.xp} xp`);
+        this.showMessage(`Quest Complete: ${quest.title}! +${quest.reward.gold} gold +${quest.reward.xp} xp`);
         this.render();
         this.saveGame();
       },
@@ -1156,37 +922,52 @@
       },
 
       render() {
-        // Update header stats
-        document.getElementById('money').textContent = '$' + this.player.money;
-        document.getElementById('location').textContent = this.locations[this.player.location].name.toLowerCase();
+        document.getElementById('gold').textContent = this.player.gold + 'g';
+        const locKey = `${this.player.position.y}-${this.player.position.x}`;
+        const currentLoc = this.locations[locKey];
+        document.getElementById('location').textContent = currentLoc.name.toLowerCase();
         document.getElementById('combatLevel').textContent = this.getCombatLevel();
 
-        // Render based on current tab
-        if (this.currentTab === 'character') {
-          this.renderCharacterTab();
-        } else if (this.currentTab === 'combat') {
-          this.renderCombatTab();
-        } else if (this.currentTab === 'travel') {
-          this.renderTravelTab();
-        } else if (this.currentTab === 'quests') {
-          this.renderQuestsTab();
-        } else if (this.currentTab === 'shop') {
-          this.renderShopTab();
+        if (this.currentTab === 'explore') this.renderExploreTab();
+        else if (this.currentTab === 'character') this.renderCharacterTab();
+        else if (this.currentTab === 'combat') this.renderCombatTab();
+        else if (this.currentTab === 'quests') this.renderQuestsTab();
+        else if (this.currentTab === 'shop') this.renderShopTab();
+      },
+
+      renderExploreTab() {
+        const mapContainer = document.getElementById('mapContainer');
+        mapContainer.innerHTML = '';
+        mapContainer.className = 'map-grid';
+
+        for (let y = 0; y < 5; y++) {
+          for (let x = 0; x < 5; x++) {
+            const cell = document.createElement('div');
+            cell.className = 'map-cell';
+            if (x === this.player.position.x && y === this.player.position.y) {
+              cell.classList.add('current');
+            }
+            cell.textContent = this.map[y][x];
+            cell.onclick = () => this.moveTo(x, y);
+            mapContainer.appendChild(cell);
+          }
         }
+
+        const locKey = `${this.player.position.y}-${this.player.position.x}`;
+        const location = this.locations[locKey];
+        document.getElementById('locationName').textContent = location.name;
+        document.getElementById('locationDesc').textContent = location.desc;
       },
 
       renderCharacterTab() {
-        // Health bar
         const healthPercent = (this.player.health / this.player.maxHealth) * 100;
         document.getElementById('healthBar').style.width = healthPercent + '%';
         document.getElementById('healthText').textContent = `${this.player.health}/${this.player.maxHealth}`;
 
-        // Energy bar
         const energyPercent = (this.player.energy / this.player.maxEnergy) * 100;
         document.getElementById('energyBar').style.width = energyPercent + '%';
         document.getElementById('energyText').textContent = `${this.player.energy}/${this.player.maxEnergy}`;
 
-        // Skills
         const skillsContainer = document.getElementById('skillsContainer');
         skillsContainer.innerHTML = '';
 
@@ -1211,24 +992,27 @@
           skillsContainer.appendChild(skillDiv);
         });
 
-        // Equipment
         const equipmentContainer = document.getElementById('equipmentContainer');
         equipmentContainer.innerHTML = `
-          <div style="margin-bottom: 10px;">
-            <strong>Weapon:</strong> ${this.player.equipment.weapon ? this.equipment[this.player.equipment.weapon].name : 'none'}
-            ${this.player.equipment.weapon ? `<button class="btn" style="padding: 5px 10px; font-size: 11px;" onclick="game.unequipItem('weapon')">unequip</button>` : ''}
+          <div style="margin-bottom: 10px; font-size: 13px;">
+            <strong>Weapon:</strong> ${this.player.equipment.weapon ? this.equipment[this.player.equipment.weapon].name : 'None'}
+            ${this.player.equipment.weapon ? `<button class="btn" style="padding: 4px 8px; font-size: 10px; margin-left: 8px;" onclick="game.unequipItem('weapon')">unequip</button>` : ''}
           </div>
-          <div style="margin-bottom: 10px;">
-            <strong>Armor:</strong> ${this.player.equipment.armor ? this.equipment[this.player.equipment.armor].name : 'none'}
-            ${this.player.equipment.armor ? `<button class="btn" style="padding: 5px 10px; font-size: 11px;" onclick="game.unequipItem('armor')">unequip</button>` : ''}
+          <div style="margin-bottom: 10px; font-size: 13px;">
+            <strong>Armor:</strong> ${this.player.equipment.armor ? this.equipment[this.player.equipment.armor].name : 'None'}
+            ${this.player.equipment.armor ? `<button class="btn" style="padding: 4px 8px; font-size: 10px; margin-left: 8px;" onclick="game.unequipItem('armor')">unequip</button>` : ''}
           </div>
-          <div style="margin-top: 15px; padding-top: 15px; border-top: 2px solid rgba(255,255,255,0.2);">
-            <div style="font-size: 12px; margin-bottom: 5px;"><strong>Total Attack:</strong> ${this.getTotalAttack()}</div>
-            <div style="font-size: 12px;"><strong>Total Defense:</strong> ${this.getTotalDefense()}</div>
+          <div style="margin-bottom: 10px; font-size: 13px;">
+            <strong>Shield:</strong> ${this.player.equipment.shield ? this.equipment[this.player.equipment.shield].name : 'None'}
+            ${this.player.equipment.shield ? `<button class="btn" style="padding: 4px 8px; font-size: 10px; margin-left: 8px;" onclick="game.unequipItem('shield')">unequip</button>` : ''}
+          </div>
+          <div style="margin-top: 15px; padding-top: 15px; border-top: 2px solid rgba(255,215,0,0.3); font-size: 13px;">
+            <div style="margin-bottom: 5px;"><strong>Total Attack:</strong> ${this.getTotalAttack()}</div>
+            <div><strong>Total Defense:</strong> ${this.getTotalDefense()}</div>
           </div>
           ${this.player.inventory.length > 0 ? `
-            <div style="margin-top: 15px; padding-top: 15px; border-top: 2px solid rgba(255,255,255,0.2);">
-              <strong style="display: block; margin-bottom: 10px;">Inventory:</strong>
+            <div style="margin-top: 15px; padding-top: 15px; border-top: 2px solid rgba(255,215,0,0.3);">
+              <strong style="display: block; margin-bottom: 10px; font-size: 13px;">Inventory:</strong>
               ${this.player.inventory.map(itemId => {
                 const item = this.equipment[itemId];
                 const isEquipped = this.player.equipment[item.type] === itemId;
@@ -1273,70 +1057,30 @@
             </div>
           `;
         } else {
-          const locationEnemies = this.locations[this.player.location].enemies;
-
           container.innerHTML = `
             <div class="section">
-              <div class="section-title">LOCAL ENEMIES - ${this.locations[this.player.location].name.toUpperCase()}</div>
-              <div class="item-list">
-                ${locationEnemies.map(enemyKey => {
-                  const enemy = this.enemies[enemyKey];
-                  return `
-                    <div class="item">
-                      <div class="item-info">
-                        <div class="item-name">${enemy.sprite} ${enemy.name}</div>
-                        <div class="item-desc">HP: ${enemy.maxHealth} | Attack: ${enemy.attack} | Defense: ${enemy.defense}</div>
-                      </div>
-                      <button class="btn btn-combat" onclick="game.startCombat('${enemyKey}')">Fight</button>
-                    </div>
-                  `;
-                }).join('')}
+              <div class="section-title">NO ACTIVE COMBAT</div>
+              <div style="text-align: center; padding: 40px 20px; font-size: 14px; line-height: 1.8;">
+                <div style="font-size: 48px; margin-bottom: 15px;">⚔️</div>
+                <div style="margin-bottom: 20px;">Go to the Explore tab and search areas to find enemies.</div>
+                <div style="font-size: 12px; color: rgba(245,241,232,0.6);">Different locations have different creatures.</div>
               </div>
-            </div>
-            <div class="section">
-              <div class="section-title">REST</div>
-              <div style="margin-bottom: 15px; font-size: 13px; line-height: 1.6;">
-                Restore health to maximum. Costs 20 energy.
-              </div>
-              <button class="btn" onclick="game.rest()">💤 Rest (20 energy)</button>
             </div>
           `;
         }
-      },
-
-      renderTravelTab() {
-        const container = document.getElementById('locationsContainer');
-        container.innerHTML = Object.keys(this.locations).map(locationKey => {
-          const location = this.locations[locationKey];
-          const isCurrent = this.player.location === locationKey;
-
-          return `
-            <div class="item" style="${isCurrent ? 'border-color: #00D9FF; background: rgba(0, 217, 255, 0.1);' : ''}">
-              <div class="item-info">
-                <div class="item-name">${location.name} ${isCurrent ? '<span class="equipped-tag">CURRENT</span>' : ''}</div>
-                <div class="item-desc">${location.desc}</div>
-              </div>
-              <button class="btn btn-travel" ${isCurrent ? 'disabled' : ''} onclick="game.travelTo('${locationKey}')">
-                ${isCurrent ? 'here' : 'travel'}
-              </button>
-            </div>
-          `;
-        }).join('');
       },
 
       renderQuestsTab() {
         const container = document.getElementById('questsContainer');
         container.innerHTML = this.quests.map(quest => {
           const isCompleted = this.player.completedQuests.includes(quest.id);
-          const progress = quest.progress || 0;
-          const maxProgress = quest.requires.count || 1;
 
           return `
             <div class="quest-item ${isCompleted ? 'quest-completed' : ''}">
               <div class="quest-title">${quest.title} ${isCompleted ? '✓' : ''}</div>
-              <div class="quest-desc">${quest.desc}</div>
-              ${!isCompleted && quest.requires.count ? `<div style="font-size: 11px; margin: 5px 0; color: rgba(255,255,255,0.7);">Progress: ${progress}/${maxProgress}</div>` : ''}
-              <div class="quest-reward">Reward: $${quest.reward.money} + ${quest.reward.xp} XP</div>
+              <div style="font-size: 12px; line-height: 1.5; margin-bottom: 8px;">${quest.desc}</div>
+              ${!isCompleted && quest.requires.count ? `<div style="font-size: 11px; margin: 5px 0; color: rgba(255,215,0,0.8);">Progress: ${quest.progress || 0}/${quest.requires.count}</div>` : ''}
+              <div style="font-size: 11px; color: rgba(0,217,255,0.9); font-weight: 700;">Reward: ${quest.reward.gold}g + ${quest.reward.xp} XP</div>
             </div>
           `;
         }).join('');
@@ -1359,8 +1103,8 @@
                 </div>
                 <div class="item-desc">${item.desc}</div>
               </div>
-              <span class="item-price">$${item.price}</span>
-              <button class="btn" ${owned ? 'disabled' : ''} onclick="game.buyEquipment('${itemId}')">
+              <span class="item-price">${item.price}g</span>
+              <button class="btn" style="padding: 8px 15px; font-size: 12px;" ${owned ? 'disabled' : ''} onclick="game.buyEquipment('${itemId}')">
                 ${owned ? 'owned' : 'buy'}
               </button>
             </div>
@@ -1369,41 +1113,28 @@
       },
 
       saveGame() {
-        localStorage.setItem('brooklynRPG', JSON.stringify(this.player));
+        localStorage.setItem('brooklynQuest', JSON.stringify(this.player));
       },
 
       loadGame() {
-        const saved = localStorage.getItem('brooklynRPG');
+        const saved = localStorage.getItem('brooklynQuest');
         if (saved) {
           const loaded = JSON.parse(saved);
           this.player = { ...this.player, ...loaded };
 
-          // Ensure new properties exist
-          if (!this.player.skills.attack) {
-            this.player.skills.attack = { xp: 0, level: 1 };
-            this.player.skills.defense = { xp: 0, level: 1 };
-          }
-          if (!this.player.equipment) {
-            this.player.equipment = { weapon: null, armor: null };
-          }
-          if (!this.player.inventory) {
-            this.player.inventory = [];
-          }
-          if (!this.player.completedQuests) {
-            this.player.completedQuests = [];
-          }
+          if (!this.player.defeatedEnemies) this.player.defeatedEnemies = {};
+          if (!this.player.position) this.player.position = { x: 2, y: 2 };
         }
       },
 
       resetGame() {
-        if (confirm('reset all progress? this cannot be undone.')) {
-          localStorage.removeItem('brooklynRPG');
+        if (confirm('Reset all progress? This cannot be undone.')) {
+          localStorage.removeItem('brooklynQuest');
           location.reload();
         }
       }
     };
 
-    // Initialize game on load
     window.addEventListener('DOMContentLoaded', () => game.init());
   </script>
 </body>
