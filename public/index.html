@@ -22,6 +22,7 @@
       background: #F5F1E8;
       color: #1A1A1A;
       overflow-x: hidden;
+      scroll-snap-type: y mandatory;
     }
 
     /* Hero Section */
@@ -33,6 +34,8 @@
       position: relative;
       overflow: hidden;
       cursor: crosshair;
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
     }
 
     .hero-bg {
@@ -290,6 +293,8 @@
       box-sizing: border-box;
       overflow: hidden;
       position: relative;
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
     }
 
     .sites-section::before {
@@ -579,6 +584,7 @@
       color: white;
       padding: 40px 20px;
       text-align: center;
+      scroll-snap-align: start;
     }
 
     footer p {
@@ -933,7 +939,11 @@
       }
 
       .section {
-        padding: 60px 20px;
+        padding: 0;
+      }
+
+      .sites-section {
+        padding: 30px 20px;
       }
     }
 
