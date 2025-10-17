@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>realname studio</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;700&family=Permanent+Marker&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: #F5F1E8;
+      color: #1A1A1A;
+      overflow-x: hidden;
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      cursor: crosshair;
+    }
+
+    .hero-bg {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .hero-shape {
+      position: absolute;
+      border: 5px solid #1A1A1A;
+      opacity: 0.15;
+      animation: float 20s infinite ease-in-out;
+      mix-blend-mode: multiply;
+    }
+
+    .hero-shape:nth-child(1) {
+      width: 400px;
+      height: 400px;
+      background: #6B4C9A;
+      top: 5%;
+      left: -5%;
+      transform: rotate(25deg);
+      animation-delay: 0s;
+    }
+
+    .hero-shape:nth-child(2) {
+      width: 300px;
+      height: 300px;
+      background: #FF006E;
+      bottom: 15%;
+      right: 5%;
+      border-radius: 50%;
+      animation-delay: 2s;
+    }
+
+    .hero-shape:nth-child(3) {
+      width: 350px;
+      height: 350px;
+      background: #00D9FF;
+      top: 40%;
+      right: -5%;
+      transform: rotate(-35deg);
+      animation-delay: 4s;
+      clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    }
+
+    .hero-shape:nth-child(4) {
+      width: 250px;
+      height: 250px;
+      background: #FF6B35;
+      top: 15%;
+      left: 50%;
+      transform: rotate(45deg);
+      animation-delay: 1s;
+    }
+
+    .hero-shape:nth-child(5) {
+      width: 180px;
+      height: 180px;
+      background: #6B4C9A;
+      bottom: 25%;
+      left: 20%;
+      border-radius: 50%;
+      animation-delay: 3s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(var(--rotate, 0deg)); }
+      50% { transform: translateY(-50px) rotate(calc(var(--rotate, 0deg) + 15deg)); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+    }
+
+    .logo-card {
+      background: transparent;
+      padding: 0;
+      border: none;
+      box-shadow: none;
+      transform: none;
+      margin-bottom: 60px;
+      display: inline-block;
+    }
+
+    .logo-card h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 120px;
+      letter-spacing: 12px;
+      color: #1A1A1A;
+      line-height: 0.85;
+      position: relative;
+      display: inline-block;
+      text-shadow:
+        4px 4px 0 #6B4C9A,
+        8px 8px 0 #FF006E,
+        12px 12px 0 #00D9FF;
+      transition: all 0.3s ease;
+    }
+
+    .logo-card h1:hover {
+      transform: translate(-6px, -6px);
+      text-shadow:
+        10px 10px 0 #6B4C9A,
+        16px 16px 0 #FF006E,
+        22px 22px 0 #00D9FF;
+    }
+
+    .logo-accent {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background: #FF006E;
+      border: 4px solid #1A1A1A;
+      top: -20px;
+      right: -30px;
+      transform: rotate(15deg);
+      animation: spin 8s infinite linear;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(15deg); }
+      to { transform: rotate(375deg); }
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 0;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 32px;
+      letter-spacing: 4px;
+      cursor: pointer;
+      border: none;
+      background: none;
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      text-decoration: none;
+      display: inline-block;
+      position: relative;
+      color: #1A1A1A;
+      overflow: hidden;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: #1A1A1A;
+      transform-origin: right;
+      transition: transform 0.3s ease;
+    }
+
+    .btn::after {
+      content: '→';
+      position: absolute;
+      right: -30px;
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover::before {
+      transform: scaleX(0);
+      transform-origin: left;
+    }
+
+    .btn:hover::after {
+      right: -25px;
+      opacity: 1;
+    }
+
+    .btn:hover {
+      transform: translateX(10px);
+      color: #FF006E;
+    }
+
+    .btn-secondary {
+      color: #6B4C9A;
+    }
+
+    .btn-secondary:hover {
+      color: #00D9FF;
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: bounce 2s infinite;
+      cursor: pointer;
+      width: 50px;
+      height: 50px;
+      border: 4px solid #1A1A1A;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #FF006E;
+      transition: all 0.3s ease;
+    }
+
+    .scroll-indicator:hover {
+      background: #00D9FF;
+      transform: translateX(-50%) scale(1.1);
+      animation: none;
+    }
+
+    .scroll-indicator span {
+      font-size: 24px;
+      color: white;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(-10px); }
+    }
+
+    /* Section Styles */
+    .section {
+      padding: 120px 20px;
+      position: relative;
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 80px;
+      letter-spacing: 8px;
+      color: #1A1A1A;
+      text-align: center;
+      margin-bottom: 80px;
+      position: relative;
+      display: inline-block;
+      width: 100%;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 10px;
+      background: #FF006E;
+      border: 3px solid #1A1A1A;
+    }
+
+    /* Sites Section */
+    .sites-section {
+      background: #F5F1E8;
+    }
+
+    .sites-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 60px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .site-card {
+      background: white;
+      padding: 80px 60px;
+      border: 6px solid #1A1A1A;
+      text-decoration: none;
+      color: #1A1A1A;
+      display: block;
+      position: relative;
+      transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      overflow: hidden;
+    }
+
+    .site-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 0;
+      background: linear-gradient(135deg, #6B4C9A, #FF006E);
+      transition: all 0.5s ease;
+      z-index: 0;
+    }
+
+    .site-card:hover::before {
+      height: 100%;
+    }
+
+    .site-card:hover {
+      transform: translateY(-15px) rotate(1deg);
+      box-shadow: 30px 30px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    .site-visual {
+      position: relative;
+      z-index: 1;
+      margin-bottom: 30px;
+    }
+
+    .site-icon {
+      font-size: 80px;
+      margin-bottom: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .site-card:hover .site-icon {
+      transform: scale(1.2) rotate(10deg);
+    }
+
+    .site-card h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 56px;
+      letter-spacing: 6px;
+      margin-bottom: 20px;
+      transition: color 0.3s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    .site-card:hover h3 {
+      color: white;
+    }
+
+    .site-card p {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 25px;
+      transition: color 0.3s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    .site-card:hover p {
+      color: white;
+    }
+
+    .site-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .tag {
+      background: transparent;
+      border: 3px solid #1A1A1A;
+      padding: 8px 16px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+    }
+
+    .site-card:hover .tag {
+      background: white;
+      color: #1A1A1A;
+      border-color: white;
+    }
+
+    /* Contact Section */
+    .contact-section {
+      background: #6B4C9A;
+      color: white;
+      text-align: center;
+    }
+
+    .contact-section .section-title {
+      color: #00D9FF;
+    }
+
+    .contact-card {
+      background: #F5F1E8;
+      padding: 50px;
+      border: 5px solid #1A1A1A;
+      box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.4);
+      max-width: 600px;
+      margin: 0 auto;
+      transform: rotate(1deg);
+    }
+
+    .contact-card h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 36px;
+      color: #1A1A1A;
+      margin-bottom: 30px;
+      letter-spacing: 2px;
+    }
+
+    .contact-methods {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .contact-method {
+      background: white;
+      padding: 20px;
+      border: 3px solid #1A1A1A;
+      text-decoration: none;
+      color: #1A1A1A;
+      font-size: 18px;
+      font-weight: 600;
+      transition: all 0.3s;
+      display: block;
+    }
+
+    .contact-method:hover {
+      background: #FF006E;
+      color: white;
+      transform: translateX(10px);
+      box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.3);
+    }
+
+    .contact-method span {
+      font-size: 28px;
+      margin-right: 15px;
+      display: inline-block;
+      transition: transform 0.3s ease;
+    }
+
+    .contact-method:hover span {
+      transform: translateX(10px);
+    }
+
+    /* Footer */
+    footer {
+      background: #1A1A1A;
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    footer p {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      letter-spacing: 2px;
+    }
+
+    .footer-links {
+      margin-top: 20px;
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: #00D9FF;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover {
+      color: #FF006E;
+    }
+
+    /* Floating Action Button */
+    .fab {
+      position: fixed;
+      bottom: 40px;
+      right: 40px;
+      width: 80px;
+      height: 80px;
+      background: #FF006E;
+      border: 4px solid #1A1A1A;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      color: white;
+      cursor: pointer;
+      box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+      transition: all 0.3s;
+      animation: pulse 2s infinite;
+      text-decoration: none;
+      letter-spacing: 3px;
+      text-align: center;
+    }
+
+    .fab:hover {
+      transform: scale(1.1) rotate(10deg);
+      animation: none;
+      background: #00D9FF;
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.3), 0 0 0 0 rgba(255, 0, 110, 0.7); }
+      50% { box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.3), 0 0 0 20px rgba(255, 0, 110, 0); }
+    }
+
+    /* Mobile responsive */
+    @media (max-width: 768px) {
+      .logo-card h1 {
+        font-size: 64px;
+        letter-spacing: 6px;
+        text-shadow:
+          3px 3px 0 #6B4C9A,
+          6px 6px 0 #FF006E,
+          9px 9px 0 #00D9FF;
+      }
+
+      .logo-card h1:hover {
+        transform: translate(-4px, -4px);
+        text-shadow:
+          7px 7px 0 #6B4C9A,
+          12px 12px 0 #FF006E,
+          17px 17px 0 #00D9FF;
+      }
+
+      .logo-accent {
+        width: 30px;
+        height: 30px;
+        top: -15px;
+        right: -20px;
+      }
+
+      .section-title {
+        font-size: 56px;
+      }
+
+      .btn {
+        font-size: 28px;
+      }
+
+      .sites-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .site-card {
+        padding: 60px 40px;
+      }
+
+      .site-card h3 {
+        font-size: 42px;
+      }
+
+      .site-icon {
+        font-size: 60px;
+      }
+
+      .fab {
+        width: 60px;
+        height: 60px;
+        font-size: 20px;
+        bottom: 20px;
+        right: 20px;
+      }
+
+      .hero-shape {
+        opacity: 0.1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Floating Action Button -->
+  <a href="#contact" class="fab">HI</a>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-bg">
+      <div class="hero-shape"></div>
+      <div class="hero-shape"></div>
+      <div class="hero-shape"></div>
+      <div class="hero-shape"></div>
+      <div class="hero-shape"></div>
+    </div>
+
+    <div class="hero-content">
+      <div class="logo-card">
+        <h1>
+          REALNAME<br>STUDIO
+          <div class="logo-accent"></div>
+        </h1>
+      </div>
+
+      <div class="cta-buttons">
+        <a href="#sites" class="btn btn-primary">SITES</a>
+        <a href="#contact" class="btn">CONNECT</a>
+      </div>
+    </div>
+
+    <div class="scroll-indicator" onclick="document.getElementById('sites').scrollIntoView({behavior: 'smooth'})">
+      <span>↓</span>
+    </div>
+  </section>
+
+  <!-- Sites Section -->
+  <section id="sites" class="section sites-section">
+    <h2 class="section-title">SITES</h2>
+
+    <div class="sites-grid">
+      <a href="https://brooklynsounds.example" target="_blank" class="site-card">
+        <div class="site-visual">
+          <div class="site-icon">♪</div>
+          <h3>BROOKLYN SOUNDS</h3>
+        </div>
+        <p>Interactive music map of Brooklyn's hip-hop culture</p>
+        <div class="site-tags">
+          <span class="tag">Node.js</span>
+          <span class="tag">Leaflet</span>
+          <span class="tag">SQLite</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section contact-section">
+    <h2 class="section-title">CONNECT</h2>
+
+    <div class="contact-card">
+      <h3>SAY HI</h3>
+      <div class="contact-methods">
+        <a href="mailto:hello@realnamestudio.com" class="contact-method">
+          <span>→</span>
+          hello@realnamestudio.com
+        </a>
+        <a href="mailto:hello@realname.studio" class="contact-method">
+          <span>→</span>
+          hello@realname.studio
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>REALNAME STUDIO © 2024</p>
+    <div class="footer-links">
+      <a href="#sites">Sites</a>
+      <a href="#contact">Contact</a>
+      <a href="mailto:hello@realnamestudio.com">Email</a>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth scroll for all anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Add parallax effect to hero shapes
+    document.addEventListener('mousemove', (e) => {
+      const shapes = document.querySelectorAll('.hero-shape');
+      const mouseX = e.clientX / window.innerWidth;
+      const mouseY = e.clientY / window.innerHeight;
+
+      shapes.forEach((shape, index) => {
+        const speed = (index + 1) * 30;
+        const x = (mouseX - 0.5) * speed;
+        const y = (mouseY - 0.5) * speed;
+        shape.style.transform = `translate(${x}px, ${y}px)`;
+      });
+    });
+
+    // Click to create ripple effect
+    const hero = document.querySelector('.hero');
+    hero.addEventListener('click', (e) => {
+      const ripple = document.createElement('div');
+      ripple.style.position = 'absolute';
+      ripple.style.width = '100px';
+      ripple.style.height = '100px';
+      ripple.style.borderRadius = '50%';
+      ripple.style.border = '4px solid #FF006E';
+      ripple.style.left = e.clientX - 50 + 'px';
+      ripple.style.top = e.clientY - 50 + 'px';
+      ripple.style.pointerEvents = 'none';
+      ripple.style.animation = 'ripple 1s ease-out forwards';
+      hero.appendChild(ripple);
+
+      setTimeout(() => ripple.remove(), 1000);
+    });
+
+    // Add ripple animation
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes ripple {
+        to {
+          transform: scale(3);
+          opacity: 0;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+
+    // Animate cards on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Observe all cards
+    document.querySelectorAll('.site-card').forEach(card => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(30px)';
+      card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(card);
+    });
+  </script>
+</body>
+</html>
