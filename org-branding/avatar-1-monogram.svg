@@ -1,0 +1,13 @@
+<svg width="400" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="400" height="400" fill="#F5F1E8"/>
+
+  <!-- Layered Shadow Text Effect -->
+  <text x="200" y="260" font-family="Arial Black, sans-serif" font-size="180" font-weight="900" text-anchor="middle" fill="#00D9FF">RS</text>
+  <text x="194" y="254" font-family="Arial Black, sans-serif" font-size="180" font-weight="900" text-anchor="middle" fill="#FF006E">RS</text>
+  <text x="188" y="248" font-family="Arial Black, sans-serif" font-size="180" font-weight="900" text-anchor="middle" fill="#6B4C9A">RS</text>
+  <text x="182" y="242" font-family="Arial Black, sans-serif" font-size="180" font-weight="900" text-anchor="middle" fill="#1A1A1A">RS</text>
+
+  <!-- Border -->
+  <rect x="0" y="0" width="400" height="400" fill="none" stroke="#1A1A1A" stroke-width="8"/>
+</svg>

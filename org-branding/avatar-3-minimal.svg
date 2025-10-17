@@ -1,0 +1,14 @@
+<svg width="400" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="400" height="400" fill="#1A1A1A"/>
+
+  <!-- Accent square (rotated) -->
+  <rect x="180" y="180" width="40" height="40" fill="#FF006E" stroke="#00D9FF" stroke-width="4" transform="rotate(45 200 200)"/>
+
+  <!-- Main Text -->
+  <text x="200" y="240" font-family="Arial Black, sans-serif" font-size="72" font-weight="900" text-anchor="middle" fill="#F5F1E8">RN</text>
+  <text x="200" y="290" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="middle" fill="#00D9FF" letter-spacing="4">STUDIOS</text>
+
+  <!-- Border -->
+  <rect x="0" y="0" width="400" height="400" fill="none" stroke="#00D9FF" stroke-width="6"/>
+</svg>
