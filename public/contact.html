@@ -155,31 +155,137 @@
       transform: translateX(10px);
     }
 
-    /* Mobile */
+    /* Tablet and Mobile */
     @media (max-width: 768px) {
+      .container {
+        padding: 30px 20px;
+      }
+
       .back-btn {
-        top: 20px;
-        left: 20px;
-        padding: 12px 24px;
-        font-size: 20px;
+        top: 25px;
+        left: 25px;
+        padding: 14px 28px;
+        font-size: 22px;
       }
 
       .contact-card {
-        padding: 50px 30px;
+        padding: 60px 35px;
         transform: rotate(0deg);
       }
 
       h1 {
+        font-size: 56px;
+        letter-spacing: 5px;
+      }
+
+      h2 {
+        font-size: 32px;
+        margin: 35px 0 25px;
+      }
+
+      .contact-method {
+        font-size: 17px;
+        padding: 22px;
+      }
+
+      .contact-method span {
+        font-size: 32px;
+      }
+
+      .bg-shape {
+        opacity: 0.6;
+      }
+    }
+
+    /* Small phones */
+    @media (max-width: 480px) {
+      .container {
+        padding: 20px 15px;
+        width: 95%;
+      }
+
+      .back-btn {
+        top: 20px;
+        left: 20px;
+        padding: 12px 22px;
+        font-size: 20px;
+      }
+
+      .contact-card {
+        padding: 40px 25px;
+        box-shadow: 15px 15px 0 rgba(0, 0, 0, 0.4);
+      }
+
+      h1 {
         font-size: 48px;
+        letter-spacing: 4px;
+        margin-bottom: 15px;
       }
 
       h2 {
         font-size: 28px;
+        letter-spacing: 2px;
+        margin: 30px 0 20px;
+        padding-bottom: 12px;
+      }
+
+      .contact-methods {
+        gap: 15px;
       }
 
       .contact-method {
-        font-size: 16px;
-        padding: 20px;
+        font-size: 15px;
+        padding: 18px;
+        word-break: break-word;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .contact-method span {
+        font-size: 28px;
+      }
+    }
+
+    /* Landscape orientation */
+    @media (max-height: 600px) and (orientation: landscape) {
+      body {
+        padding: 40px 20px;
+      }
+
+      .back-btn {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+      }
+
+      .contact-card {
+        padding: 40px 30px;
+      }
+
+      h1 {
+        font-size: 42px;
+        margin-bottom: 15px;
+      }
+
+      h2 {
+        font-size: 24px;
+        margin: 25px 0 15px;
+      }
+
+      .contact-methods {
+        gap: 12px;
+      }
+    }
+
+    /* Reduce motion for better performance */
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
       }
     }
   </style>

@@ -563,8 +563,12 @@
       50% { box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.3), 0 0 0 20px rgba(255, 0, 110, 0); }
     }
 
-    /* Mobile responsive */
+    /* Tablet and Mobile */
     @media (max-width: 768px) {
+      .section {
+        padding: 80px 20px;
+      }
+
       .logo-card h1 {
         font-size: 64px;
         letter-spacing: 6px;
@@ -591,10 +595,15 @@
 
       .section-title {
         font-size: 56px;
+        margin-bottom: 50px;
       }
 
       .btn {
         font-size: 28px;
+      }
+
+      .cta-buttons {
+        gap: 25px;
       }
 
       .sites-grid {
@@ -615,7 +624,7 @@
       }
 
       .site-modal-content {
-        padding: 40px;
+        padding: 40px 30px;
         width: 95%;
       }
 
@@ -623,16 +632,199 @@
         font-size: 42px;
       }
 
-      .fab {
+      .site-modal-close {
         width: 60px;
         height: 60px;
+        font-size: 40px;
+        top: 15px;
+        right: 15px;
+      }
+
+      .fab {
+        width: 65px;
+        height: 65px;
+        font-size: 22px;
+        bottom: 25px;
+        right: 25px;
+      }
+
+      .scroll-indicator {
+        width: 55px;
+        height: 55px;
+        bottom: 30px;
+      }
+
+      .hero-shape {
+        opacity: 0.08;
+      }
+
+      footer {
+        padding: 35px 20px;
+      }
+
+      .footer-links {
+        gap: 25px;
+      }
+
+      .footer-links a {
+        padding: 8px 12px;
+        display: inline-block;
+      }
+    }
+
+    /* Small phones */
+    @media (max-width: 480px) {
+      .section {
+        padding: 60px 15px;
+      }
+
+      .logo-card {
+        margin-bottom: 40px;
+      }
+
+      .logo-card h1 {
+        font-size: 56px;
+        letter-spacing: 4px;
+        text-shadow:
+          2px 2px 0 #6B4C9A,
+          4px 4px 0 #FF006E,
+          6px 6px 0 #00D9FF;
+      }
+
+      .logo-card h1:hover {
+        transform: translate(-3px, -3px);
+        text-shadow:
+          5px 5px 0 #6B4C9A,
+          9px 9px 0 #FF006E,
+          13px 13px 0 #00D9FF;
+      }
+
+      .logo-accent {
+        width: 25px;
+        height: 25px;
+        top: -12px;
+        right: -15px;
+      }
+
+      .section-title {
+        font-size: 48px;
+        letter-spacing: 4px;
+        margin-bottom: 40px;
+      }
+
+      .section-title::after {
+        width: 80px;
+        height: 8px;
+      }
+
+      .btn {
+        font-size: 26px;
+        letter-spacing: 3px;
+      }
+
+      .cta-buttons {
+        gap: 20px;
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .site-marker {
+        padding: 40px 25px;
+      }
+
+      .site-marker h3 {
+        font-size: 32px;
+        letter-spacing: 3px;
+      }
+
+      .site-icon {
+        font-size: 55px;
+      }
+
+      .site-modal-content {
+        padding: 30px 20px;
+        width: 96%;
+      }
+
+      .site-modal h2 {
+        font-size: 36px;
+        letter-spacing: 3px;
+        padding-bottom: 15px;
+      }
+
+      .site-modal p {
+        font-size: 16px;
+      }
+
+      .site-modal .visit-btn {
+        width: 100%;
+        padding: 16px 30px;
+        font-size: 22px;
+        text-align: center;
+      }
+
+      .fab {
+        width: 58px;
+        height: 58px;
         font-size: 20px;
         bottom: 20px;
         right: 20px;
       }
 
-      .hero-shape {
-        opacity: 0.1;
+      .scroll-indicator {
+        width: 50px;
+        height: 50px;
+        bottom: 25px;
+      }
+
+      footer p {
+        font-size: 18px;
+      }
+
+      .footer-links {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .footer-links a {
+        font-size: 16px;
+        padding: 10px 15px;
+      }
+    }
+
+    /* Landscape orientation on mobile */
+    @media (max-height: 600px) and (orientation: landscape) {
+      .hero {
+        height: auto;
+        min-height: 100vh;
+        padding: 40px 20px;
+      }
+
+      .logo-card {
+        margin-bottom: 25px;
+      }
+
+      .logo-card h1 {
+        font-size: 48px;
+      }
+
+      .scroll-indicator {
+        display: none;
+      }
+
+      .section {
+        padding: 60px 20px;
+      }
+    }
+
+    /* Reduce motion for better mobile performance */
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
       }
     }
   </style>
