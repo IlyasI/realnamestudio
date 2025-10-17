@@ -1,12 +1,10 @@
-name: Tests
+name: Test and Deploy
 
 on:
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
-  # Run before Vercel deploys
-  deployment_status:
 
 jobs:
   test:
@@ -47,3 +45,21 @@ jobs:
         name: playwright-screenshots
         path: test-results/
         retention-days: 7
+
+  deploy:
+    needs: test
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    environment: realnamestudio
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Deploy to Vercel
+      uses: amondnet/vercel-action@v25
+      with:
+        vercel-token: ${{ secrets.VERCEL_TOKEN }}
+        vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+        vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+        vercel-args: '--prod'
