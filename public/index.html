@@ -387,6 +387,24 @@
       box-shadow: 0 0 30px rgba(0, 217, 255, 0.1);
     }
 
+    /* Touch device support - show some hover state always */
+    @media (hover: none) and (pointer: coarse) {
+      .site-marker {
+        box-shadow: 0 0 30px rgba(0, 217, 255, 0.3);
+        animation: mobileGlow 2s ease-in-out infinite;
+      }
+
+      .site-marker::after {
+        opacity: 0.5;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes mobileGlow {
+      0%, 100% { box-shadow: 0 0 30px rgba(0, 217, 255, 0.3); }
+      50% { box-shadow: 0 0 40px rgba(255, 0, 110, 0.4); }
+    }
+
     .site-marker::before {
       content: '';
       position: absolute;
@@ -411,6 +429,20 @@
       transition: all 0.3s ease;
       z-index: 2;
       font-weight: bold;
+    }
+
+    /* Mobile: Show tap hint */
+    @media (hover: none) and (pointer: coarse) {
+      .site-marker::after {
+        content: 'TAP';
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 18px;
+        letter-spacing: 2px;
+        opacity: 0.5;
+        transform: translateX(0);
+        bottom: 12px;
+        right: 15px;
+      }
     }
 
     .site-marker:hover::before {
@@ -715,18 +747,21 @@
       .sites-grid {
         grid-template-columns: 1fr;
         gap: 20px;
+        max-width: 500px;
+        margin: 0 auto;
       }
 
       .site-marker {
-        padding: 35px 25px;
+        padding: 40px 30px;
+        max-width: 100%;
       }
 
       .site-marker h3 {
-        font-size: 32px;
+        font-size: 38px;
       }
 
       .site-icon {
-        font-size: 45px;
+        font-size: 55px;
       }
 
       .site-modal-content {
@@ -856,17 +891,21 @@
         width: 100%;
       }
 
+      .sites-grid {
+        max-width: 400px;
+      }
+
       .site-marker {
-        padding: 30px 20px;
+        padding: 35px 25px;
       }
 
       .site-marker h3 {
-        font-size: 28px;
+        font-size: 32px;
         letter-spacing: 2px;
       }
 
       .site-icon {
-        font-size: 40px;
+        font-size: 50px;
       }
 
       .site-modal-content {
