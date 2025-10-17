@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - realname studio</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: #6B4C9A;
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Background shapes */
+    .bg-shape {
+      position: absolute;
+      border: 5px solid rgba(255, 255, 255, 0.1);
+      animation: float 20s infinite ease-in-out;
+    }
+
+    .bg-shape:nth-child(1) {
+      width: 300px;
+      height: 300px;
+      background: rgba(255, 0, 110, 0.1);
+      top: 10%;
+      left: 5%;
+      border-radius: 50%;
+      animation-delay: 0s;
+    }
+
+    .bg-shape:nth-child(2) {
+      width: 200px;
+      height: 200px;
+      background: rgba(0, 217, 255, 0.1);
+      bottom: 15%;
+      right: 10%;
+      animation-delay: 2s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-30px) rotate(15deg); }
+    }
+
+    .container {
+      position: relative;
+      z-index: 10;
+      max-width: 800px;
+      width: 90%;
+      padding: 40px;
+    }
+
+    .back-btn {
+      position: fixed;
+      top: 40px;
+      left: 40px;
+      background: #FF006E;
+      border: 4px solid #1A1A1A;
+      color: white;
+      padding: 15px 30px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 24px;
+      letter-spacing: 3px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.3);
+      z-index: 100;
+    }
+
+    .back-btn:hover {
+      background: #00D9FF;
+      transform: translateY(-4px);
+      box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.3);
+    }
+
+    .contact-card {
+      background: #F5F1E8;
+      padding: 80px 60px;
+      border: 6px solid #1A1A1A;
+      box-shadow: 20px 20px 0 rgba(0, 0, 0, 0.4);
+      transform: rotate(-1deg);
+      color: #1A1A1A;
+    }
+
+    h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 72px;
+      color: #6B4C9A;
+      margin-bottom: 20px;
+      letter-spacing: 6px;
+      line-height: 1;
+    }
+
+    h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 36px;
+      color: #1A1A1A;
+      margin: 40px 0 30px;
+      letter-spacing: 3px;
+      border-bottom: 4px dashed #1A1A1A;
+      padding-bottom: 15px;
+    }
+
+    .contact-methods {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .contact-method {
+      background: white;
+      padding: 25px;
+      border: 4px solid #1A1A1A;
+      text-decoration: none;
+      color: #1A1A1A;
+      font-size: 20px;
+      font-weight: 600;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .contact-method:hover {
+      background: #FF006E;
+      color: white;
+      transform: translateX(15px);
+      box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.3);
+    }
+
+    .contact-method span {
+      font-size: 36px;
+      transition: transform 0.3s ease;
+    }
+
+    .contact-method:hover span {
+      transform: translateX(10px);
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .back-btn {
+        top: 20px;
+        left: 20px;
+        padding: 12px 24px;
+        font-size: 20px;
+      }
+
+      .contact-card {
+        padding: 50px 30px;
+        transform: rotate(0deg);
+      }
+
+      h1 {
+        font-size: 48px;
+      }
+
+      h2 {
+        font-size: 28px;
+      }
+
+      .contact-method {
+        font-size: 16px;
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-shape"></div>
+  <div class="bg-shape"></div>
+
+  <a href="/" class="back-btn">← BACK</a>
+
+  <div class="container">
+    <div class="contact-card">
+      <h1>CONNECT</h1>
+
+      <h2>SAY HI</h2>
+      <div class="contact-methods">
+        <a href="mailto:hello@realnamestudio.com" class="contact-method">
+          <span>→</span>
+          hello@realnamestudio.com
+        </a>
+        <a href="mailto:hello@realname.studio" class="contact-method">
+          <span>→</span>
+          hello@realname.studio
+        </a>
+      </div>
+
+      <h2>SOCIALS</h2>
+      <div class="contact-methods">
+        <a href="https://github.com/IlyasI" target="_blank" class="contact-method">
+          <span>→</span>
+          GitHub
+        </a>
+        <a href="https://twitter.com/yourusername" target="_blank" class="contact-method">
+          <span>→</span>
+          Twitter
+        </a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

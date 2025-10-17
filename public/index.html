@@ -294,30 +294,42 @@
 
     /* Sites Section */
     .sites-section {
-      background: #F5F1E8;
+      background: #1A1A1A;
+      min-height: 80vh;
+    }
+
+    .sites-section .section-title {
+      color: #00D9FF;
+    }
+
+    .sites-section .section-title::after {
+      background: #FF006E;
     }
 
     .sites-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-      gap: 60px;
-      max-width: 1200px;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 40px;
+      max-width: 1400px;
       margin: 0 auto;
     }
 
-    .site-card {
-      background: white;
-      padding: 80px 60px;
-      border: 6px solid #1A1A1A;
-      text-decoration: none;
-      color: #1A1A1A;
-      display: block;
+    .site-item {
+      cursor: pointer;
       position: relative;
-      transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    .site-marker {
+      background: #F5F1E8;
+      border: 5px solid white;
+      padding: 60px 40px;
+      text-align: center;
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      position: relative;
       overflow: hidden;
     }
 
-    .site-card::before {
+    .site-marker::before {
       content: '';
       position: absolute;
       top: 0;
@@ -325,71 +337,130 @@
       width: 100%;
       height: 0;
       background: linear-gradient(135deg, #6B4C9A, #FF006E);
-      transition: all 0.5s ease;
+      transition: all 0.4s ease;
       z-index: 0;
     }
 
-    .site-card:hover::before {
+    .site-marker:hover::before {
       height: 100%;
     }
 
-    .site-card:hover {
-      transform: translateY(-15px) rotate(1deg);
-      box-shadow: 30px 30px 0 rgba(0, 0, 0, 0.2);
-    }
-
-    .site-visual {
-      position: relative;
-      z-index: 1;
-      margin-bottom: 30px;
+    .site-marker:hover {
+      transform: scale(1.05) rotate(-2deg);
+      box-shadow: 20px 20px 0 rgba(255, 255, 255, 0.2);
     }
 
     .site-icon {
       font-size: 80px;
       margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
       transition: all 0.3s ease;
     }
 
-    .site-card:hover .site-icon {
+    .site-marker:hover .site-icon {
       transform: scale(1.2) rotate(10deg);
     }
 
-    .site-card h3 {
+    .site-marker h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 48px;
+      letter-spacing: 4px;
+      color: #1A1A1A;
+      position: relative;
+      z-index: 1;
+      transition: color 0.3s ease;
+    }
+
+    .site-marker:hover h3 {
+      color: white;
+    }
+
+    /* Site Modal */
+    .site-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .site-modal.open {
+      display: flex;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .site-modal-content {
+      background: #F5F1E8;
+      padding: 60px;
+      border: 6px solid #1A1A1A;
+      box-shadow: 20px 20px 0 rgba(0, 0, 0, 0.5);
+      max-width: 700px;
+      width: 90%;
+      position: relative;
+      animation: slideUp 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .site-modal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: #FF006E;
+      border: 4px solid #1A1A1A;
+      color: white;
+      font-size: 36px;
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Bebas Neue', sans-serif;
+      line-height: 1;
+    }
+
+    .site-modal-close:hover {
+      background: #00D9FF;
+      transform: rotate(90deg);
+    }
+
+    .site-modal h2 {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 56px;
-      letter-spacing: 6px;
+      color: #6B4C9A;
       margin-bottom: 20px;
-      transition: color 0.3s ease;
-      position: relative;
-      z-index: 1;
+      letter-spacing: 4px;
+      border-bottom: 4px dashed #1A1A1A;
+      padding-bottom: 20px;
     }
 
-    .site-card:hover h3 {
-      color: white;
-    }
-
-    .site-card p {
+    .site-modal p {
       font-size: 18px;
-      line-height: 1.6;
+      line-height: 1.7;
       margin-bottom: 25px;
-      transition: color 0.3s ease;
-      position: relative;
-      z-index: 1;
+      color: #333;
     }
 
-    .site-card:hover p {
-      color: white;
-    }
-
-    .site-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .tag {
+    .site-modal .tag {
       background: transparent;
       border: 3px solid #1A1A1A;
       padding: 8px 16px;
@@ -397,78 +468,29 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 1px;
+      display: inline-block;
+      margin-right: 10px;
+      margin-bottom: 10px;
+    }
+
+    .site-modal .visit-btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 18px 40px;
+      background: #FF006E;
+      color: white;
+      border: 4px solid #1A1A1A;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 24px;
+      letter-spacing: 3px;
+      text-decoration: none;
       transition: all 0.3s ease;
     }
 
-    .site-card:hover .tag {
-      background: white;
-      color: #1A1A1A;
-      border-color: white;
-    }
-
-    /* Contact Section */
-    .contact-section {
-      background: #6B4C9A;
-      color: white;
-      text-align: center;
-    }
-
-    .contact-section .section-title {
-      color: #00D9FF;
-    }
-
-    .contact-card {
-      background: #F5F1E8;
-      padding: 50px;
-      border: 5px solid #1A1A1A;
-      box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.4);
-      max-width: 600px;
-      margin: 0 auto;
-      transform: rotate(1deg);
-    }
-
-    .contact-card h3 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 36px;
-      color: #1A1A1A;
-      margin-bottom: 30px;
-      letter-spacing: 2px;
-    }
-
-    .contact-methods {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .contact-method {
-      background: white;
-      padding: 20px;
-      border: 3px solid #1A1A1A;
-      text-decoration: none;
-      color: #1A1A1A;
-      font-size: 18px;
-      font-weight: 600;
-      transition: all 0.3s;
-      display: block;
-    }
-
-    .contact-method:hover {
-      background: #FF006E;
-      color: white;
-      transform: translateX(10px);
-      box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.3);
-    }
-
-    .contact-method span {
-      font-size: 28px;
-      margin-right: 15px;
-      display: inline-block;
-      transition: transform 0.3s ease;
-    }
-
-    .contact-method:hover span {
-      transform: translateX(10px);
+    .site-modal .visit-btn:hover {
+      background: #00D9FF;
+      transform: translateY(-4px);
+      box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.3);
     }
 
     /* Footer */
@@ -577,18 +599,28 @@
 
       .sites-grid {
         grid-template-columns: 1fr;
+        gap: 30px;
       }
 
-      .site-card {
-        padding: 60px 40px;
+      .site-marker {
+        padding: 50px 30px;
       }
 
-      .site-card h3 {
-        font-size: 42px;
+      .site-marker h3 {
+        font-size: 36px;
       }
 
       .site-icon {
         font-size: 60px;
+      }
+
+      .site-modal-content {
+        padding: 40px;
+        width: 95%;
+      }
+
+      .site-modal h2 {
+        font-size: 42px;
       }
 
       .fab {
@@ -607,7 +639,7 @@
 </head>
 <body>
   <!-- Floating Action Button -->
-  <a href="#contact" class="fab">HI</a>
+  <a href="/contact.html" class="fab">HI</a>
 
   <!-- Hero Section -->
   <section class="hero">
@@ -629,7 +661,7 @@
 
       <div class="cta-buttons">
         <a href="#sites" class="btn btn-primary">SITES</a>
-        <a href="#contact" class="btn">CONNECT</a>
+        <a href="/contact.html" class="btn">CONNECT</a>
       </div>
     </div>
 
@@ -643,49 +675,32 @@
     <h2 class="section-title">SITES</h2>
 
     <div class="sites-grid">
-      <a href="https://brooklynsounds.example" target="_blank" class="site-card">
-        <div class="site-visual">
+      <div class="site-item" data-site="brooklyn">
+        <div class="site-marker">
           <div class="site-icon">♪</div>
-          <h3>BROOKLYN SOUNDS</h3>
+          <h3>BROOKLYN<br>SOUNDS</h3>
         </div>
-        <p>Interactive music map of Brooklyn's hip-hop culture</p>
-        <div class="site-tags">
-          <span class="tag">Node.js</span>
-          <span class="tag">Leaflet</span>
-          <span class="tag">SQLite</span>
-        </div>
-      </a>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact" class="section contact-section">
-    <h2 class="section-title">CONNECT</h2>
-
-    <div class="contact-card">
-      <h3>SAY HI</h3>
-      <div class="contact-methods">
-        <a href="mailto:hello@realnamestudio.com" class="contact-method">
-          <span>→</span>
-          hello@realnamestudio.com
-        </a>
-        <a href="mailto:hello@realname.studio" class="contact-method">
-          <span>→</span>
-          hello@realname.studio
-        </a>
       </div>
     </div>
   </section>
+
+  <!-- Site Popup Modal -->
+  <div class="site-modal" id="siteModal">
+    <div class="site-modal-content">
+      <button class="site-modal-close" onclick="closeSiteModal()">&times;</button>
+      <div id="siteModalBody"></div>
+    </div>
+  </div>
 
   <!-- Footer -->
   <footer>
     <p>REALNAME STUDIO © 2024</p>
     <div class="footer-links">
       <a href="#sites">Sites</a>
-      <a href="#contact">Contact</a>
+      <a href="/contact.html">Contact</a>
       <a href="mailto:hello@realnamestudio.com">Email</a>
     </div>
-    <p style="margin-top: 20px; font-size: 14px; opacity: 0.7;">made with ♥ in brooklyn</p>
+    <p style="margin-top: 20px; font-size: 14px; opacity: 0.6; font-family: 'Space Grotesk', sans-serif;">made with ♥ in brooklyn</p>
   </footer>
 
   <script>
@@ -760,11 +775,69 @@
     }, observerOptions);
 
     // Observe all cards
-    document.querySelectorAll('.site-card').forEach(card => {
-      card.style.opacity = '0';
-      card.style.transform = 'translateY(30px)';
-      card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-      observer.observe(card);
+    document.querySelectorAll('.site-item').forEach(item => {
+      item.style.opacity = '0';
+      item.style.transform = 'translateY(30px)';
+      item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(item);
+    });
+
+    // Site data
+    const sites = {
+      brooklyn: {
+        name: 'Brooklyn Sounds',
+        description: 'Interactive map showcasing Brooklyn\'s music culture - from legendary hip-hop artists to live venues and street performances. Explore the sounds that shaped a generation.',
+        tags: ['Node.js', 'Leaflet', 'SQLite', 'Express'],
+        url: 'https://brooklynsounds.example'
+      }
+    };
+
+    // Site click handlers
+    document.querySelectorAll('.site-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const siteId = item.dataset.site;
+        const site = sites[siteId];
+        if (site) {
+          openSiteModal(site);
+        }
+      });
+    });
+
+    function openSiteModal(site) {
+      const modal = document.getElementById('siteModal');
+      const modalBody = document.getElementById('siteModalBody');
+
+      modalBody.innerHTML = `
+        <h2>${site.name}</h2>
+        <p>${site.description}</p>
+        <div>
+          ${site.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+        </div>
+        <a href="${site.url}" target="_blank" class="visit-btn">VISIT SITE →</a>
+      `;
+
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeSiteModal() {
+      const modal = document.getElementById('siteModal');
+      modal.classList.remove('open');
+      document.body.style.overflow = 'auto';
+    }
+
+    // Close modal on outside click
+    document.getElementById('siteModal').addEventListener('click', (e) => {
+      if (e.target.id === 'siteModal') {
+        closeSiteModal();
+      }
+    });
+
+    // Close modal on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeSiteModal();
+      }
     });
   </script>
 </body>
