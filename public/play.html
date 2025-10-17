@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>brooklyn rpg - realname studio</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Space Grotesk', monospace;
+      background: #1A1A1A;
+      color: #F5F1E8;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .game-container {
+      max-width: 800px;
+      width: 100%;
+      background: #6B4C9A;
+      border: 6px solid #000;
+      box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.5);
+      padding: 0;
+    }
+
+    .game-header {
+      background: #FF006E;
+      border-bottom: 6px solid #000;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .game-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 36px;
+      letter-spacing: 3px;
+      color: #F5F1E8;
+    }
+
+    .money {
+      font-size: 24px;
+      font-weight: 700;
+      color: #F5F1E8;
+    }
+
+    .game-body {
+      padding: 30px;
+    }
+
+    .character-section {
+      background: #F5F1E8;
+      border: 4px solid #000;
+      padding: 20px;
+      margin-bottom: 20px;
+      color: #1A1A1A;
+    }
+
+    .character-sprite {
+      font-size: 48px;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    .energy-bar {
+      margin-top: 10px;
+    }
+
+    .energy-label {
+      font-weight: 600;
+      margin-bottom: 5px;
+      font-size: 14px;
+    }
+
+    .bar {
+      height: 25px;
+      background: #1A1A1A;
+      border: 3px solid #000;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      background: #00D9FF;
+      transition: width 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 12px;
+      color: #1A1A1A;
+    }
+
+    .section {
+      background: rgba(255, 255, 255, 0.1);
+      border: 4px solid rgba(255, 255, 255, 0.2);
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      letter-spacing: 2px;
+      margin-bottom: 15px;
+      color: #00D9FF;
+    }
+
+    .skill-item {
+      margin-bottom: 15px;
+    }
+
+    .skill-name {
+      font-weight: 600;
+      margin-bottom: 5px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+    }
+
+    .skill-bar {
+      height: 20px;
+      background: rgba(0, 0, 0, 0.4);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .skill-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #FF006E, #FF6B35);
+      transition: width 0.3s ease;
+    }
+
+    .skill-text {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      color: #F5F1E8;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+    }
+
+    .button-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
+    .btn {
+      font-family: 'Space Grotesk', monospace;
+      font-size: 16px;
+      font-weight: 600;
+      padding: 15px;
+      background: #00D9FF;
+      border: 4px solid #000;
+      color: #1A1A1A;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.3);
+    }
+
+    .btn:hover:not(:disabled) {
+      background: #FF006E;
+      color: #F5F1E8;
+      transform: translateY(-2px);
+      box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.3);
+    }
+
+    .btn:active:not(:disabled) {
+      transform: translateY(0);
+      box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
+    }
+
+    .btn:disabled {
+      background: #555;
+      color: #888;
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+
+    .btn-job {
+      background: #FF6B35;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .btn-job:hover:not(:disabled) {
+      background: #FF006E;
+    }
+
+    .shop-item {
+      background: rgba(0, 0, 0, 0.3);
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      padding: 15px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .shop-item-info {
+      flex: 1;
+    }
+
+    .shop-item-name {
+      font-weight: 700;
+      margin-bottom: 5px;
+      color: #00D9FF;
+    }
+
+    .shop-item-desc {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .shop-item-price {
+      font-weight: 700;
+      color: #FF6B35;
+      margin-right: 10px;
+    }
+
+    .btn-buy {
+      padding: 10px 20px;
+      font-size: 14px;
+    }
+
+    .message {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #FF006E;
+      color: #F5F1E8;
+      padding: 15px 30px;
+      border: 4px solid #000;
+      box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.5);
+      font-weight: 600;
+      z-index: 1000;
+      animation: slideDown 0.3s ease;
+    }
+
+    @keyframes slideDown {
+      from {
+        transform: translateX(-50%) translateY(-100px);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .footer-links {
+      text-align: center;
+      padding: 20px;
+      border-top: 4px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .footer-links a {
+      color: #00D9FF;
+      text-decoration: none;
+      font-weight: 600;
+      margin: 0 10px;
+    }
+
+    .footer-links a:hover {
+      color: #FF006E;
+    }
+
+    .owned-tag {
+      display: inline-block;
+      background: #00D9FF;
+      color: #1A1A1A;
+      padding: 2px 8px;
+      font-size: 11px;
+      font-weight: 700;
+      border-radius: 3px;
+      margin-left: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .game-title {
+        font-size: 28px;
+      }
+
+      .money {
+        font-size: 20px;
+      }
+
+      .button-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="game-container">
+    <div class="game-header">
+      <div class="game-title">BROOKLYN RPG</div>
+      <div class="money">$<span id="money">0</span></div>
+    </div>
+
+    <div class="game-body">
+      <!-- Character Section -->
+      <div class="character-section">
+        <div class="character-sprite">🕴️</div>
+        <div class="energy-bar">
+          <div class="energy-label">energy</div>
+          <div class="bar">
+            <div class="bar-fill" id="energyBar">
+              <span id="energyText">100/100</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Skills Section -->
+      <div class="section">
+        <div class="section-title">SKILLS</div>
+        <div id="skillsContainer"></div>
+      </div>
+
+      <!-- Activities Section -->
+      <div class="section">
+        <div class="section-title">ACTIVITIES</div>
+        <div class="button-grid">
+          <button class="btn" onclick="game.doActivity('coding')">write code</button>
+          <button class="btn" onclick="game.doActivity('design')">push pixels</button>
+          <button class="btn" onclick="game.doActivity('coffee')">brew coffee</button>
+          <button class="btn" onclick="game.doActivity('vibes')">network</button>
+        </div>
+      </div>
+
+      <!-- Jobs Section -->
+      <div class="section">
+        <div class="section-title">JOBS</div>
+        <div id="jobsContainer"></div>
+      </div>
+
+      <!-- Shop Section -->
+      <div class="section">
+        <div class="section-title">SHOP</div>
+        <div id="shopContainer"></div>
+      </div>
+    </div>
+
+    <div class="footer-links">
+      <a href="/">← back to studio</a>
+      <a href="#" onclick="game.resetGame(); return false;">reset progress</a>
+    </div>
+  </div>
+
+  <script>
+    const game = {
+      player: {
+        money: 0,
+        energy: 100,
+        maxEnergy: 100,
+        skills: {
+          coding: { xp: 0, level: 1 },
+          design: { xp: 0, level: 1 },
+          coffee: { xp: 0, level: 1 },
+          vibes: { xp: 0, level: 1 }
+        },
+        items: []
+      },
+
+      activities: {
+        coding: {
+          name: 'write code',
+          skill: 'coding',
+          energyCost: 5,
+          messages: [
+            'you grind some code. your fingers hurt.',
+            'another bug fixed. another created.',
+            'stackoverflow saves the day again.',
+            'you refactor. it feels good.',
+            'the console logs are speaking to you.'
+          ]
+        },
+        design: {
+          name: 'push pixels',
+          skill: 'design',
+          energyCost: 5,
+          messages: [
+            'you push pixels around. they obey.',
+            'is that 1px off? yes. yes it is.',
+            'you discover a new shade of blue.',
+            'the kerning. always the kerning.',
+            'you make it pop. whatever that means.'
+          ]
+        },
+        coffee: {
+          name: 'brew coffee',
+          skill: 'coffee',
+          energyCost: 0,
+          energyRestore: 20,
+          messages: [
+            'you pull a perfect espresso. divine.',
+            'the beans whisper secrets to you.',
+            'third wave coffee is a lifestyle.',
+            'you foam milk like a pro.',
+            'this roast has notes of... vibes.'
+          ]
+        },
+        vibes: {
+          name: 'network',
+          skill: 'vibes',
+          energyCost: 5,
+          messages: [
+            'you attend a meetup in williamsburg.',
+            'everyone has the same tote bag.',
+            'you exchange business cards nobody will use.',
+            'someone mentions their startup. you nod.',
+            'you vibe. they vibe. everyone vibes.'
+          ]
+        }
+      },
+
+      jobs: [
+        {
+          id: 'freelance',
+          name: 'freelance web dev',
+          pay: 50,
+          energyCost: 15,
+          requires: { skill: 'coding', level: 3 },
+          message: 'you ship a website. the client loves it. mostly.'
+        },
+        {
+          id: 'design_gig',
+          name: 'logo design gig',
+          pay: 50,
+          energyCost: 15,
+          requires: { skill: 'design', level: 3 },
+          message: 'you design a logo. they want 47 revisions.'
+        },
+        {
+          id: 'barista',
+          name: 'barista shift',
+          pay: 30,
+          energyCost: 10,
+          requires: { skill: 'coffee', level: 2 },
+          message: 'you work a shift. the tips are decent.'
+        }
+      ],
+
+      items: [
+        {
+          id: 'macbook',
+          name: 'macbook pro',
+          price: 500,
+          desc: '+2 coding xp per click',
+          boost: { skill: 'coding', amount: 2 }
+        },
+        {
+          id: 'espresso_machine',
+          name: 'espresso machine',
+          price: 300,
+          desc: '+2 coffee xp per click',
+          boost: { skill: 'coffee', amount: 2 }
+        },
+        {
+          id: 'figma_pro',
+          name: 'figma pro',
+          price: 400,
+          desc: '+2 design xp per click',
+          boost: { skill: 'design', amount: 2 }
+        },
+        {
+          id: 'fixed_gear',
+          name: 'vintage fixed gear',
+          price: 200,
+          desc: 'activities cost -2 energy',
+          boost: { type: 'energy_discount', amount: 2 }
+        }
+      ],
+
+      init() {
+        this.loadGame();
+        this.render();
+
+        // Auto-save every 10 seconds
+        setInterval(() => this.saveGame(), 10000);
+      },
+
+      getXPForLevel(level) {
+        return Math.floor(50 * Math.pow(1.5, level - 1));
+      },
+
+      getSkillBoost(skill) {
+        let boost = 1;
+        this.player.items.forEach(itemId => {
+          const item = this.items.find(i => i.id === itemId);
+          if (item && item.boost.skill === skill) {
+            boost += item.boost.amount;
+          }
+        });
+        return boost;
+      },
+
+      getEnergyDiscount() {
+        let discount = 0;
+        this.player.items.forEach(itemId => {
+          const item = this.items.find(i => i.id === itemId);
+          if (item && item.boost.type === 'energy_discount') {
+            discount += item.boost.amount;
+          }
+        });
+        return discount;
+      },
+
+      doActivity(activityKey) {
+        const activity = this.activities[activityKey];
+        const energyCost = Math.max(0, activity.energyCost - this.getEnergyDiscount());
+
+        if (activity.energyCost > 0 && this.player.energy < energyCost) {
+          this.showMessage('not enough energy. brew some coffee.');
+          return;
+        }
+
+        // Handle energy
+        if (activity.energyRestore) {
+          this.player.energy = Math.min(this.player.maxEnergy, this.player.energy + activity.energyRestore);
+        } else {
+          this.player.energy -= energyCost;
+        }
+
+        // Gain XP
+        const skill = this.player.skills[activity.skill];
+        const xpGain = this.getSkillBoost(activity.skill);
+        skill.xp += xpGain;
+
+        // Check for level up
+        const xpNeeded = this.getXPForLevel(skill.level);
+        if (skill.xp >= xpNeeded) {
+          skill.xp -= xpNeeded;
+          skill.level += 1;
+          this.showMessage(`${activity.skill} level up! now level ${skill.level}`);
+        } else {
+          // Show activity message
+          const message = activity.messages[Math.floor(Math.random() * activity.messages.length)];
+          this.showMessage(`${message} +${xpGain} xp`);
+        }
+
+        this.render();
+        this.saveGame();
+      },
+
+      doJob(jobId) {
+        const job = this.jobs.find(j => j.id === jobId);
+        const energyCost = job.energyCost;
+
+        if (this.player.energy < energyCost) {
+          this.showMessage('not enough energy for this job.');
+          return;
+        }
+
+        const skillLevel = this.player.skills[job.requires.skill].level;
+        if (skillLevel < job.requires.level) {
+          this.showMessage(`need ${job.requires.skill} level ${job.requires.level}`);
+          return;
+        }
+
+        this.player.energy -= energyCost;
+        this.player.money += job.pay;
+
+        this.showMessage(`${job.message} +$${job.pay}`);
+        this.render();
+        this.saveGame();
+      },
+
+      buyItem(itemId) {
+        const item = this.items.find(i => i.id === itemId);
+
+        if (this.player.items.includes(itemId)) {
+          this.showMessage('you already own this.');
+          return;
+        }
+
+        if (this.player.money < item.price) {
+          this.showMessage('not enough money.');
+          return;
+        }
+
+        this.player.money -= item.price;
+        this.player.items.push(itemId);
+
+        this.showMessage(`you bought ${item.name}!`);
+        this.render();
+        this.saveGame();
+      },
+
+      showMessage(text) {
+        // Remove existing message
+        const existing = document.querySelector('.message');
+        if (existing) existing.remove();
+
+        const msg = document.createElement('div');
+        msg.className = 'message';
+        msg.textContent = text;
+        document.body.appendChild(msg);
+
+        setTimeout(() => msg.remove(), 3000);
+      },
+
+      render() {
+        // Update money
+        document.getElementById('money').textContent = this.player.money;
+
+        // Update energy bar
+        const energyPercent = (this.player.energy / this.player.maxEnergy) * 100;
+        document.getElementById('energyBar').style.width = energyPercent + '%';
+        document.getElementById('energyText').textContent = `${this.player.energy}/${this.player.maxEnergy}`;
+
+        // Render skills
+        const skillsContainer = document.getElementById('skillsContainer');
+        skillsContainer.innerHTML = '';
+
+        Object.keys(this.player.skills).forEach(skillKey => {
+          const skill = this.player.skills[skillKey];
+          const xpNeeded = this.getXPForLevel(skill.level);
+          const xpPercent = (skill.xp / xpNeeded) * 100;
+
+          const skillDiv = document.createElement('div');
+          skillDiv.className = 'skill-item';
+          skillDiv.innerHTML = `
+            <div class="skill-name">
+              <span>${skillKey}</span>
+              <span>Lv.${skill.level}</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-bar-fill" style="width: ${xpPercent}%"></div>
+              <div class="skill-text">${skill.xp}/${xpNeeded} XP</div>
+            </div>
+          `;
+          skillsContainer.appendChild(skillDiv);
+        });
+
+        // Render jobs
+        const jobsContainer = document.getElementById('jobsContainer');
+        jobsContainer.innerHTML = '';
+
+        this.jobs.forEach(job => {
+          const skillLevel = this.player.skills[job.requires.skill].level;
+          const canDo = skillLevel >= job.requires.level && this.player.energy >= job.energyCost;
+
+          const jobBtn = document.createElement('button');
+          jobBtn.className = 'btn btn-job';
+          jobBtn.disabled = !canDo;
+          jobBtn.onclick = () => this.doJob(job.id);
+          jobBtn.innerHTML = `
+            <span>${job.name}</span>
+            <span>$${job.pay} (${job.energyCost} energy)</span>
+          `;
+          jobsContainer.appendChild(jobBtn);
+        });
+
+        // Render shop
+        const shopContainer = document.getElementById('shopContainer');
+        shopContainer.innerHTML = '';
+
+        this.items.forEach(item => {
+          const owned = this.player.items.includes(item.id);
+
+          const shopDiv = document.createElement('div');
+          shopDiv.className = 'shop-item';
+          shopDiv.innerHTML = `
+            <div class="shop-item-info">
+              <div class="shop-item-name">
+                ${item.name}
+                ${owned ? '<span class="owned-tag">OWNED</span>' : ''}
+              </div>
+              <div class="shop-item-desc">${item.desc}</div>
+            </div>
+            <span class="shop-item-price">$${item.price}</span>
+            <button class="btn btn-buy" ${owned ? 'disabled' : ''} onclick="game.buyItem('${item.id}')">
+              ${owned ? 'owned' : 'buy'}
+            </button>
+          `;
+          shopContainer.appendChild(shopDiv);
+        });
+      },
+
+      saveGame() {
+        localStorage.setItem('brooklynRPG', JSON.stringify(this.player));
+      },
+
+      loadGame() {
+        const saved = localStorage.getItem('brooklynRPG');
+        if (saved) {
+          this.player = JSON.parse(saved);
+        }
+      },
+
+      resetGame() {
+        if (confirm('reset all progress? this cannot be undone.')) {
+          localStorage.removeItem('brooklynRPG');
+          location.reload();
+        }
+      }
+    };
+
+    // Initialize game on load
+    window.addEventListener('DOMContentLoaded', () => game.init());
+  </script>
+</body>
+</html>

@@ -1401,6 +1401,40 @@
 
     // Load quote on page load
     loadDynamicQuote();
+
+    // Konami Code Easter Egg → Brooklyn RPG
+    const konamiCode = [
+      'ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown',
+      'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight',
+      'b', 'a'
+    ];
+    let konamiIndex = 0;
+
+    document.addEventListener('keydown', (e) => {
+      const key = e.key.toLowerCase();
+
+      // Check if the pressed key matches the current position in sequence
+      if (key === konamiCode[konamiIndex] || e.key === konamiCode[konamiIndex]) {
+        konamiIndex++;
+
+        // If sequence complete, redirect to game
+        if (konamiIndex === konamiCode.length) {
+          // Flash screen and redirect
+          document.body.style.transition = 'all 0.3s';
+          document.body.style.background = '#FF006E';
+          setTimeout(() => {
+            window.location.href = '/play.html';
+          }, 300);
+        }
+      } else {
+        // Reset if wrong key
+        konamiIndex = 0;
+      }
+    });
+
+    // Console easter egg hint
+    console.log('%c🎮 psst... try the konami code', 'color: #00D9FF; font-size: 14px; font-weight: bold;');
+    console.log('%c↑ ↑ ↓ ↓ ← → ← → B A', 'color: #FF006E; font-size: 12px; font-family: monospace;');
   </script>
 </body>
 </html>
