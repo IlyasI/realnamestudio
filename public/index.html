@@ -518,6 +518,97 @@
       transform: translateY(-3px);
     }
 
+    /* In Progress / Placeholder Cards with Dusen Dusen-style tape */
+    .site-marker.in-progress {
+      position: relative;
+      opacity: 0.85;
+      cursor: default;
+    }
+
+    .site-marker.in-progress:hover {
+      transform: scale(1.02) rotate(-1deg);
+      box-shadow: 0 0 30px rgba(0, 217, 255, 0.2);
+    }
+
+    .site-marker.in-progress .site-icon {
+      opacity: 0.6;
+    }
+
+    .site-marker.in-progress:hover .site-icon {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    .site-marker.in-progress h3 {
+      opacity: 0.7;
+    }
+
+    /* Wrapping tape overlays - Dusen Dusen style */
+    .tape {
+      position: absolute;
+      height: 60px;
+      background: repeating-linear-gradient(
+        45deg,
+        rgba(255, 0, 110, 0.7),
+        rgba(255, 0, 110, 0.7) 10px,
+        rgba(255, 255, 255, 0.3) 10px,
+        rgba(255, 255, 255, 0.3) 20px
+      );
+      border: 2px solid rgba(255, 0, 110, 0.9);
+      box-shadow:
+        0 4px 8px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      z-index: 10;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 14px;
+      letter-spacing: 3px;
+      color: white;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    .tape.tape-1 {
+      top: 25%;
+      left: -8%;
+      width: 116%;
+      transform: rotate(-12deg);
+    }
+
+    .tape.tape-2 {
+      bottom: 30%;
+      left: -8%;
+      width: 116%;
+      transform: rotate(8deg);
+      background: repeating-linear-gradient(
+        -45deg,
+        rgba(0, 217, 255, 0.7),
+        rgba(0, 217, 255, 0.7) 10px,
+        rgba(255, 255, 255, 0.3) 10px,
+        rgba(255, 255, 255, 0.3) 20px
+      );
+      border-color: rgba(0, 217, 255, 0.9);
+    }
+
+    /* Badge for status */
+    .progress-badge {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: #FF6B35;
+      border: 3px solid #1A1A1A;
+      padding: 6px 12px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: white;
+      transform: rotate(8deg);
+      box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.2);
+      z-index: 11;
+      pointer-events: none;
+    }
+
     /* Site Modal */
     .site-modal {
       display: none;
@@ -593,6 +684,18 @@
       letter-spacing: 4px;
       border-bottom: 4px dashed #1A1A1A;
       padding-bottom: 20px;
+    }
+
+    .site-modal .screenshot {
+      width: 100%;
+      height: auto;
+      border: 5px solid #1A1A1A;
+      box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.2);
+      margin-bottom: 25px;
+      display: block;
+      background: #f0f0f0;
+      min-height: 200px;
+      object-fit: cover;
     }
 
     .site-modal p {
@@ -1186,6 +1289,39 @@
           <h3>NYC<br>SOUND</h3>
         </div>
       </div>
+
+      <!-- LLM Marketing Site - In Progress -->
+      <div class="site-item" data-site="llm-marketing">
+        <div class="site-marker in-progress">
+          <div class="progress-badge">SOON</div>
+          <div class="site-icon">🤖</div>
+          <h3>LLM<br>MARKETING</h3>
+          <div class="tape tape-1">IN PROGRESS</div>
+          <div class="tape tape-2">COMING SOON</div>
+        </div>
+      </div>
+
+      <!-- TripRelief Site - In Progress -->
+      <div class="site-item" data-site="triprelief">
+        <div class="site-marker in-progress">
+          <div class="progress-badge">SOON</div>
+          <div class="site-icon">✈️</div>
+          <h3>TRIP<br>RELIEF</h3>
+          <div class="tape tape-1">IN PROGRESS</div>
+          <div class="tape tape-2">COMING SOON</div>
+        </div>
+      </div>
+
+      <!-- AI SSH Client - In Progress -->
+      <div class="site-item" data-site="ai-ssh">
+        <div class="site-marker in-progress">
+          <div class="progress-badge">SOON</div>
+          <div class="site-icon">⌨️</div>
+          <h3>AI SSH<br>CLIENT</h3>
+          <div class="tape tape-1">IN PROGRESS</div>
+          <div class="tape tape-2">COMING SOON</div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1313,13 +1449,21 @@
         name: 'NYC Sound',
         description: 'Interactive map showcasing NYC\'s music culture across all five boroughs - from legendary hip-hop artists to live venues and street performances. Explore 200+ artists, 15+ venues, and real-time events.',
         tags: ['Node.js', 'Leaflet', 'PostgreSQL', 'Express'],
-        url: 'https://sound.realname.studio'
+        url: 'https://sound.realname.studio',
+        screenshot: '/screenshots/nyc-sound.jpg'
       }
     };
 
     // Site click handlers
     document.querySelectorAll('.site-item').forEach(item => {
       item.addEventListener('click', () => {
+        // Check if the card is in progress
+        const marker = item.querySelector('.site-marker');
+        if (marker && marker.classList.contains('in-progress')) {
+          // Don't open modal for in-progress sites
+          return;
+        }
+
         const siteId = item.dataset.site;
         const site = sites[siteId];
         if (site) {
@@ -1332,8 +1476,13 @@
       const modal = document.getElementById('siteModal');
       const modalBody = document.getElementById('siteModalBody');
 
+      const screenshotHTML = site.screenshot
+        ? `<img src="${site.screenshot}" alt="${site.name} screenshot" class="screenshot" onerror="this.style.display='none'">`
+        : '';
+
       modalBody.innerHTML = `
         <h2>${site.name}</h2>
+        ${screenshotHTML}
         <p>${site.description}</p>
         <div>
           ${site.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
