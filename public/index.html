@@ -1213,7 +1213,7 @@
       .sites-section {
         min-height: 100vh;
         height: 100vh;
-        padding: 20px 15px;
+        padding: 15px 15px 20px;
         overflow-y: hidden;
         display: flex;
         flex-direction: column;
@@ -1221,8 +1221,14 @@
       }
 
       .sites-section .section-title {
-        font-size: 32px;
-        margin-bottom: 15px;
+        font-size: 28px;
+        margin-bottom: 10px;
+        margin-top: 0;
+      }
+
+      .sites-section .section-title::after {
+        bottom: -5px;
+        height: 6px;
       }
 
       .sites-section::before {
@@ -1332,13 +1338,13 @@
 
       .sites-grid {
         max-width: 280px;
-        gap: 12px;
+        gap: 10px;
       }
 
       .site-marker {
-        padding: 18px 15px;
+        padding: 16px 15px;
         /* Ensure card content fits on one screen without scrolling */
-        margin-bottom: 16px;
+        margin-bottom: 0;
         min-height: auto;
       }
 
