@@ -388,6 +388,8 @@
       position: relative;
       overflow: hidden;
       box-shadow: 0 0 30px rgba(0, 217, 255, 0.1);
+      /* Prevent abstract shapes from causing overflow on mobile */
+      clip-path: inset(0 round 0);
     }
 
     /* Touch device support - show some hover state always */
@@ -1210,14 +1212,23 @@
 
       .sites-section {
         min-height: 100vh;
-        height: auto;
-        padding: 25px 20px;
-        overflow-y: auto;
+        height: 100vh;
+        padding: 0 15px 5px;
+        overflow-y: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-top: 10px;
       }
 
       .sites-section .section-title {
-        font-size: 36px;
-        margin-bottom: 20px;
+        font-size: 24px;
+        margin-bottom: 10px;
+        margin-top: 0;
+      }
+
+      .sites-section .section-title::after {
+        display: none;
       }
 
       .sites-section::before {
@@ -1230,6 +1241,10 @@
 
       .site-marker:hover {
         transform: scale(1.05) rotate(-2deg) translateY(-3px);
+        /* Reduce box-shadow on mobile to prevent overflow */
+        box-shadow:
+          12px 12px 0 rgba(255, 255, 255, 0.3),
+          0 0 50px rgba(0, 217, 255, 0.4);
       }
 
       .hero {
@@ -1323,20 +1338,25 @@
 
       .sites-grid {
         max-width: 300px;
-        gap: 16px;
+        gap: 12px;
+        flex-shrink: 0;
       }
 
       .site-marker {
-        padding: 22px 18px;
+        padding: 20px 15px;
+        /* Ensure card content fits on one screen without scrolling */
+        margin-bottom: 0;
+        min-height: auto;
       }
 
       .site-marker h3 {
         font-size: 22px;
-        letter-spacing: 1px;
+        letter-spacing: 0.5px;
+        line-height: 1.1;
       }
 
       .site-icon {
-        font-size: 34px;
+        font-size: 36px;
         margin-bottom: 6px;
       }
 
@@ -1344,7 +1364,7 @@
         padding: 60px 18px 25px;
         width: 98%;
         max-height: 75vh;
-        box-shadow: 15px 15px 0 rgba(0, 0, 0, 0.5);
+        box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.5);
         overflow-y: auto;
       }
 

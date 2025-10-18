@@ -1,0 +1,79 @@
+name: Lint & Code Quality
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  lint:
+    name: Lint Code
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run ESLint
+        run: npm run lint:js
+        continue-on-error: true
+
+      - name: Run stylelint
+        run: npm run lint:css
+        continue-on-error: true
+
+      - name: Run HTMLHint
+        run: npm run lint:html
+        continue-on-error: true
+
+      - name: Check code formatting
+        run: npm run format:check
+        continue-on-error: true
+
+  reviewdog:
+    name: Code Review with Reviewdog
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run reviewdog (ESLint)
+        uses: reviewdog/action-eslint@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-review
+          eslint_flags: '.'
+          fail_on_error: false
+
+      - name: Run reviewdog (stylelint)
+        uses: reviewdog/action-stylelint@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-review
+          stylelint_input: '**/*.{css,html}'
+          fail_on_error: false
