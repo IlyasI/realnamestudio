@@ -518,6 +518,244 @@
       transform: translateY(-3px);
     }
 
+    /* In Progress / Placeholder Cards with abstract geometric shapes */
+    .site-marker.in-progress {
+      position: relative;
+      opacity: 0.9;
+      cursor: default;
+      overflow: visible;
+    }
+
+    .site-marker.in-progress:hover {
+      transform: scale(1.03) rotate(-1deg);
+      box-shadow: 0 0 40px rgba(0, 217, 255, 0.3);
+    }
+
+    .site-marker.in-progress .site-icon {
+      opacity: 0.4;
+      filter: grayscale(0.5);
+    }
+
+    .site-marker.in-progress:hover .site-icon {
+      transform: scale(1.1) rotate(5deg);
+      opacity: 0.5;
+    }
+
+    .site-marker.in-progress h3 {
+      opacity: 0.6;
+    }
+
+    /* Abstract geometric overlays */
+    .abstract-shape {
+      position: absolute;
+      pointer-events: none;
+      z-index: 10;
+      mix-blend-mode: multiply;
+    }
+
+    /* Decorative shapes for active cards - subtle and non-obstructive */
+    .site-marker:not(.in-progress) .abstract-shape {
+      opacity: 0.06;
+      transition: opacity 0.3s ease;
+    }
+
+    .site-marker:not(.in-progress):hover .abstract-shape {
+      opacity: 0.12;
+    }
+
+    /* Barricade shapes for in-progress cards - more prominent */
+    .site-marker.in-progress .abstract-shape {
+      opacity: 0.35;
+    }
+
+    .site-marker.in-progress {
+      border-color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* Circle - represents ongoing cycles/iteration */
+    .abstract-shape.shape-1 {
+      top: -15px;
+      right: -15px;
+      width: 80px;
+      height: 80px;
+      border: 3px solid #FF006E;
+      border-radius: 50%;
+      animation: rotateShape 8s linear infinite;
+    }
+
+    /* Square - represents structure being built */
+    .abstract-shape.shape-2 {
+      bottom: -10px;
+      left: -10px;
+      width: 60px;
+      height: 60px;
+      border: 3px solid #00D9FF;
+      transform: rotate(15deg);
+      animation: pulseShape 3s ease-in-out infinite;
+    }
+
+    /* Triangle - represents progress/growth */
+    .abstract-shape.shape-3 {
+      top: 40%;
+      left: -20px;
+      width: 0;
+      height: 0;
+      border-left: 35px solid transparent;
+      border-right: 35px solid transparent;
+      border-bottom: 60px solid #6B4C9A;
+      opacity: 0.12;
+      animation: floatShape 4s ease-in-out infinite;
+    }
+
+    /* Oddly shaped rectangles - barricade effect for in-progress */
+    .abstract-shape.shape-4 {
+      top: -5px;
+      right: 20%;
+      width: 140px;
+      height: 20px;
+      background: #FF006E;
+      transform: rotate(-8deg);
+      animation: slideRect1 4s ease-in-out infinite;
+    }
+
+    .site-marker.in-progress .abstract-shape.shape-4 {
+      opacity: 0.4;
+    }
+
+    .abstract-shape.shape-5 {
+      bottom: 15%;
+      right: -12px;
+      width: 28px;
+      height: 110px;
+      background: #00D9FF;
+      transform: rotate(12deg);
+      animation: slideRect2 3.5s ease-in-out infinite;
+    }
+
+    .site-marker.in-progress .abstract-shape.shape-5 {
+      opacity: 0.38;
+    }
+
+    .abstract-shape.shape-6 {
+      top: 30%;
+      left: -10px;
+      width: 22px;
+      height: 85px;
+      background: #6B4C9A;
+      transform: rotate(-15deg);
+      animation: slideRect3 4.2s ease-in-out infinite;
+    }
+
+    .site-marker.in-progress .abstract-shape.shape-6 {
+      opacity: 0.35;
+    }
+
+    /* Additional barricade rectangles - only visible on in-progress */
+    .abstract-shape.shape-7 {
+      bottom: -8px;
+      left: 25%;
+      width: 100px;
+      height: 18px;
+      background: #FF6B35;
+      transform: rotate(5deg);
+      animation: slideRect1 3.8s ease-in-out infinite reverse;
+    }
+
+    .site-marker.in-progress .abstract-shape.shape-7 {
+      opacity: 0.42;
+    }
+
+    .abstract-shape.shape-8 {
+      top: 50%;
+      right: -8px;
+      width: 20px;
+      height: 60px;
+      background: #FF006E;
+      transform: rotate(-20deg);
+      animation: slideRect3 4.5s ease-in-out infinite;
+    }
+
+    .site-marker.in-progress .abstract-shape.shape-8 {
+      opacity: 0.36;
+    }
+
+    /* Active cards - subtle decorative only */
+    .site-marker:not(.in-progress) .abstract-shape.shape-4,
+    .site-marker:not(.in-progress) .abstract-shape.shape-5,
+    .site-marker:not(.in-progress) .abstract-shape.shape-6,
+    .site-marker:not(.in-progress) .abstract-shape.shape-7,
+    .site-marker:not(.in-progress) .abstract-shape.shape-8 {
+      opacity: 0.05;
+    }
+
+    @keyframes rotateShape {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes pulseShape {
+      0%, 100% {
+        transform: rotate(15deg) scale(1);
+      }
+      50% {
+        transform: rotate(20deg) scale(1.1);
+      }
+    }
+
+    @keyframes floatShape {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-15px);
+      }
+    }
+
+    @keyframes slideRect1 {
+      0%, 100% {
+        transform: rotate(-8deg) translateX(0);
+      }
+      50% {
+        transform: rotate(-5deg) translateX(5px);
+      }
+    }
+
+    @keyframes slideRect2 {
+      0%, 100% {
+        transform: rotate(12deg) translateY(0);
+      }
+      50% {
+        transform: rotate(15deg) translateY(-8px);
+      }
+    }
+
+    @keyframes slideRect3 {
+      0%, 100% {
+        transform: rotate(-15deg) translateY(0);
+      }
+      50% {
+        transform: rotate(-12deg) translateY(10px);
+      }
+    }
+
+    /* Badge for status */
+    .progress-badge {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: linear-gradient(135deg, #FF006E, #00D9FF);
+      border: 3px solid #1A1A1A;
+      padding: 6px 12px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: white;
+      transform: rotate(3deg);
+      box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.2);
+      z-index: 11;
+      pointer-events: none;
+    }
+
     /* Site Modal */
     .site-modal {
       display: none;
@@ -531,6 +769,8 @@
       justify-content: center;
       align-items: center;
       animation: fadeIn 0.3s ease;
+      overflow-y: auto;
+      padding: 40px 20px;
     }
 
     .site-modal.open {
@@ -544,13 +784,18 @@
 
     .site-modal-content {
       background: #F5F1E8;
-      padding: 60px;
+      padding: 40px;
       border: 6px solid #1A1A1A;
       box-shadow: 20px 20px 0 rgba(0, 0, 0, 0.5);
       max-width: 700px;
       width: 90%;
+      max-height: 85vh;
       position: relative;
       animation: slideUp 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
     }
 
     @keyframes slideUp {
@@ -587,46 +832,79 @@
 
     .site-modal h2 {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 56px;
+      font-size: 48px;
       color: #6B4C9A;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
       letter-spacing: 4px;
       border-bottom: 4px dashed #1A1A1A;
-      padding-bottom: 20px;
+      padding-bottom: 15px;
+      flex-shrink: 0;
+    }
+
+    .site-modal-body-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      align-items: start;
+    }
+
+    .screenshot-container {
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto;
+      border: 5px solid #1A1A1A;
+      box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+      aspect-ratio: 1 / 1;
+    }
+
+    .site-modal .screenshot {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .site-modal-text {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
     }
 
     .site-modal p {
-      font-size: 18px;
-      line-height: 1.7;
-      margin-bottom: 25px;
+      font-size: 16px;
+      line-height: 1.6;
+      margin: 0;
       color: #333;
     }
 
     .site-modal .tag {
       background: transparent;
       border: 3px solid #1A1A1A;
-      padding: 8px 16px;
-      font-size: 12px;
+      padding: 6px 12px;
+      font-size: 11px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 1px;
       display: inline-block;
-      margin-right: 10px;
-      margin-bottom: 10px;
+      margin-right: 8px;
+      margin-bottom: 8px;
     }
 
     .site-modal .visit-btn {
       display: inline-block;
-      margin-top: 20px;
-      padding: 18px 40px;
+      margin-top: 10px;
+      padding: 15px 35px;
       background: #FF006E;
       color: white;
       border: 4px solid #1A1A1A;
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 24px;
+      font-size: 22px;
       letter-spacing: 3px;
       text-decoration: none;
       transition: all 0.3s ease;
+      align-self: flex-start;
     }
 
     .site-modal .visit-btn:hover {
@@ -646,6 +924,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      min-height: 80px;
     }
 
     footer .copyright {
@@ -727,8 +1006,10 @@
       }
 
       .sites-section {
-        height: 100vh;
+        min-height: 100vh;
+        height: auto;
         padding: 30px 20px;
+        overflow-y: auto;
       }
 
       .sites-section .section-title {
@@ -752,9 +1033,10 @@
 
       .hero {
         min-height: 100vh;
+        min-height: 100dvh;
         height: auto;
         display: flex;
-        padding-bottom: 60px;
+        padding: 30px 20px 60px;
       }
 
       .logo-card {
@@ -825,18 +1107,30 @@
       }
 
       .site-modal-content {
-        padding: 40px 30px;
+        padding: 60px 20px 30px;
         width: 95%;
+        max-height: 80vh;
+        overflow-y: auto;
+      }
+
+      .site-modal-body-content {
+        grid-template-columns: 1fr;
+        gap: 20px;
       }
 
       .site-modal h2 {
-        font-size: 42px;
+        font-size: 36px;
+        margin-bottom: 20px;
+      }
+
+      .screenshot-container {
+        max-width: 280px;
       }
 
       .site-modal-close {
-        width: 60px;
-        height: 60px;
-        font-size: 40px;
+        width: 55px;
+        height: 55px;
+        font-size: 36px;
         top: 15px;
         right: 15px;
       }
@@ -885,9 +1179,10 @@
       }
 
       footer {
-        padding: 30px 20px;
+        padding: 25px 15px;
         flex-direction: column;
-        gap: 15px;
+        gap: 12px;
+        min-height: auto;
       }
 
       footer .daily-quote {
@@ -895,13 +1190,15 @@
       }
 
       footer .copyright {
-        font-size: 13px;
+        font-size: 12px;
+        letter-spacing: 0.3px;
       }
 
       footer .brooklyn {
         position: static;
-        margin-top: 5px;
-        font-size: 12px;
+        margin-top: 0;
+        font-size: 11px;
+        opacity: 0.4;
       }
     }
 
@@ -912,8 +1209,10 @@
       }
 
       .sites-section {
-        height: 100vh;
+        min-height: 100vh;
+        height: auto;
         padding: 25px 20px;
+        overflow-y: auto;
       }
 
       .sites-section .section-title {
@@ -935,7 +1234,8 @@
 
       .hero {
         min-height: 100vh;
-        padding-bottom: 70px;
+        min-height: 100dvh;
+        padding: 30px 15px 70px;
       }
 
       .logo-card {
@@ -1022,44 +1322,74 @@
       }
 
       .sites-grid {
-        max-width: 320px;
-        gap: 20px;
+        max-width: 300px;
+        gap: 16px;
       }
 
       .site-marker {
-        padding: 30px 25px;
+        padding: 22px 18px;
       }
 
       .site-marker h3 {
-        font-size: 26px;
+        font-size: 22px;
         letter-spacing: 1px;
       }
 
       .site-icon {
-        font-size: 40px;
-        margin-bottom: 8px;
+        font-size: 34px;
+        margin-bottom: 6px;
       }
 
       .site-modal-content {
-        padding: 30px 20px;
-        width: 96%;
+        padding: 60px 18px 25px;
+        width: 98%;
+        max-height: 75vh;
+        box-shadow: 15px 15px 0 rgba(0, 0, 0, 0.5);
+        overflow-y: auto;
+      }
+
+      .site-modal-body-content {
+        grid-template-columns: 1fr;
+        gap: 18px;
       }
 
       .site-modal h2 {
-        font-size: 36px;
-        letter-spacing: 3px;
-        padding-bottom: 15px;
+        font-size: 32px;
+        letter-spacing: 2px;
+        padding-bottom: 12px;
+        margin-bottom: 15px;
+      }
+
+      .screenshot-container {
+        max-width: 240px;
       }
 
       .site-modal p {
-        font-size: 16px;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      .site-modal .tag {
+        font-size: 10px;
+        padding: 5px 10px;
+        margin-right: 6px;
+        margin-bottom: 6px;
       }
 
       .site-modal .visit-btn {
         width: 100%;
-        padding: 16px 30px;
-        font-size: 22px;
+        padding: 14px 25px;
+        font-size: 20px;
         text-align: center;
+        letter-spacing: 2px;
+      }
+
+      .site-modal-close {
+        width: 50px;
+        height: 50px;
+        font-size: 32px;
+        top: 12px;
+        right: 12px;
       }
 
       .fab {
@@ -1077,15 +1407,19 @@
       }
 
       footer {
-        padding: 30px 20px;
+        padding: 20px 15px;
+        gap: 10px;
+        min-height: auto;
       }
 
       footer .copyright {
-        font-size: 13px;
+        font-size: 11px;
+        letter-spacing: 0.3px;
       }
 
       footer .brooklyn {
-        font-size: 11px;
+        font-size: 10px;
+        opacity: 0.4;
       }
 
       .footer-links {
@@ -1184,6 +1518,63 @@
         <div class="site-marker">
           <div class="site-icon">♪</div>
           <h3>NYC<br>SOUND</h3>
+          <div class="abstract-shape shape-1"></div>
+          <div class="abstract-shape shape-2"></div>
+          <div class="abstract-shape shape-3"></div>
+          <div class="abstract-shape shape-4"></div>
+          <div class="abstract-shape shape-5"></div>
+          <div class="abstract-shape shape-6"></div>
+        </div>
+      </div>
+
+      <!-- LLM Marketing Site - In Progress -->
+      <div class="site-item" data-site="llm-marketing">
+        <div class="site-marker in-progress">
+          <div class="progress-badge">SOON</div>
+          <div class="site-icon">◆</div>
+          <h3>LLM<br>MARKETING</h3>
+          <div class="abstract-shape shape-1"></div>
+          <div class="abstract-shape shape-2"></div>
+          <div class="abstract-shape shape-3"></div>
+          <div class="abstract-shape shape-4"></div>
+          <div class="abstract-shape shape-5"></div>
+          <div class="abstract-shape shape-6"></div>
+          <div class="abstract-shape shape-7"></div>
+          <div class="abstract-shape shape-8"></div>
+        </div>
+      </div>
+
+      <!-- TripRelief Site - In Progress -->
+      <div class="site-item" data-site="triprelief">
+        <div class="site-marker in-progress">
+          <div class="progress-badge">SOON</div>
+          <div class="site-icon">△</div>
+          <h3>TRIP<br>RELIEF</h3>
+          <div class="abstract-shape shape-1"></div>
+          <div class="abstract-shape shape-2"></div>
+          <div class="abstract-shape shape-3"></div>
+          <div class="abstract-shape shape-4"></div>
+          <div class="abstract-shape shape-5"></div>
+          <div class="abstract-shape shape-6"></div>
+          <div class="abstract-shape shape-7"></div>
+          <div class="abstract-shape shape-8"></div>
+        </div>
+      </div>
+
+      <!-- AI SSH Client - In Progress -->
+      <div class="site-item" data-site="ai-ssh">
+        <div class="site-marker in-progress">
+          <div class="progress-badge">SOON</div>
+          <div class="site-icon">○</div>
+          <h3>AI SSH<br>CLIENT</h3>
+          <div class="abstract-shape shape-1"></div>
+          <div class="abstract-shape shape-2"></div>
+          <div class="abstract-shape shape-3"></div>
+          <div class="abstract-shape shape-4"></div>
+          <div class="abstract-shape shape-5"></div>
+          <div class="abstract-shape shape-6"></div>
+          <div class="abstract-shape shape-7"></div>
+          <div class="abstract-shape shape-8"></div>
         </div>
       </div>
     </div>
@@ -1307,19 +1698,32 @@
       observer.observe(item);
     });
 
+    // Determine the correct domain based on current hostname
+    const currentDomain = window.location.hostname.includes('realname.studio')
+      ? 'realname.studio'
+      : 'realnamestudio.com';
+
     // Site data
     const sites = {
       brooklyn: {
         name: 'NYC Sound',
-        description: 'Interactive map showcasing NYC\'s music culture across all five boroughs - from legendary hip-hop artists to live venues and street performances. Explore 200+ artists, 15+ venues, and real-time events.',
+        description: 'Interactive map showcasing NYC\'s live music and culture across all five boroughs - from legendary hip-hop artists to live venues and street performances. Explore 200+ artists, 15+ venues, and real-time events.',
         tags: ['Node.js', 'Leaflet', 'PostgreSQL', 'Express'],
-        url: 'https://brooklyn-sounds-lxncatugu-ilyas-projects-a386ad49.vercel.app?x-vercel-protection-bypass=j966UVrcHzQnZe0KyW4k0ZO0xPclaxsY'
+        url: `https://sound.${currentDomain}`,
+        screenshot: '/screenshots/nyc-sound-mobile.jpg'
       }
     };
 
     // Site click handlers
     document.querySelectorAll('.site-item').forEach(item => {
       item.addEventListener('click', () => {
+        // Check if the card is in progress
+        const marker = item.querySelector('.site-marker');
+        if (marker && marker.classList.contains('in-progress')) {
+          // Don't open modal for in-progress sites
+          return;
+        }
+
         const siteId = item.dataset.site;
         const site = sites[siteId];
         if (site) {
@@ -1332,13 +1736,26 @@
       const modal = document.getElementById('siteModal');
       const modalBody = document.getElementById('siteModalBody');
 
+      const screenshotHTML = site.screenshot
+        ? `<div class="screenshot-container">
+             <img src="${site.screenshot}" alt="${site.name} screenshot" class="screenshot" onerror="this.parentElement.style.display='none'">
+           </div>`
+        : '';
+
       modalBody.innerHTML = `
         <h2>${site.name}</h2>
-        <p>${site.description}</p>
-        <div>
-          ${site.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+        <div class="site-modal-body-content">
+          <div>
+            ${screenshotHTML}
+          </div>
+          <div class="site-modal-text">
+            <p>${site.description}</p>
+            <div>
+              ${site.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+            </div>
+            <a href="${site.url}" target="_blank" class="visit-btn">VISIT SITE →</a>
+          </div>
         </div>
-        <a href="${site.url}" target="_blank" class="visit-btn">VISIT SITE →</a>
       `;
 
       modal.classList.add('open');
