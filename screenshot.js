@@ -2,12 +2,17 @@ import { chromium } from 'playwright';
 
 async function captureScreenshot() {
   const browser = await chromium.launch();
-  const page = await browser.newPage();
 
-  // Set viewport to a nice desktop size
-  await page.setViewportSize({ width: 1200, height: 800 });
+  // Create context with iPhone portrait dimensions (9:19.5 ratio)
+  const context = await browser.newContext({
+    viewport: { width: 390, height: 844 },
+    deviceScaleFactor: 2,
+    locale: 'en-US',
+  });
 
-  console.log('📸 Navigating to NYC Sound site...');
+  const page = await context.newPage();
+
+  console.log('📸 Navigating to NYC Sound site (iPhone portrait view)...');
   await page.goto('https://sound.realname.studio', {
     waitUntil: 'networkidle',
     timeout: 30000
@@ -16,15 +21,15 @@ async function captureScreenshot() {
   // Wait a bit for any animations to settle
   await page.waitForTimeout(2000);
 
-  console.log('📸 Capturing screenshot...');
+  console.log('📸 Capturing iPhone portrait screenshot...');
   await page.screenshot({
-    path: './public/screenshots/nyc-sound.jpg',
+    path: './public/screenshots/nyc-sound-mobile.jpg',
     type: 'jpeg',
     quality: 90,
     fullPage: false
   });
 
-  console.log('✅ Screenshot saved to ./public/screenshots/nyc-sound.jpg');
+  console.log('✅ iPhone portrait screenshot saved to ./public/screenshots/nyc-sound-mobile.jpg');
 
   await browser.close();
 }

@@ -847,60 +847,17 @@
       align-items: start;
     }
 
-    .phone-mockup {
+    .screenshot-container {
       width: 100%;
-      max-width: 220px;
+      max-width: 350px;
       margin: 0 auto;
-      padding: 10px;
-      background: #F5F5F7;
-      border-radius: 30px;
-      box-shadow:
-        0 0 0 2px #E5E5E7,
-        0 15px 40px rgba(0, 0, 0, 0.3);
-      position: relative;
-    }
-
-    .phone-mockup::before {
-      content: '';
-      position: absolute;
-      top: 6px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 70px;
-      height: 18px;
-      background: #F5F5F7;
-      border-radius: 0 0 12px 12px;
-      z-index: 10;
-    }
-
-    .phone-mockup::after {
-      content: '';
-      position: absolute;
-      top: 11px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 45px;
-      height: 4px;
-      background: #1A1A1A;
-      border-radius: 8px;
-      z-index: 11;
-      opacity: 0.5;
-    }
-
-    .phone-screen {
-      background: #000;
-      border-radius: 22px;
+      border: 5px solid #1A1A1A;
+      box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.3);
       overflow: hidden;
-      position: relative;
-      width: 100%;
-      height: 0;
-      padding-bottom: 216.67%;
+      aspect-ratio: 1 / 1;
     }
 
     .site-modal .screenshot {
-      position: absolute;
-      top: 0;
-      left: 0;
       width: 100%;
       height: 100%;
       display: block;
@@ -1161,25 +1118,8 @@
         margin-bottom: 20px;
       }
 
-      .phone-mockup {
-        max-width: 200px;
-        padding: 9px;
-      }
-
-      .phone-mockup::before {
-        width: 60px;
-        height: 16px;
-        top: 5px;
-      }
-
-      .phone-mockup::after {
-        width: 40px;
-        height: 3px;
-        top: 9px;
-      }
-
-      .phone-screen {
-        border-radius: 20px;
+      .screenshot-container {
+        max-width: 280px;
       }
 
       .site-modal-close {
@@ -1411,25 +1351,8 @@
         margin-bottom: 15px;
       }
 
-      .phone-mockup {
-        max-width: 180px;
-        padding: 8px;
-      }
-
-      .phone-mockup::before {
-        width: 55px;
-        height: 14px;
-        top: 4px;
-      }
-
-      .phone-mockup::after {
-        width: 35px;
-        height: 3px;
-        top: 8px;
-      }
-
-      .phone-screen {
-        border-radius: 18px;
+      .screenshot-container {
+        max-width: 250px;
       }
 
       .site-modal p {
@@ -1805,10 +1728,8 @@
       const modalBody = document.getElementById('siteModalBody');
 
       const screenshotHTML = site.screenshot
-        ? `<div class="phone-mockup">
-             <div class="phone-screen">
-               <img src="${site.screenshot}" alt="${site.name} screenshot" class="screenshot" onerror="this.parentElement.parentElement.style.display='none'">
-             </div>
+        ? `<div class="screenshot-container">
+             <img src="${site.screenshot}" alt="${site.name} screenshot" class="screenshot" onerror="this.parentElement.style.display='none'">
            </div>`
         : '';
 
