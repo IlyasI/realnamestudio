@@ -34,7 +34,7 @@ test.describe('Contact Page', () => {
   });
 
   test('should display GitHub social link', async ({ page }) => {
-    const githubLink = page.locator('a[href="https://github.com/IlyasI"]');
+    const githubLink = page.locator('a[href="https://github.com/realnamestudio"]');
     await expect(githubLink).toBeVisible();
     await expect(githubLink).toContainText('GitHub');
     await expect(githubLink).toHaveAttribute('target', '_blank');
