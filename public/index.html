@@ -1213,22 +1213,22 @@
       .sites-section {
         min-height: 100vh;
         height: 100vh;
-        padding: 10px 15px;
+        padding: 5px 15px;
         overflow-y: hidden;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;
+        padding-top: 15px;
       }
 
       .sites-section .section-title {
         font-size: 26px;
-        margin-bottom: 8px;
+        margin-bottom: 12px;
         margin-top: 0;
       }
 
       .sites-section .section-title::after {
-        bottom: -3px;
-        height: 4px;
+        display: none;
       }
 
       .sites-section::before {
@@ -1338,7 +1338,8 @@
 
       .sites-grid {
         max-width: 280px;
-        gap: 8px;
+        gap: 10px;
+        flex-shrink: 0;
       }
 
       .site-marker {
