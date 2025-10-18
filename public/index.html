@@ -1212,14 +1212,17 @@
 
       .sites-section {
         min-height: 100vh;
-        height: auto;
-        padding: 25px 20px;
-        overflow-y: auto;
+        height: 100vh;
+        padding: 20px 15px;
+        overflow-y: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
       }
 
       .sites-section .section-title {
-        font-size: 36px;
-        margin-bottom: 20px;
+        font-size: 32px;
+        margin-bottom: 15px;
       }
 
       .sites-section::before {
@@ -1328,24 +1331,26 @@
       }
 
       .sites-grid {
-        max-width: 300px;
-        gap: 16px;
+        max-width: 280px;
+        gap: 12px;
       }
 
       .site-marker {
-        padding: 22px 18px;
-        /* Ensure card content fits properly on small screens */
-        margin-bottom: 20px;
+        padding: 18px 15px;
+        /* Ensure card content fits on one screen without scrolling */
+        margin-bottom: 16px;
+        min-height: auto;
       }
 
       .site-marker h3 {
-        font-size: 22px;
-        letter-spacing: 1px;
+        font-size: 20px;
+        letter-spacing: 0.5px;
+        line-height: 1.1;
       }
 
       .site-icon {
-        font-size: 34px;
-        margin-bottom: 6px;
+        font-size: 30px;
+        margin-bottom: 5px;
       }
 
       .site-modal-content {
