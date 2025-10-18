@@ -78,7 +78,7 @@ test.describe('Homepage', () => {
 
     const visitBtn = modal.locator('.visit-btn');
     await expect(visitBtn).toBeVisible();
-    await expect(visitBtn).toHaveAttribute('href', /brooklyn-sounds/);
+    await expect(visitBtn).toHaveAttribute('href', /sound\.realname/);
   });
 
   test('should close modal when X button clicked', async ({ page }) => {
